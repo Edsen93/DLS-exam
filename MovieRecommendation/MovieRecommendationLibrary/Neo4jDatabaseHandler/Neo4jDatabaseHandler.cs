@@ -9,7 +9,9 @@ namespace MovieRecommendationLibrary.Neo4jDatabaseHandler
 {
     public partial class Neo4jDatabaseHandler
     {
-        private string _address = "http://localhost:7474/db/data";
+
+        private string _address = "http://localhost:11002/db/data";
+        //private string _address = "http://localhost:7474/db/data";
         private string _user = "neo4j";
         private string _password = "password";
 

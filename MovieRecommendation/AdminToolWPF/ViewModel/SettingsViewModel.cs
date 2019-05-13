@@ -20,7 +20,7 @@ namespace AdminToolWPF.ViewModel
 
 
 
-
+        // Recommendation
         public string Neo4jAddress
         {
             get { return ConnetionSettings.Neo4jAddress; }
@@ -30,8 +30,7 @@ namespace AdminToolWPF.ViewModel
                 RaisePropertyChanged("Neo4jAddress");
             }
         }
-
-
+        
         public string Neo4jUserName
         {
             get { return ConnetionSettings.Neo4jUserName; }
@@ -51,5 +50,70 @@ namespace AdminToolWPF.ViewModel
                 RaisePropertyChanged("Neo4jUserPassword");
             }
         }
+
+
+        // MovieSearch
+        public string PostgresMoviesAddress
+        {
+            get { return ConnetionSettings.PostgresMoviesAddress; }
+            set
+            {
+                ConnetionSettings.PostgresMoviesAddress = value;
+                RaisePropertyChanged("PostgresMoviesAddress");
+            }
+        }
+        
+        public string PostgresMoviesUserName
+        {
+            get { return ConnetionSettings.PostgresMoviesUserName; }
+            set
+            {
+                ConnetionSettings.PostgresMoviesUserName = value;
+                RaisePropertyChanged("PostgresMoviesUserName");
+            }
+        }
+
+        public string PostgresMoviesUserPassword
+        {
+            get { return ConnetionSettings.PostgresMoviesUserPassword; }
+            set
+            {
+                ConnetionSettings.PostgresMoviesUserPassword = value;
+                RaisePropertyChanged("PostgresMoviesUserPassword");
+            }
+        }
+
+
+        // UserInfo
+        public string PostgresUserAddress
+        {
+            get { return ConnetionSettings.PostgresUserAddress; }
+            set
+            {
+                ConnetionSettings.PostgresUserAddress = value;
+                RaisePropertyChanged("PostgresUserAddress");
+            }
+        }
+        
+        public string PostgresUserUserName
+        {
+            get { return ConnetionSettings.PostgresUserUserName; }
+            set
+            {
+                ConnetionSettings.PostgresUserUserName = value;
+                RaisePropertyChanged("PostgresUserUserName");
+            }
+        }
+
+        public string PostgresUserUserPassword
+        {
+            get { return ConnetionSettings.PostgresUserUserPassword; }
+            set
+            {
+                ConnetionSettings.PostgresUserUserPassword = value;
+                RaisePropertyChanged("PostgresUserUserPassword");
+            }
+        }
+
     }
 }

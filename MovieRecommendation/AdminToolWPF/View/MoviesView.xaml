@@ -31,8 +31,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Movies" FontSize="30" Margin="0,0,50,0"></TextBlock>
-            <TextBlock Grid.Column="1" Text="Filter" Margin="5,0,10,0" FontSize="18"  VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Column="0" Text="Movies" FontSize="30" Margin="0,0,30,0"></TextBlock>
+            <TextBlock Grid.Column="1" Text="Filter" Margin="5,0,10,0" FontSize="18" VerticalAlignment="Center"></TextBlock>
             <TextBox Grid.Column="2"  Height="25" Name="txtFilter" VerticalAlignment="Center" Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}" />
 
 
@@ -57,11 +57,11 @@
 
 
 
-        <Button Grid.Row="3" Content="Create a new Movie" Height="25" FontWeight="Bold" Command="{Binding NewMovieCommand}" Margin="0,5,0,0"></Button>
+        <Button Grid.Row="3" Content="Create a new Movie" Height="25" FontWeight="SemiBold" Command="{Binding NewMovieCommand}" Margin="5,5,5,0"></Button>
 
-        <Button Grid.Row="4"  Content="Edit selected Movie" Height="25" FontWeight="Bold"  Margin="0,5,0,0"></Button>
+        <Button Grid.Row="4"  Content="Edit selected Movie" Height="25" FontWeight="SemiBold"  Margin="5,5,5,0"></Button>
 
-        <Button Grid.Row="5"  Content="Delete selected Movie" Height="25" FontWeight="Bold"  Margin="0,5,0,0"></Button>
+        <Button Grid.Row="5"  Content="Delete selected Movie" Height="25" FontWeight="SemiBold"  Margin="5,5,5,5"></Button>
 
 
           
