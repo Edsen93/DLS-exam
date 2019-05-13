@@ -10,18 +10,18 @@ namespace RecommendationRESTService.Tests
     [TestClass]
     public class TestMovieController
     {
-        [TestMethod]
-        public void GetAllMovies_ShouldReturnAllMovies()
-        {
-            List<Movie> _movies = new List<Movie>()
-            {
-                new Movie() { MovieId = 1, ReleaseYear = 1998, Title = "Movie1" },
-                new Movie() { MovieId = 2, ReleaseYear = 1992, Title = "Movie2" },
-            };
-            var controller = new MovieController(_movies);
+        //[TestMethod]
+        //public void GetAllMovies_ShouldReturnAllMovies()
+        //{
+        //    List<Movie> _movies = new List<Movie>()
+        //    {
+        //        new Movie() { MovieId = 1, ReleaseYear = 1998, Title = "Movie1" },
+        //        new Movie() { MovieId = 2, ReleaseYear = 1992, Title = "Movie2" },
+        //    };
+        //    var controller = new MovieController(_movies);
 
-            var result = controller.GetAllProducts() as List<Product>;
-            Assert.AreEqual(testProducts.Count, result.Count);
-        }
+        //    var result = controller.GetAllProducts() as List<Product>;
+        //    Assert.AreEqual(testProducts.Count, result.Count);
+        //}
     }
 }
