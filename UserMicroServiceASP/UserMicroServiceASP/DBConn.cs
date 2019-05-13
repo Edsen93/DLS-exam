@@ -9,9 +9,16 @@ namespace UserMicroServiceASP
 {
     public class DBConn
     {
+        // Azure
+        string connection = "Server=userinfopostgresdb.postgres.database.azure.com;Database=users;Port=5432;User Id=dlsgroup2019@userinfopostgresdb;Password=Recommender2019;Ssl Mode=Require;";
+
+        // Localhost
+        string localConn = "Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users";
+
         public void CreateUser(User user)
         {
-            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users"))
+            
+            using (var conn = new NpgsqlConnection(connection))
             {
                 conn.Open();
 
@@ -32,7 +39,7 @@ namespace UserMicroServiceASP
 
         public void DeleteUser(int userId)
         {
-            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users"))
+            using (var conn = new NpgsqlConnection(connection))
             {
                 conn.Open();
 
@@ -51,7 +58,7 @@ namespace UserMicroServiceASP
         public User GetUser(int userId)
         {
             var u = new User();
-            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users"))
+            using (var conn = new NpgsqlConnection(connection))
             {
                 conn.Open();
 
@@ -75,7 +82,7 @@ namespace UserMicroServiceASP
         public User Login(string username, string password)
         {
             var u = new User();
-            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users"))
+            using (var conn = new NpgsqlConnection(connection))
             {
                 conn.Open();
                 var cmdline = "SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "'";
@@ -99,7 +106,7 @@ namespace UserMicroServiceASP
         public List<User> GetUsers()
         {
             List<User> users = new List<User>();
-            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users"))
+            using (var conn = new NpgsqlConnection(connection))
             {
                 conn.Open();
 
@@ -124,7 +131,7 @@ namespace UserMicroServiceASP
 
         public void UpdateUser(int userId, User user)
         {
-            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users"))
+            using (var conn = new NpgsqlConnection(connection))
             {
                 conn.Open();
 
