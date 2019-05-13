@@ -17,7 +17,6 @@ namespace Neo4jTests
     [TestClass]
     public class Connection_UnitTest
     {
-        
 
         [TestMethod]
         public void Can_Connect_To_Neo4j()

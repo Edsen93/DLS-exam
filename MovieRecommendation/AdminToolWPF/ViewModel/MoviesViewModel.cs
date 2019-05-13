@@ -129,7 +129,7 @@ namespace AdminToolWPF.ViewModel
             }
             
 
-            GenerateMovies();
+            GetMovies();
             
             //GenreStuff();
             //RaisePropertyChanged("GenreViewModel");
@@ -191,18 +191,27 @@ namespace AdminToolWPF.ViewModel
             //}
 
         }
+        
 
-        private void GenerateMovies()
+        private void GetMovies(bool loadMovies = false)
         {
 
             ObservableCollection<Movie> movies = new ObservableCollection<Movie>();
-            for (int i = 1; i < 1000; i++)
+
+            if (loadMovies)
             {
-                movies.Add(new Movie() {
-                    MovieId = i,
-                    Title = "Title"+i,
-                    ReleaseYear = 1999
-                });
+                //Connect and load users
+            }
+            else
+            {
+                for (int i = 1; i < 1000; i++)
+                {
+                    movies.Add(new Movie() {
+                        MovieId = i,
+                        Title = "Title"+i,
+                        ReleaseYear = 1999
+                    });
+                }
             }
             
             moviesCollection = new CollectionViewSource
