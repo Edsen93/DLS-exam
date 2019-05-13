@@ -1,0 +1,139 @@
+﻿<Window x:Class="Neo4jTestApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Neo4jTestApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1000">
+    
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,2,0,2" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,2,15,2" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+
+
+    <Grid Margin="5">
+
+        <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Name="LeftColumn" Margin="0,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="Status" Padding="5">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Neo4j status" Grid.Row="0" Grid.Column="0" />
+                            <TextBlock Text="Postgres status" Grid.Row="1" Grid.Column="0" />
+                            <TextBlock Text="Neo4j connection string" Grid.Row="2" Grid.Column="0" />
+                            <TextBlock Text="Postgres connection string" Grid.Row="3" Grid.Column="0" />
+                            <TextBlock Text="Project name" Grid.Row="4" Grid.Column="0" />
+                            <TextBlock Text="Cluster Name" Grid.Row="5" Grid.Column="0" />
+
+
+
+                            <TextBlock Text="Connected" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Not Connected" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" />
+
+                            <TextBox Grid.Row="2" Grid.Column="1" Margin="0,2,0,2" IsReadOnly="True" Name="ServerAddressTextBox"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="0,2,0,2" IsReadOnly="True" Name="ServerStatusTextBox"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Margin="0,2,0,2" IsReadOnly="True" Name="ProjectName"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Margin="0,2,0,2" IsReadOnly="True" Name="ClusterName"/>
+                        </Grid>
+
+                        <Button Content="Test Connections" Name="ConnectButton" Click="ConnectButton_Click" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+
+
+                <GroupBox Header="Neo4j Methods" Grid.Row="1" Margin="0,5,5,0" Padding="5" BorderBrush="Black" BorderThickness="1">
+                    <StackPanel Orientation="Vertical">
+                        <Button IsEnabled="{Binding IsConnected}" Content="Load Test user" Click="LoadUserButton_Click" />
+                        <Button IsEnabled="{Binding IsConnected}" Content="Load all Movies" Click="LoadMoviesButton_Click" />
+                        <Button IsEnabled="{Binding IsConnected}" Content="Recommend based on movie" Click="RecommendationBasedOnMovieButton_Click" />
+                        <Button IsEnabled="{Binding IsConnected}" Content="Recommend based on User" Click="RecommendationBasedOnUserButton_Click" />
+                        <Button IsEnabled="{Binding IsConnected}" Content="Get Person List" Click="GetPeopleButton_Click" />
+                    </StackPanel>
+                </GroupBox>
+
+
+
+
+                <GroupBox Grid.Row="2" Header="Create Database" Margin="0,15,5,0" Padding="5" BorderBrush="Black" BorderThickness="1">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Current number of users"/>
+                            <TextBlock Name="tbUserCount" Text="???"/>
+                        </StackPanel>
+                        <Button IsEnabled="{Binding IsConnected}" Content="Create All Users"  Click="CreateAllUsers_Click" />
+
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Number: "></TextBlock>
+                            <TextBox Grid.Column="1" Text="1000"  Name="NumberTextBox" PreviewTextInput="NumberValidationTextBox" Width="60" Margin="5,0,5,0"/>
+                            <Button Grid.Column="2"  IsEnabled="{Binding IsConnected}" Content="Create specific number of users" Click="CreateNumberOfUsersLogButton_Click" />
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+
+            </Grid>
+
+
+
+            <GroupBox Grid.Row="0" Grid.Column="1" Header="Log" Margin="0,5,0,0" MinHeight="300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Name="TextBlockScrollView">
+                        <TextBox Name="LogTextBox" AcceptsReturn="True" IsReadOnly="True" TextWrapping="Wrap" />
+                    </ScrollViewer>
+                    <Button Content="Clear Log" Grid.Row="1" Name="ClearLogButton"  Margin="0,5,0,0" Click="ClearLogButton_Click"/>
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+
+    </Grid>
+</Window>
