@@ -119,6 +119,8 @@ namespace ms.MovieInfo
                 m.title = dataReader.GetString(1);
                 m.releaseYear = dataReader.GetInt32(2);
             }
+
+            m.ID = 13333;
             return m;
 
 
