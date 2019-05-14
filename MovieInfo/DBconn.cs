@@ -23,7 +23,7 @@ namespace ms.MovieInfo
             string user = "admin";
             string password = "admin";
          
-            myConnectionString = String.Format("Host={0}; Username={1}; Password={2}; Database={3};", server, user, password, database);
+            myConnectionString = String.Format("Server=movieinfo.postgres.database.azure.com;Database=movies;Port=5432;User Id=dlsgroup2019@movieinfo;Password=Recomender2019;Ssl Mode=Require;");
             
 
 
@@ -102,12 +102,15 @@ namespace ms.MovieInfo
         }
         //
         public Movie findOneMovie(int id)
-
         {
-            string sqlString =String.Format("Select * From movies WHERE id ={0}", id);
+
+            
+
+            string sqlString =String.Format("Select * From movies WHERE id ={0}", id);      
+            Movie m = new Movie();
+          
 
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
-            Movie m = new Movie();
             NpgsqlDataReader dataReader = cmd.ExecuteReader();
 
             while (dataReader.Read())

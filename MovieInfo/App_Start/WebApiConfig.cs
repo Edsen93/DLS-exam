@@ -24,6 +24,8 @@ namespace MovieInfo
                 routeTemplate: "api/{controller}/{id}/{news}",
                 defaults: new { id = RouteParameter.Optional, news = RouteParameter.Optional }
             );
+            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
         }
     }
 }
