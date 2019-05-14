@@ -5,7 +5,7 @@ networks:
 services:
   usermicroserviceasp:
     build:
-      context: C:\Users\SebastianDamgaard\Source\repos\DLS-exam\UserMicroServiceASP\UserMicroServiceASP
+      context: C:\Users\SebastianDamgaard\Source\Repos\DLS-exam\UserMicroServiceASP\UserMicroServiceASP
       dockerfile: Dockerfile
     image: usermicroserviceasp
     ports:
