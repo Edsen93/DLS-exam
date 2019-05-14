@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  movieinfo:
+    image: ${DOCKER_REGISTRY-}movieinfo
+    build:
+      context: .\MovieInfo
+      dockerfile: Dockerfile

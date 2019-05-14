@@ -1,0 +1,13 @@
+networks:
+  default:
+    external:
+      name: nat
+services:
+  movieinfo:
+    build:
+      context: C:\Users\edsen\source\repos\DLS-exam\MovieInfo
+      dockerfile: Dockerfile
+    image: movieinfo
+    ports:
+    - target: 80
+version: '3.4'
