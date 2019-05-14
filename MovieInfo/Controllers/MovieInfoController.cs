@@ -19,10 +19,11 @@ namespace ms.MovieInfo.Controllers
         }
 
         // GET: api/MovieInfo/5
-        public Movie Get(int id)
+        public String Get(int id)
         {
             MoviePersistence mp = new MoviePersistence();
-            return mp.findOneMovie(id);
+            //return mp.findOneMovie(id);
+            return "bob";
         }
 
         // POST: api/MovieInfo

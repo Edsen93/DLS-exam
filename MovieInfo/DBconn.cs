@@ -120,7 +120,7 @@ namespace ms.MovieInfo
                 m.releaseYear = dataReader.GetInt32(2);
             }
 
-            m.ID = 13333;
+           
             return m;
 
 
