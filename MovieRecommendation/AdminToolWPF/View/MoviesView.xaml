@@ -41,9 +41,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
 
@@ -58,18 +55,16 @@
             <TextBlock Grid.Column="1" Text="Filter" Margin="5,0,10,0" FontSize="18" VerticalAlignment="Center"></TextBlock>
             <TextBox Grid.Column="2"  Height="25" Name="txtFilter" VerticalAlignment="Center" Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}" />
 
-
-
         </Grid>
                 
                 
 
         <ListBox 
             Grid.Row="2"
+            SelectedItem="{Binding SelectedMovie, Mode=TwoWay}" 
             ItemsSource="{Binding SourceCollection}" 
             DisplayMemberPath="Title" 
             MinHeight="200"
-            Margin="0,0,0,0"
             VirtualizingPanel.IsVirtualizing="True"
             VirtualizingPanel.IsVirtualizingWhenGrouping="True"
             VirtualizingPanel.VirtualizationMode="Recycling"
@@ -82,12 +77,14 @@
 
         <Button Grid.Row="3" Content="Create a new Movie" Height="25" FontWeight="SemiBold" Command="{Binding NewMovieCommand}" Margin="5,5,5,0"></Button>
 
-        <Button Grid.Row="4"  Content="Edit selected Movie" Height="25" FontWeight="SemiBold"  Margin="5,5,5,0"></Button>
+        <Button Grid.Row="4"  Content="Edit selected Movie" Height="25" FontWeight="SemiBold" Command="{Binding EditMovieCommand}"   Margin="5,5,5,0"></Button>
 
-        <Button Grid.Row="5"  Content="Delete selected Movie" Height="25" FontWeight="SemiBold"  Margin="5,5,5,5"></Button>
+        <Button Grid.Row="5"  Content="Delete selected Movie" Height="25" FontWeight="SemiBold"  Margin="5,5,5,0"></Button>
+
+        <Button Grid.Row="6"  Command="{Binding LoadCommand}"   Content="Reaload Movies" Height="25" FontWeight="SemiBold"  Margin="5,5,5,5"></Button>
 
 
-          
-            
+
+
     </Grid>
 </UserControl>

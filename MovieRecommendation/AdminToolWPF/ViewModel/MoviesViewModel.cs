@@ -8,6 +8,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Data;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System.Windows;
+using AdminToolWPF.View;
 
 namespace AdminToolWPF.ViewModel
 {
@@ -18,6 +22,71 @@ namespace AdminToolWPF.ViewModel
             get
             {
                 return "Movies";
+            }
+        }
+
+
+        public RelayCommand<object> NewMovieCommand
+        {
+            get
+            {
+                if (_newMovieCommand == null)
+                    _newMovieCommand = new RelayCommand<object>(NewMovieCommand_Execute);
+                return _newMovieCommand;
+            }
+        }
+        private RelayCommand<object> _newMovieCommand = null;
+
+        private void NewMovieCommand_Execute(object obj)
+        {
+            Window window = new Window
+            {
+                Title = "New Movie",
+                Content = new MovieView(this, null)
+                
+            };
+            window.Height = 300;
+            window.Width = 500;
+            window.ShowDialog();
+        }
+
+
+
+        public RelayCommand<object> EditMovieCommand
+        {
+            get
+            {
+                if (_editMovieCommand == null && SelectedMovie != null)
+                    _editMovieCommand = new RelayCommand<object>(EditMovieCommand_Execute);
+                return _editMovieCommand;
+            }
+        }
+        private RelayCommand<object> _editMovieCommand = null;
+
+        private void EditMovieCommand_Execute(object obj)
+        {
+            Window window = new Window
+            {
+                Title = "New Movie",
+                Content = new MovieView(this, SelectedMovie)
+
+            };
+            window.Height = 300;
+            window.Width = 500;
+            window.ShowDialog();
+        }
+
+
+
+
+        public Movie _selectedMovie;
+        public Movie SelectedMovie
+        {
+            get { return _selectedMovie; }
+            set
+            {
+                _selectedMovie = value;
+                RaisePropertyChanged("SelectedMovie");
             }
         }
 
@@ -59,7 +128,7 @@ namespace AdminToolWPF.ViewModel
         //    }
         //}
 
-        
+
 
 
 
