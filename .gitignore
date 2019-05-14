@@ -2,4 +2,9 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+<<<<<<< HEAD
 /UserMicroServiceASP/.vs/UserMicroServiceASP/v15/Server/sqlite3
+=======
+/.vs/slnx.sqlite-journal
+/.vs/slnx.sqlite
+>>>>>>> master_microservice_users
