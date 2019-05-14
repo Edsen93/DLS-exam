@@ -133,11 +133,5 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MovieRecommendationLibrary\MovieRecommendationLibrary.csproj">
-      <Project>{d4fe2a14-4b0e-4e31-985f-d7f29f13a076}</Project>
-      <Name>MovieRecommendationLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

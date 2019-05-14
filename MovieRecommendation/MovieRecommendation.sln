@@ -3,21 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminToolWPF", "AdminToolWPF\AdminToolWPF.csproj", "{9DEC1658-E3F9-409D-B983-5B6821D3CFAB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRecommendationLibrary", "MovieRecommendationLibrary\MovieRecommendationLibrary.csproj", "{D4FE2A14-4B0E-4E31-985F-D7F29F13A076}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neo4jRESTService", "Neo4jRESTService\Neo4jRESTService.csproj", "{1EC301A4-3636-4CC6-A716-4F42EF5720BB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neo4jTestApp", "Neo4jTestApp\Neo4jTestApp.csproj", "{82D3D798-6F48-4016-AE49-D119C269009C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRecommendationLibrary.Test", "Neo4jTests\MovieRecommendationLibrary.Test.csproj", "{601653D6-4498-41AE-AC28-AE4B6EDAADF0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Holder", "Holder", "{E9F4B443-53E1-4B1C-BDC5-9C96004DE44F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecommendationRESTService", "RecommendationRESTService\RecommendationRESTService.csproj", "{3DEDF9DB-45C9-4DE1-9549-87959A42F444}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecommendationRESTService.Tests", "RecommendationRESTService.Tests\RecommendationRESTService.Tests.csproj", "{1A057C8F-CDD2-4EA4-B25C-DFF81B8EDA13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,41 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9DEC1658-E3F9-409D-B983-5B6821D3CFAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DEC1658-E3F9-409D-B983-5B6821D3CFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DEC1658-E3F9-409D-B983-5B6821D3CFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DEC1658-E3F9-409D-B983-5B6821D3CFAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4FE2A14-4B0E-4E31-985F-D7F29F13A076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4FE2A14-4B0E-4E31-985F-D7F29F13A076}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4FE2A14-4B0E-4E31-985F-D7F29F13A076}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4FE2A14-4B0E-4E31-985F-D7F29F13A076}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1EC301A4-3636-4CC6-A716-4F42EF5720BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1EC301A4-3636-4CC6-A716-4F42EF5720BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1EC301A4-3636-4CC6-A716-4F42EF5720BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1EC301A4-3636-4CC6-A716-4F42EF5720BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82D3D798-6F48-4016-AE49-D119C269009C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82D3D798-6F48-4016-AE49-D119C269009C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82D3D798-6F48-4016-AE49-D119C269009C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82D3D798-6F48-4016-AE49-D119C269009C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{601653D6-4498-41AE-AC28-AE4B6EDAADF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{601653D6-4498-41AE-AC28-AE4B6EDAADF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{601653D6-4498-41AE-AC28-AE4B6EDAADF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{601653D6-4498-41AE-AC28-AE4B6EDAADF0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3DEDF9DB-45C9-4DE1-9549-87959A42F444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3DEDF9DB-45C9-4DE1-9549-87959A42F444}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DEDF9DB-45C9-4DE1-9549-87959A42F444}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DEDF9DB-45C9-4DE1-9549-87959A42F444}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A057C8F-CDD2-4EA4-B25C-DFF81B8EDA13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A057C8F-CDD2-4EA4-B25C-DFF81B8EDA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A057C8F-CDD2-4EA4-B25C-DFF81B8EDA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A057C8F-CDD2-4EA4-B25C-DFF81B8EDA13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{1EC301A4-3636-4CC6-A716-4F42EF5720BB} = {E9F4B443-53E1-4B1C-BDC5-9C96004DE44F}
-		{82D3D798-6F48-4016-AE49-D119C269009C} = {E9F4B443-53E1-4B1C-BDC5-9C96004DE44F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {173DAF69-5201-4B18-A9F1-A2C9A47AB4F4}
