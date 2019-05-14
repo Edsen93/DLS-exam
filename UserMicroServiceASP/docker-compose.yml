@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  usermicroserviceasp:
+    image: ${DOCKER_REGISTRY-}usermicroserviceasp
+    build:
+      context: .\UserMicroServiceASP
+      dockerfile: Dockerfile

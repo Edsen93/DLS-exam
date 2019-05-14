@@ -1,0 +1,13 @@
+networks:
+  default:
+    external:
+      name: nat
+services:
+  usermicroserviceasp:
+    build:
+      context: C:\Users\SebastianDamgaard\Source\repos\DLS-exam\UserMicroServiceASP\UserMicroServiceASP
+      dockerfile: Dockerfile
+    image: usermicroserviceasp
+    ports:
+    - target: 80
+version: '3.4'
