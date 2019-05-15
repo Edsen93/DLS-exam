@@ -83,11 +83,18 @@ namespace AdminToolWPF.ViewModel
         }, () => !String.IsNullOrWhiteSpace(MovieID));
 
 
+   
+        //public IRelayCommand<string> GetMovieByTitleCommand => new RelayCommand<string>((string movieTitle) =>
+        //{
+        //    SetDemo();
+        //}, (movieTitle) => movieTitle != null);
+
         public IRelayCommand GetMovieByTitleCommand => new RelayCommand(() =>
         {
-
             SetDemo();
         }, () => !String.IsNullOrWhiteSpace(MovieTitle));
+
+
 
 
         public IRelayCommand GetAllUsersCommand => new RelayCommand(() =>

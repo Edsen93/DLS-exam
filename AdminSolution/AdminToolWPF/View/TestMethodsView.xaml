@@ -9,103 +9,107 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid Background="White">
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
- 
+
+
         <TextBlock Text="Test Methods" FontSize="30" Grid.Row="0"></TextBlock>
 
-        <GroupBox Grid.Row="1" Header="Movies methods" Padding="5">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-                <TextBlock Text="Get All Movies" FontSize="14" FontWeight="Medium" Grid.Row="0" Grid.Column="0" />
+ 
+            <GroupBox Grid.Row="1" Header="Movies methods" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Content="Get All Movies"  Command="{Binding GetAllMoviesCommand}" />
+                    <TextBlock Text="Get All Movies" FontSize="14" FontWeight="Medium" Grid.Row="0" Grid.Column="0" />
 
-
-                <TextBlock Text="Get Movie by ID" FontSize="14" FontWeight="Medium" Grid.Row="2" Grid.Column="0" />
-                <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding Path=MovieID}"  />
-                <Button Grid.Row="3" Grid.Column="1"  Content="Get Movie by ID" Command="{Binding GetMovieByIDCommand}" />
-
-
-                <TextBlock Text="Get Movie by Title" FontSize="14" FontWeight="Medium" Grid.Row="4" Grid.Column="0" />
-                <TextBox Grid.Row="5" Grid.Column="0" Text="{Binding Path=MovieTitle}" />
-                <Button Grid.Row="5" Grid.Column="1" Content="Get Movie by Title" Command="{Binding GetMovieByTitleCommand}"  />
-
-            </Grid>
-        </GroupBox>
-
-        <GroupBox Grid.Row="2" Header="Users methods" Padding="5">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Text="Get All Users" FontSize="14" FontWeight="Medium" Grid.Row="0" Grid.Column="0" />
-
-                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Content="Get All Users"  Command="{Binding GetAllUsersCommand}"  />
+                    <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Content="Get All Movies"  Command="{Binding GetAllMoviesCommand}" />
 
 
-                <TextBlock Text="Get User by ID" FontSize="14" FontWeight="Medium" Grid.Row="2" Grid.Column="0" />
-                <TextBox Grid.Row="3" Grid.Column="0"  Text="{Binding Path=UserID}"/>
-                <Button Grid.Row="3" Grid.Column="1"  Content="Get User by ID"  Command="{Binding GetUserByIDCommand}" />
-
-            </Grid>
-        </GroupBox>
+                    <TextBlock Text="Get Movie by ID" FontSize="14" FontWeight="Medium" Grid.Row="2" Grid.Column="0" />
+                    <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding Path=MovieID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="NumberValidationTextBox" />
+                    <Button Grid.Row="3" Grid.Column="1"  Content="Get Movie by ID" Command="{Binding GetMovieByIDCommand}" />
 
 
+                    <TextBlock Text="Get Movie by Title" FontSize="14" FontWeight="Medium" Grid.Row="4" Grid.Column="0" />
+                    <TextBox Grid.Row="5" Grid.Column="0" Text="{Binding Path=MovieTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Grid.Row="5" Grid.Column="1" Content="Get Movie by Title" Command="{Binding GetMovieByTitleCommand}"  />
 
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="Users methods" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Get All Users" FontSize="14" FontWeight="Medium" Grid.Row="0" Grid.Column="0" />
+
+                    <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Content="Get All Users"  Command="{Binding GetAllUsersCommand}"  />
+
+
+                    <TextBlock Text="Get User by ID" FontSize="14" FontWeight="Medium" Grid.Row="2" Grid.Column="0" />
+                    <TextBox Grid.Row="3" Grid.Column="0"  Text="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PreviewTextInput="NumberValidationTextBox" />
+                    <Button Grid.Row="3" Grid.Column="1"  Content="Get User by ID"  Command="{Binding GetUserByIDCommand}" />
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+        
+
+        
+        
+        
         <TextBlock Text="Results" FontSize="20" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom"></TextBlock>
 
-
-
-
-        <TextBlock 
+        <TextBox 
             Grid.Row="1"
             Grid.Column="1"
             Grid.RowSpan="2"
+            TextWrapping="Wrap"
             Text="{Binding ConsoleText}" 
-            ScrollViewer.HorizontalScrollBarVisibility="Auto"
-            ScrollViewer.VerticalScrollBarVisibility="Auto" >
-        </TextBlock>
-
-
+            VerticalScrollBarVisibility="Auto">
+        </TextBox>
 
     </Grid>
 </UserControl>

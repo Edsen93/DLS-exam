@@ -51,7 +51,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Movies" FontSize="30" Margin="0,0,30,0"></TextBlock>
+            <TextBlock Grid.Column="0" Text="Movies" FontSize="30" Margin="15,0,30,0"></TextBlock>
             <TextBlock Grid.Column="1" Text="Filter" Margin="5,0,10,0" FontSize="18" VerticalAlignment="Center"></TextBlock>
             <TextBox Grid.Column="2"  Height="25" Name="txtFilter" VerticalAlignment="Center" Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}" />
 
