@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ConnetionSettings.cs" />
+    <Compile Include="Helper Classes\RequestHandler.cs" />
     <Compile Include="ViewModel\ApplicationViewModel.cs" />
     <Compile Include="Helper Classes\ObservableObject.cs" />
     <Compile Include="Helper Classes\RelayCommand.cs" />
