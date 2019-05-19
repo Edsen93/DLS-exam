@@ -102,14 +102,50 @@
         
         <TextBlock Text="Results" FontSize="20" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom"></TextBlock>
 
-        <TextBox 
+        <Grid 
             Grid.Row="1"
             Grid.Column="1"
-            Grid.RowSpan="2"
-            TextWrapping="Wrap"
-            Text="{Binding ConsoleText}" 
-            VerticalScrollBarVisibility="Auto">
-        </TextBox>
+            Grid.RowSpan="2">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Querry" FontSize="12" Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"></TextBlock>
+            <TextBox 
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="TEST"
+                Grid.ColumnSpan="2">
+            </TextBox>
+
+            <Button 
+                Grid.Row="0"
+                Grid.Column="2"
+                Content="Send Request">
+                
+            </Button>
+            
+
+            <TextBox 
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                TextWrapping="Wrap"
+                Text="{Binding ConsoleText}" 
+                VerticalScrollBarVisibility="Auto">
+            </TextBox>
+
+        </Grid>
+        
 
     </Grid>
 </UserControl>
