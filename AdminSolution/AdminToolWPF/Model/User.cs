@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AdminToolWPF.Model
 {
-    class User
+    public class User
     {
+        public int? UserId { get; set; }
+        public string UserName { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

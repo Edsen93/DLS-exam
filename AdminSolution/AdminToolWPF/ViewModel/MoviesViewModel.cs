@@ -26,44 +26,73 @@ namespace AdminToolWPF.ViewModel
         }
 
 
-        public RelayCommand<object> NewMovieCommand
-        {
-            get
-            {
-                if (_newMovieCommand == null)
-                    _newMovieCommand = new RelayCommand<object>(NewMovieCommand_Execute);
-                return _newMovieCommand;
-            }
-        }
-        private RelayCommand<object> _newMovieCommand = null;
+        //public RelayCommand<object> NewMovieCommand
+        //{
+        //    get
+        //    {
+        //        if (_newMovieCommand == null)
+        //            _newMovieCommand = new RelayCommand<object>(NewMovieCommand_Execute);
+        //        return _newMovieCommand;
+        //    }
+        //}
+        //private RelayCommand<object> _newMovieCommand = null;
 
-        private void NewMovieCommand_Execute(object obj)
+        //private void NewMovieCommand_Execute(object obj)
+        //{
+        //    Window window = new Window
+        //    {
+        //        Title = "New Movie",
+        //        Content = new MovieView(this, null)
+                
+        //    };
+        //    window.Height = 300;
+        //    window.Width = 500;
+        //    window.ShowDialog();
+        //}
+
+
+
+        //public RelayCommand<object> EditMovieCommand
+        //{
+        //    get
+        //    {
+        //        if (_editMovieCommand == null && SelectedMovie != null)
+        //            _editMovieCommand = new RelayCommand<object>(EditMovieCommand_Execute);
+        //        return _editMovieCommand;
+        //    }
+        //}
+        //private RelayCommand<object> _editMovieCommand = null;
+
+        //private void EditMovieCommand_Execute(object obj)
+        //{
+        //    Window window = new Window
+        //    {
+        //        Title = "New Movie",
+        //        Content = new MovieView(this, SelectedMovie)
+
+        //    };
+        //    window.Height = 300;
+        //    window.Width = 500;
+        //    window.ShowDialog();
+        //}
+
+
+
+        public IRelayCommand NewMovieCommand => new RelayCommand(() =>
         {
             Window window = new Window
             {
                 Title = "New Movie",
                 Content = new MovieView(this, null)
-                
+
             };
             window.Height = 300;
             window.Width = 500;
             window.ShowDialog();
-        }
+        });
 
 
-
-        public RelayCommand<object> EditMovieCommand
-        {
-            get
-            {
-                if (_editMovieCommand == null && SelectedMovie != null)
-                    _editMovieCommand = new RelayCommand<object>(EditMovieCommand_Execute);
-                return _editMovieCommand;
-            }
-        }
-        private RelayCommand<object> _editMovieCommand = null;
-
-        private void EditMovieCommand_Execute(object obj)
+        public IRelayCommand EditMovieCommand => new RelayCommand(() =>
         {
             Window window = new Window
             {
@@ -74,7 +103,26 @@ namespace AdminToolWPF.ViewModel
             window.Height = 300;
             window.Width = 500;
             window.ShowDialog();
-        }
+        }, () => SelectedMovie != null);
+
+
+        public IRelayCommand DeleteMovieCommand => new RelayCommand(() =>
+        {
+            string sMessageBoxText = $"Do you want to DELETE '{SelectedMovie.Title}' ?";
+            string sCaption = "Delete movie";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+            MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+            MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+            if(rsltMessageBox == MessageBoxResult.Yes)
+            {
+                // run code
+                //moviesCollection.remo
+            }
+
+        }, () => SelectedMovie != null);
+
 
 
 

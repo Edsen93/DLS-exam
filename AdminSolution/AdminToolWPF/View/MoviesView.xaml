@@ -80,7 +80,7 @@
 
         <Button Grid.Row="4"  Content="Edit selected Movie" Height="25" FontWeight="SemiBold" Command="{Binding EditMovieCommand}"   Margin="5,5,5,0"></Button>
 
-        <Button Grid.Row="5"  Content="Delete selected Movie" Height="25" FontWeight="SemiBold"  Margin="5,5,5,0"></Button>
+        <Button Grid.Row="5"  Content="Delete selected Movie" Height="25" FontWeight="SemiBold"  Command="{Binding DeleteMovieCommand}"  Margin="5,5,5,0"></Button>
 
         <Button Grid.Row="6"  Command="{Binding LoadCommand}"   Content="Reaload Movies" Height="25" FontWeight="SemiBold"  Margin="5,5,5,5"></Button>
 

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\SharkForceOne\source\repos\DLS-exam\AdminSolution\AdminToolWPF\App.xaml
-6-1444869397
+7-1686021800
 
-28631965950
+30-639616276
 711264197453
-MainWindow.xaml;View\ConnectionSettingsView.xaml;View\MoviesView.xaml;View\MovieView.xaml;View\TestMethodsView.xaml;View\UsersView.xaml;
+MainWindow.xaml;View\ConnectionSettingsView.xaml;View\MoviesView.xaml;View\MovieView.xaml;View\TestMethodsView.xaml;View\UsersView.xaml;View\UserView.xaml;
 
-True
+False
 

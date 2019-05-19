@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdminToolWPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace AdminToolWPF.View
 {
     /// <summary>
@@ -23,6 +25,7 @@ namespace AdminToolWPF.View
         public UsersView()
         {
             InitializeComponent();
+            DataContext = new UsersViewModel();
         }
     }
 }
