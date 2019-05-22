@@ -189,17 +189,23 @@ namespace AdminToolWPF.ViewModel
 
         
 
-        private void GetMovies(bool loadMovies = false)
+        private void GetMovies(bool loadMovies = true)
         {
 
-            ObservableCollection<Movie> movies = new ObservableCollection<Movie>();
+            ObservableCollection<Movie> movies = null;
 
             if (loadMovies)
             {
                 //Connect and load users
+
+                var test = QuerryHandler.GetMovies();
+
+                movies = new ObservableCollection<Movie>(test);
+                
             }
             else
             {
+                movies = new ObservableCollection<Movie>();
                 for (int i = 1; i < 1000; i++)
                 {
                     movies.Add(new Movie() {

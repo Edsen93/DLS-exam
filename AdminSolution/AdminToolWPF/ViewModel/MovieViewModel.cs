@@ -120,11 +120,14 @@ namespace AdminToolWPF.ViewModel
                 ReleaseYear = _movie.ReleaseYear;
                 Title = _movie.Title;
 
-                foreach (Genre genre in _movie.GenreList)
+                if (_movie.GenreList != null)
                 {
-                    GenreViewModel found = GenreViewModelList.FirstOrDefault(x => x.GenreId == genre.GenreId);
-                    if (found != null)
-                        found.IsSelected = true;
+                    foreach (Genre genre in _movie.GenreList)
+                    {
+                        GenreViewModel found = GenreViewModelList.FirstOrDefault(x => x.GenreId == genre.GenreId);
+                        if (found != null)
+                            found.IsSelected = true;
+                    }
                 }
 
             }

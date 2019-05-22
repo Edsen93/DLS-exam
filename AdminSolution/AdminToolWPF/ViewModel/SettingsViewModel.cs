@@ -21,99 +21,130 @@ namespace AdminToolWPF.ViewModel
 
 
         // Recommendation
-        public string Neo4jAddress
+        public string AdminServiceAddress
         {
-            get { return ConnetionSettings.Neo4jAddress; }
+            get { return ConnetionSettings.AdminServiceAddress; }
             set
             {
-                ConnetionSettings.Neo4jAddress = value;
-                RaisePropertyChanged("Neo4jAddress");
+                ConnetionSettings.AdminServiceAddress = value;
+                RaisePropertyChanged("AdminServiceAddress");
             }
         }
+
+        public string AdminServiceUserName
+        {
+            get { return ConnetionSettings.AdminServiceUserName; }
+            set
+            {
+                ConnetionSettings.AdminServiceUserName = value;
+                RaisePropertyChanged("AdminServiceUserName");
+            }
+        }
+
+        public string AdminServiceUserPassword
+        {
+            get { return ConnetionSettings.AdminServiceUserPassword; }
+            set
+            {
+                ConnetionSettings.AdminServiceUserPassword = value;
+                RaisePropertyChanged("AdminServiceUserPassword");
+            }
+        }
+
+        //// Recommendation
+        //public string Neo4jAddress
+        //{
+        //    get { return ConnetionSettings.Neo4jAddress; }
+        //    set
+        //    {
+        //        ConnetionSettings.Neo4jAddress = value;
+        //        RaisePropertyChanged("Neo4jAddress");
+        //    }
+        //}
         
-        public string Neo4jUserName
-        {
-            get { return ConnetionSettings.Neo4jUserName; }
-            set
-            {
-                ConnetionSettings.Neo4jUserName = value;
-                RaisePropertyChanged("Neo4jUserName");
-            }
-        }
+        //public string Neo4jUserName
+        //{
+        //    get { return ConnetionSettings.Neo4jUserName; }
+        //    set
+        //    {
+        //        ConnetionSettings.Neo4jUserName = value;
+        //        RaisePropertyChanged("Neo4jUserName");
+        //    }
+        //}
 
-        public string Neo4jUserPassword
-        {
-            get { return ConnetionSettings.Neo4jUserPassword; }
-            set
-            {
-                ConnetionSettings.Neo4jUserName = value;
-                RaisePropertyChanged("Neo4jUserPassword");
-            }
-        }
+        //public string Neo4jUserPassword
+        //{
+        //    get { return ConnetionSettings.Neo4jUserPassword; }
+        //    set
+        //    {
+        //        ConnetionSettings.Neo4jUserName = value;
+        //        RaisePropertyChanged("Neo4jUserPassword");
+        //    }
+        //}
 
 
-        // MovieSearch
-        public string PostgresMoviesAddress
-        {
-            get { return ConnetionSettings.PostgresMoviesAddress; }
-            set
-            {
-                ConnetionSettings.PostgresMoviesAddress = value;
-                RaisePropertyChanged("PostgresMoviesAddress");
-            }
-        }
+        //// MovieSearch
+        //public string PostgresMoviesAddress
+        //{
+        //    get { return ConnetionSettings.PostgresMoviesAddress; }
+        //    set
+        //    {
+        //        ConnetionSettings.PostgresMoviesAddress = value;
+        //        RaisePropertyChanged("PostgresMoviesAddress");
+        //    }
+        //}
         
-        public string PostgresMoviesUserName
-        {
-            get { return ConnetionSettings.PostgresMoviesUserName; }
-            set
-            {
-                ConnetionSettings.PostgresMoviesUserName = value;
-                RaisePropertyChanged("PostgresMoviesUserName");
-            }
-        }
+        //public string PostgresMoviesUserName
+        //{
+        //    get { return ConnetionSettings.PostgresMoviesUserName; }
+        //    set
+        //    {
+        //        ConnetionSettings.PostgresMoviesUserName = value;
+        //        RaisePropertyChanged("PostgresMoviesUserName");
+        //    }
+        //}
 
-        public string PostgresMoviesUserPassword
-        {
-            get { return ConnetionSettings.PostgresMoviesUserPassword; }
-            set
-            {
-                ConnetionSettings.PostgresMoviesUserPassword = value;
-                RaisePropertyChanged("PostgresMoviesUserPassword");
-            }
-        }
+        //public string PostgresMoviesUserPassword
+        //{
+        //    get { return ConnetionSettings.PostgresMoviesUserPassword; }
+        //    set
+        //    {
+        //        ConnetionSettings.PostgresMoviesUserPassword = value;
+        //        RaisePropertyChanged("PostgresMoviesUserPassword");
+        //    }
+        //}
 
 
-        // UserInfo
-        public string PostgresUserAddress
-        {
-            get { return ConnetionSettings.PostgresUserAddress; }
-            set
-            {
-                ConnetionSettings.PostgresUserAddress = value;
-                RaisePropertyChanged("PostgresUserAddress");
-            }
-        }
+        //// UserInfo
+        //public string PostgresUserAddress
+        //{
+        //    get { return ConnetionSettings.PostgresUserAddress; }
+        //    set
+        //    {
+        //        ConnetionSettings.PostgresUserAddress = value;
+        //        RaisePropertyChanged("PostgresUserAddress");
+        //    }
+        //}
         
-        public string PostgresUserUserName
-        {
-            get { return ConnetionSettings.PostgresUserUserName; }
-            set
-            {
-                ConnetionSettings.PostgresUserUserName = value;
-                RaisePropertyChanged("PostgresUserUserName");
-            }
-        }
+        //public string PostgresUserUserName
+        //{
+        //    get { return ConnetionSettings.PostgresUserUserName; }
+        //    set
+        //    {
+        //        ConnetionSettings.PostgresUserUserName = value;
+        //        RaisePropertyChanged("PostgresUserUserName");
+        //    }
+        //}
 
-        public string PostgresUserUserPassword
-        {
-            get { return ConnetionSettings.PostgresUserUserPassword; }
-            set
-            {
-                ConnetionSettings.PostgresUserUserPassword = value;
-                RaisePropertyChanged("PostgresUserUserPassword");
-            }
-        }
+        //public string PostgresUserUserPassword
+        //{
+        //    get { return ConnetionSettings.PostgresUserUserPassword; }
+        //    set
+        //    {
+        //        ConnetionSettings.PostgresUserUserPassword = value;
+        //        RaisePropertyChanged("PostgresUserUserPassword");
+        //    }
+        //}
 
     }
 }

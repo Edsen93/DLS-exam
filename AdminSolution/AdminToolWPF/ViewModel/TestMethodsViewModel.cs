@@ -1,5 +1,7 @@
 ﻿using AdminToolWPF.Helper_Classes;
 using GalaSoft.MvvmLight;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,25 +69,55 @@ namespace AdminToolWPF.ViewModel
         }
 
 
+        private string _currentSentQuerry;
+        public string CurrentSentQuerry
+        {
+            get { return _currentSentQuerry; }
+            set
+            {
+                _currentSentQuerry = value;
+                RaisePropertyChanged("CurrentSentQuerry");
+            }
+        }
 
-        
+
+
+
 
 
         public IRelayCommand GetAllMoviesCommand => new RelayCommand(() =>
         {
-            ConsoleText = RequestHandler.Get($"{ConnetionSettings.PostgresMoviesAddress}/api/movies");
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movies";
+            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
+
+            JToken parsedJson = JToken.Parse(ConsoleText);
+            ConsoleText = parsedJson.ToString(Formatting.Indented);
+
         });
 
         public IRelayCommand GetMovieByIDCommand => new RelayCommand(() =>
         {
-            ConsoleText = RequestHandler.Get($"{ConnetionSettings.PostgresMoviesAddress}/api/movies/{MovieID}");
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/{MovieID}";
+            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
+
+            JToken parsedJson = JToken.Parse(ConsoleText);
+            ConsoleText = parsedJson.ToString(Formatting.Indented);
+
         }, () => !String.IsNullOrWhiteSpace(MovieID));
 
 
    
         public IRelayCommand GetMovieByTitleCommand => new RelayCommand(() =>
         {
-            ConsoleText = RequestHandler.Get($"{ConnetionSettings.PostgresMoviesAddress}/api/movies/{MovieTitle}");
+            //CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/{MovieTitle.Replace(" ", "%20")}";
+            //ConsoleText = RequestHandler.Get(CurrentSentQuerry);
+
+            //JToken parsedJson = JToken.Parse(ConsoleText);
+            //ConsoleText = parsedJson.ToString(Formatting.Indented);
+            ConsoleText = "Not implemented";
+
+            //TO DO
+
         }, () => !String.IsNullOrWhiteSpace(MovieTitle));
 
 
@@ -93,15 +125,33 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand GetAllUsersCommand => new RelayCommand(() =>
         {
-            ConsoleText = RequestHandler.Get($"{ConnetionSettings.PostgresUserAddress}/api/users");
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/user";
+            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
+
+            JToken parsedJson = JToken.Parse(ConsoleText);
+            ConsoleText = parsedJson.ToString(Formatting.Indented);
+
         });
 
 
         public IRelayCommand GetUserByIDCommand => new RelayCommand(() =>
         {
-            ConsoleText = RequestHandler.Get($"{ConnetionSettings.PostgresUserAddress}/api/users/{UserID}");
-        },() => !String.IsNullOrWhiteSpace(UserID));
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/user/{UserID}";
+            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
 
-        
+            JToken parsedJson = JToken.Parse(ConsoleText);
+            ConsoleText = parsedJson.ToString(Formatting.Indented);
+
+        }, () => !String.IsNullOrWhiteSpace(UserID));
+
+
+        public IRelayCommand SendQuerry => new RelayCommand(() =>
+        {
+            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
+
+            JToken parsedJson = JToken.Parse(ConsoleText);
+            ConsoleText = parsedJson.ToString(Formatting.Indented);
+
+        }, () => !String.IsNullOrWhiteSpace(CurrentSentQuerry));
     }
 }

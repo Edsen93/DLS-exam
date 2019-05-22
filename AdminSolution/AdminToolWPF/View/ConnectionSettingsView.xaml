@@ -56,27 +56,27 @@
             <TextBlock Text="Connection Settings" FontSize="30"></TextBlock>
 
 
-            <GroupBox Grid.Row="0" Header="Recommendation Neo4j" Padding="5">
+            <GroupBox Grid.Row="0" Header="Admin Service" Padding="5"  Margin="0,15,0,0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="Neo4jAddress" Grid.Row="0" Grid.Column="0" />
-                    <TextBlock Text="Neo4jUserName" Grid.Row="1" Grid.Column="0" />
-                    <TextBlock Text="Neo4jUserPassword" Grid.Row="2" Grid.Column="0" Margin="0,0,15,0" />
+                    <TextBlock Text="Address" Grid.Row="0" Grid.Column="0" />
+                    <TextBlock Text="UserName" Grid.Row="1" Grid.Column="0" />
+                    <TextBlock Text="UserPassword" Grid.Row="2" Grid.Column="0" Margin="0,0,15,0" />
 
-                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Neo4jAddress}" />
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Neo4jUserName}" />
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Neo4jUserPassword}"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=AdminServiceAddress}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=AdminServiceUserName}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=AdminServiceUserPassword}"/>
 
 
                     <Button  Grid.Row="4" Grid.ColumnSpan="3"  Content="Test Recommendation Neo4j Connection" Margin="0,5,0,0"/>
@@ -85,7 +85,7 @@
             </GroupBox>
 
 
-            <GroupBox Grid.Row="0" Header="User Postgresql" Padding="5">
+            <!--<GroupBox Grid.Row="0" Header="User Postgresql" Padding="5">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -138,7 +138,7 @@
                     <Button Content="Test Movie Postgresql Connection" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,5,0,0"/>
                 </Grid>
 
-            </GroupBox>
+            </GroupBox>-->
 
 
         </StackPanel>

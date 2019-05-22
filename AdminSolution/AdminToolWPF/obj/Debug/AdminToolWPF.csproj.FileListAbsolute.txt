@@ -144,3 +144,4 @@ C:\Users\SharkForceOne\source\repos\DLS-exam\AdminSolution\AdminToolWPF\obj\Debu
 C:\Users\SharkForceOne\source\repos\DLS-exam\AdminSolution\AdminToolWPF\obj\Debug\View\TestMethodsView.baml
 C:\Users\SharkForceOne\source\repos\DLS-exam\AdminSolution\AdminToolWPF\obj\Debug\View\UserView.g.cs
 C:\Users\SharkForceOne\source\repos\DLS-exam\AdminSolution\AdminToolWPF\obj\Debug\View\UserView.baml
+C:\Users\SharkForceOne\source\repos\DLS-exam\AdminSolution\AdminToolWPF\bin\Debug\Newtonsoft.Json.dll
