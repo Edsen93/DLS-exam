@@ -24,7 +24,7 @@ namespace AdminToolWPF
         {
             InitializeComponent();
 
-            ApplicationViewModel context = new ApplicationViewModel();
+            ApplicationViewModel context = ApplicationViewModel.GetInstance();
             this.DataContext = context;
         }
         

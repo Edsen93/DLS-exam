@@ -11,6 +11,18 @@ namespace AdminToolWPF.Model
         public int MovieId { get; set; }
         public string Title { get; set; }
         public int ReleaseYear { get; set; }
-        public List<Genre> GenreList { get; set; } = new List<Genre>() { new Genre() { GenreId = 1, GenreText = "Action" } };
+        public List<Genre> GenreList { get; set; } = new List<Genre>() {  };
+
+
+        //[JsonProperty(PropertyName = "movieId")]
+        //public int MovieId { get; set; }
+
+        //[JsonProperty(PropertyName = "movieId")]
+        //public string Title { get; set; }
+
+        //[JsonProperty(PropertyName = "ReleaseYear")]
+        //public int ReleaseYear { get; set; }
+
+        //public List<Genre> GenreList { get; set; } = new List<Genre>() { };
     }
 }

@@ -56,6 +56,16 @@ namespace AdminToolWPF.ViewModel
             }
         }
 
+        private string _userIDRecommendation;
+        public string UserIDRecommendation
+        {
+            get { return _userIDRecommendation; }
+            set
+            {
+                _userIDRecommendation = value;
+                RaisePropertyChanged("UserIDRecommendation");
+            }
+        }
 
         private string _consoleText;
         public string ConsoleText
@@ -88,20 +98,16 @@ namespace AdminToolWPF.ViewModel
         public IRelayCommand GetAllMoviesCommand => new RelayCommand(() =>
         {
             CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movies";
-            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
 
-            JToken parsedJson = JToken.Parse(ConsoleText);
-            ConsoleText = parsedJson.ToString(Formatting.Indented);
+            DoWork();
 
         });
 
         public IRelayCommand GetMovieByIDCommand => new RelayCommand(() =>
         {
-            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/{MovieID}";
-            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/full/{MovieID}";
 
-            JToken parsedJson = JToken.Parse(ConsoleText);
-            ConsoleText = parsedJson.ToString(Formatting.Indented);
+            DoWork();
 
         }, () => !String.IsNullOrWhiteSpace(MovieID));
 
@@ -126,10 +132,8 @@ namespace AdminToolWPF.ViewModel
         public IRelayCommand GetAllUsersCommand => new RelayCommand(() =>
         {
             CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/user";
-            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
 
-            JToken parsedJson = JToken.Parse(ConsoleText);
-            ConsoleText = parsedJson.ToString(Formatting.Indented);
+            DoWork();
 
         });
 
@@ -137,21 +141,61 @@ namespace AdminToolWPF.ViewModel
         public IRelayCommand GetUserByIDCommand => new RelayCommand(() =>
         {
             CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/user/{UserID}";
-            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
 
-            JToken parsedJson = JToken.Parse(ConsoleText);
-            ConsoleText = parsedJson.ToString(Formatting.Indented);
+            DoWork();
 
         }, () => !String.IsNullOrWhiteSpace(UserID));
 
 
         public IRelayCommand SendQuerry => new RelayCommand(() =>
         {
-            ConsoleText = RequestHandler.Get(CurrentSentQuerry);
-
-            JToken parsedJson = JToken.Parse(ConsoleText);
-            ConsoleText = parsedJson.ToString(Formatting.Indented);
+            DoWork();
 
         }, () => !String.IsNullOrWhiteSpace(CurrentSentQuerry));
+
+
+
+        public IRelayCommand GetMovieRecommendationCommand => new RelayCommand(() =>
+        {
+
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/recommendation/{UserIDRecommendation}";
+            
+            //ConsoleText = RequestHandler.Get(CurrentSentQuerry);
+
+            //JToken parsedJson = JToken.Parse(ConsoleText);
+            //ConsoleText = parsedJson.ToString(Formatting.Indented);
+
+
+            DoWork();
+
+        }, () => !String.IsNullOrWhiteSpace(UserIDRecommendation));
+
+
+
+        private Task<string> DoWorkAsync()
+        {
+            TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
+            Task.Run(() =>
+            {
+                ConsoleText = RequestHandler.Get(CurrentSentQuerry);
+                tcs.SetResult(ConsoleText);
+            });
+            //return the Task
+            return tcs.Task;
+        }
+
+        private async void DoWork()
+        {
+            ConsoleText = "the task is running, please wait";
+            //ApplicationViewModel.WorkInProgress = true;
+
+            string result = await DoWorkAsync();
+
+
+            JToken parsedJson = JToken.Parse(result);
+            ConsoleText = parsedJson.ToString(Formatting.Indented);
+        }
+
+
     }
 }

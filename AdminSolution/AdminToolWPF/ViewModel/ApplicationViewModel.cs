@@ -9,6 +9,8 @@ using System.Windows.Input;
 
 namespace AdminToolWPF
 {
+
+
     public class ApplicationViewModel : ViewModelBase
     {
         #region Fields
@@ -20,7 +22,29 @@ namespace AdminToolWPF
 
         #endregion
 
-        public ApplicationViewModel()
+        public bool _working = false;
+        public bool WorkInProgress
+        {
+            get { return _working; }
+            set
+            {
+                _working = value;
+                RaisePropertyChanged("WorkInProgress");
+            }
+        }
+
+        //private static
+        //public static bool SetWorkInProgress
+        //{
+        //    get { return WorkInProgress; }
+        //    set
+        //    {
+        //        _working = value;
+        //    }
+        //}
+
+
+        private ApplicationViewModel()
         {
             // Add available pages
             PageViewModels.Add(new MoviesViewModel());
@@ -30,6 +54,12 @@ namespace AdminToolWPF
 
             // Set starting page
             CurrentPageViewModel = PageViewModels[0];
+        }
+
+        private static ApplicationViewModel singleton = new ApplicationViewModel();
+        public static ApplicationViewModel GetInstance()
+        {
+            return singleton;
         }
 
         #region Properties / Commands

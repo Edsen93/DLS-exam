@@ -29,5 +29,7 @@ namespace AdminToolWPF.View
             context = new MovieViewModel(parrent, model);
             DataContext = context;
         }
+
+        public Window Window { get; internal set; }
     }
 }

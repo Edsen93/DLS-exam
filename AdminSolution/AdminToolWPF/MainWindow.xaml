@@ -22,29 +22,37 @@
         <DataTemplate DataType="{x:Type viewModel:TestMethodsViewModel}">
             <view:TestMethodsView />
         </DataTemplate>
+
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
 
-    <DockPanel>
-        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,1,0">
-            <ItemsControl ItemsSource="{Binding PageViewModels}" HorizontalAlignment="Right">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding Name}"
-                                Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                                CommandParameter="{Binding }"
-                                Padding="10,2,10,2"
-                                Margin="2"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </Border>
+    <Grid>
+        <DockPanel>
+            <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,1,0">
+                <ItemsControl ItemsSource="{Binding PageViewModels}" HorizontalAlignment="Right">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name}"
+                                    Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                    CommandParameter="{Binding }"
+                                    Padding="10,2,10,2"
+                                    Margin="2"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Border>
 
-        <ContentControl Content="{Binding CurrentPageViewModel}" />
-    </DockPanel>
+            <ContentControl Content="{Binding CurrentPageViewModel}" />
+        </DockPanel>
+        
+        <TextBlock Text="LOADING!!!" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Visibility="{Binding Path=WorkInProgress, Converter={StaticResource BoolToVis}}" ></TextBlock>
+
+        
+    </Grid>
         
 </Window>

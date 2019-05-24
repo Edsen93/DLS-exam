@@ -9,7 +9,7 @@ namespace AdminToolWPF
     public class ConnetionSettings
     {
 
-        public static string AdminServiceAddress { get; set; } = "https://localhost:44319/";
+        public static string AdminServiceAddress { get; set; } = "https://localhost:44319";
         public static string AdminServiceUserName { get; set; } = "AdminServiceUserName";
         public static string AdminServiceUserPassword { get; set; } = "AdminServiceUserPassword";
 

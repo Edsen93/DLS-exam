@@ -20,5 +20,42 @@ namespace AdminToolWPF.Helper_Classes
             
             return result;
         }
+
+
+        public static Movie GetMovie(int id)
+        {
+            string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/full/{id}";
+
+            string json = RequestHandler.Get(CurrentSentQuerry);
+
+            Movie result = JsonConvert.DeserializeObject<Movie>(json);
+
+            return result;
+        }
+
+
+
+        public static bool UpdateMovie(Movie movie)
+        {
+
+            string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/{movie.MovieId}";
+
+            // public string Post(string uri, string data, string contentType, string method = "POST")
+
+
+
+            string serialized = JsonConvert.SerializeObject(movie);
+
+            //using (var client = new System.Net.WebClient())
+            //{
+            //    client.UploadData(CurrentSentQuerry, "PUT", serialized);
+            //}
+
+
+            var sdf = RequestHandler.Post(CurrentSentQuerry, serialized,"Movie","PUT");
+            
+
+            return true;
+        }
     }
 }

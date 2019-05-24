@@ -1,4 +1,5 @@
-﻿using AdminToolWPF.Model;
+﻿using AdminToolWPF.Helper_Classes;
+using AdminToolWPF.Model;
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace AdminToolWPF.ViewModel
 {
@@ -62,6 +64,21 @@ namespace AdminToolWPF.ViewModel
         }
 
 
+
+        public IRelayCommand UpdateMovieCommand => new RelayCommand(() =>
+        {
+
+            QuerryHandler.UpdateMovie(_movie);
+            
+        });
+
+        //public IRelayCommand CancelCommand => new RelayCommand((UserControl uc) =>
+        //{
+
+        //    //uc.Close();
+
+        //});
+
         public MovieViewModel(MoviesViewModel parrent = null, Movie model = null)
         {
             if (IsInDesignMode || ViewModelBase.IsInDesignModeStatic)
@@ -72,7 +89,7 @@ namespace AdminToolWPF.ViewModel
                     ReleaseYear = 1999,
                     MovieId = 9000,
                     GenreList = new List<Genre>() {
-                        new Genre(){ GenreId = 1, GenreText = "Action" }
+                        new Genre(){ GenreName = "Action" }
                     }
                 };
 
@@ -82,26 +99,31 @@ namespace AdminToolWPF.ViewModel
 
             GenreViewModelList.Clear();
 
+            if(model != null)
+                model = QuerryHandler.GetMovie(model.MovieId);
+
+
+
             List<Genre> GenreList = new List<Genre>()
             {
-                new Genre(){ GenreId = 1, GenreText = "Action" },
-                new Genre(){ GenreId = 2, GenreText = "Adventure" },
-                new Genre(){ GenreId = 3, GenreText = "Animation" },
-                new Genre(){ GenreId = 4, GenreText = "Children" },
-                new Genre(){ GenreId = 5, GenreText = "Comedy" },
-                new Genre(){ GenreId = 6, GenreText = "Crime" },
-                new Genre(){ GenreId = 7, GenreText = "Documentary" },
-                new Genre(){ GenreId = 8, GenreText = "Drama" },
-                new Genre(){ GenreId = 9, GenreText = "Fantasy" },
-                new Genre(){ GenreId = 10, GenreText = "Film-Noir" },
-                new Genre(){ GenreId = 11, GenreText = "Horror" },
-                new Genre(){ GenreId = 12, GenreText = "Musical" },
-                new Genre(){ GenreId = 13, GenreText = "Mystery" },
-                new Genre(){ GenreId = 14, GenreText = "Romance" },
-                new Genre(){ GenreId = 15, GenreText = "Sci-Fi" },
-                new Genre(){ GenreId = 16, GenreText = "Thriller" },
-                new Genre(){ GenreId = 17, GenreText = "War" },
-                new Genre(){ GenreId = 18, GenreText = "Western" }
+                new Genre(){ GenreName = "Action" },
+                new Genre(){ GenreName = "Adventure" },
+                new Genre(){ GenreName = "Animation" },
+                new Genre(){ GenreName = "Children" },
+                new Genre(){ GenreName = "Comedy" },
+                new Genre(){ GenreName = "Crime" },
+                new Genre(){ GenreName = "Documentary" },
+                new Genre(){ GenreName = "Drama" },
+                new Genre(){ GenreName = "Fantasy" },
+                new Genre(){ GenreName = "Film-Noir" },
+                new Genre(){ GenreName = "Horror" },
+                new Genre(){ GenreName = "Musical" },
+                new Genre(){ GenreName = "Mystery" },
+                new Genre(){ GenreName = "Romance" },
+                new Genre(){ GenreName = "Sci-Fi" },
+                new Genre(){ GenreName = "Thriller" },
+                new Genre(){ GenreName = "War" },
+                new Genre(){ GenreName = "Western" }
             };
 
             foreach (Genre gen in GenreList)
@@ -124,7 +146,7 @@ namespace AdminToolWPF.ViewModel
                 {
                     foreach (Genre genre in _movie.GenreList)
                     {
-                        GenreViewModel found = GenreViewModelList.FirstOrDefault(x => x.GenreId == genre.GenreId);
+                        GenreViewModel found = GenreViewModelList.FirstOrDefault(x => x.GenreText == genre.GenreName);
                         if (found != null)
                             found.IsSelected = true;
                     }

@@ -1,6 +1,7 @@
 ﻿using AdminToolWPF.Helper_Classes;
 using AdminToolWPF.Model;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,10 +9,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Data;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using System.Windows;
 using AdminToolWPF.View;
+using System.Threading.Tasks;
 
 namespace AdminToolWPF.ViewModel
 {
@@ -94,11 +94,12 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand EditMovieCommand => new RelayCommand(() =>
         {
+            MovieView current = new MovieView(this, SelectedMovie);
+
             Window window = new Window
             {
                 Title = "New Movie",
-                Content = new MovieView(this, SelectedMovie)
-
+                Content = current
             };
             window.Height = 300;
             window.Width = 500;
@@ -119,6 +120,7 @@ namespace AdminToolWPF.ViewModel
             {
                 // run code
                 //moviesCollection.remo
+                
             }
 
         }, () => SelectedMovie != null);
@@ -139,7 +141,7 @@ namespace AdminToolWPF.ViewModel
         }
         
 
-        private CollectionViewSource moviesCollection;
+        private CollectionViewSource moviesCollection = new CollectionViewSource();
 
         public ICollectionView SourceCollection
         {
@@ -176,46 +178,37 @@ namespace AdminToolWPF.ViewModel
                     ReleaseYear = 1999,
                     MovieId = 9000,
                     GenreList = new List<Genre>() {
-                        new Genre(){ GenreId = 1, GenreText = "Action" }
+                        new Genre(){ GenreName = "Action" }
                     }
                 };
 
             }
-            
 
-            GetMovies();
-            
+
+            //GetMovies();
+            DoWork();
         }
 
-        
 
-        private void GetMovies(bool loadMovies = true)
+        private Task<List<Movie>> DoWorkAsync()
         {
-
-            ObservableCollection<Movie> movies = null;
-
-            if (loadMovies)
+            TaskCompletionSource<List<Movie>> tcs = new TaskCompletionSource<List<Movie>>();
+            Task.Run(() =>
             {
-                //Connect and load users
-
                 var test = QuerryHandler.GetMovies();
+                tcs.SetResult(test);
+            });
+            //return the Task
+            return tcs.Task;
+        }
 
-                movies = new ObservableCollection<Movie>(test);
-                
-            }
-            else
-            {
-                movies = new ObservableCollection<Movie>();
-                for (int i = 1; i < 1000; i++)
-                {
-                    movies.Add(new Movie() {
-                        MovieId = i,
-                        Title = "Title"+i,
-                        ReleaseYear = 1999
-                    });
-                }
-            }
-            
+        private async void DoWork()
+        {
+            //ApplicationViewModel.WorkInProgress = true;
+
+            List<Movie> mList = await DoWorkAsync();
+            ObservableCollection<Movie> movies = new ObservableCollection<Movie>(mList);
+
             moviesCollection = new CollectionViewSource
             {
                 Source = movies
@@ -238,7 +231,65 @@ namespace AdminToolWPF.ViewModel
                     e.Accepted = false;
                 }
             };
+
+            RaisePropertyChanged("SourceCollection");
+            //ApplicationViewModel.GetInstance().WorkInProgress = false;
         }
+
+
+
+
+
+        //private void GetMovies(bool loadMovies = true)
+        //{
+
+        //    ObservableCollection<Movie> movies = null;
+
+        //    if (loadMovies)
+        //    {
+        //        //Connect and load users
+
+        //        var test = QuerryHandler.GetMovies();
+
+        //        movies = new ObservableCollection<Movie>(test);
+                
+        //    }
+        //    else
+        //    {
+        //        movies = new ObservableCollection<Movie>();
+        //        for (int i = 1; i < 1000; i++)
+        //        {
+        //            movies.Add(new Movie() {
+        //                MovieId = i,
+        //                Title = "Title"+i,
+        //                ReleaseYear = 1999
+        //            });
+        //        }
+        //    }
+            
+        //    moviesCollection = new CollectionViewSource
+        //    {
+        //        Source = movies
+        //    };
+        //    moviesCollection.Filter += (o, e) =>
+        //    {
+        //        if (string.IsNullOrEmpty(FilterText))
+        //        {
+        //            e.Accepted = true;
+        //            return;
+        //        }
+
+        //        Movie usr = e.Item as Movie;
+        //        if (usr.Title.ToUpper().Contains(FilterText.ToUpper()))
+        //        {
+        //            e.Accepted = true;
+        //        }
+        //        else
+        //        {
+        //            e.Accepted = false;
+        //        }
+        //    };
+        //}
     }
 
 }

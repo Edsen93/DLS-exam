@@ -27,6 +27,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
  
@@ -91,6 +92,29 @@
                     <TextBlock Text="Get User by ID" FontSize="14" FontWeight="Medium" Grid.Row="2" Grid.Column="0" />
                     <TextBox Grid.Row="3" Grid.Column="0"  Text="{Binding Path=UserID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PreviewTextInput="NumberValidationTextBox" />
                     <Button Grid.Row="3" Grid.Column="1"  Content="Get User by ID"  Command="{Binding GetUserByIDCommand}" />
+
+                </Grid>
+            </GroupBox>
+
+
+            <GroupBox Grid.Row="3" Header="Recommendation methods" Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <TextBlock Text="Get Recommendations for User ID" FontSize="14" FontWeight="Medium" Grid.Row="2" Grid.Column="0" />
+                    <TextBox Grid.Row="3" Grid.Column="0"  Text="{Binding Path=UserIDRecommendation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PreviewTextInput="NumberValidationTextBox" />
+                    <Button Grid.Row="3" Grid.Column="1"  Content="Get User by ID"  Command="{Binding GetMovieRecommendationCommand}" />
 
                 </Grid>
             </GroupBox>
