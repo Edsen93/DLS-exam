@@ -1,0 +1,15 @@
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\bin\Release\netcoreapp2.1\DLSUserMicroService.deps.json
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\bin\Release\netcoreapp2.1\DLSUserMicroService.runtimeconfig.json
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\bin\Release\netcoreapp2.1\DLSUserMicroService.runtimeconfig.dev.json
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\bin\Release\netcoreapp2.1\DLSUserMicroService.dll
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\bin\Release\netcoreapp2.1\DLSUserMicroService.pdb
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.csprojAssemblyReference.cache
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.csproj.CoreCompileInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.RazorAssemblyInfo.cache
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.RazorAssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.AssemblyInfoInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.AssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.RazorTargetAssemblyInfo.cache
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.dll
+C:\Users\SebastianDamgaard\Source\repos\DLSUserMicroService\DLSUserMicroService\obj\Release\netcoreapp2.1\DLSUserMicroService.pdb
