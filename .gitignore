@@ -8,3 +8,4 @@
 /.vs/slnx.sqlite-journal
 /.vs/slnx.sqlite
 >>>>>>> master_microservice_users
+/AdminAPI/.vs/AdminAPI/v16/Server/sqlite3/db.lock

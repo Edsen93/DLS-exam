@@ -1,0 +1,14 @@
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\bin\Debug\netcoreapp2.1\AdminAPI.deps.json
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\bin\Debug\netcoreapp2.1\AdminAPI.runtimeconfig.json
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\bin\Debug\netcoreapp2.1\AdminAPI.runtimeconfig.dev.json
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\bin\Debug\netcoreapp2.1\AdminAPI.dll
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.csprojAssemblyReference.cache
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.csproj.CoreCompileInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.RazorAssemblyInfo.cache
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.RazorAssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.AssemblyInfoInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.AssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.RazorTargetAssemblyInfo.cache
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\bin\Debug\netcoreapp2.1\AdminAPI.pdb
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.dll
+C:\Users\SebastianDamgaard\Source\repos\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.pdb
