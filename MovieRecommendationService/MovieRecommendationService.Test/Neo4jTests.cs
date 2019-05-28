@@ -4,7 +4,7 @@ using MovieRecommendationLibrary.Neo4jDatabaseHandler;
 namespace MovieRecommendationService.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class BasicCoonnections
     {
         [TestMethod]
         public void Can_Connect_To_Neo4j()
