@@ -10,9 +10,9 @@ namespace MovieRecommendationLibrary.Neo4jDatabaseHandler
     public partial class Neo4jDatabaseHandler
     {
 
-        private string _address = "https://cyan-icie-centers-kirstin.graphstory.services/db/data/";
-        private string _user = "cyan_icie_centers_kirstin";
-        private string _password = "pyXye9rgiTmBeuQ8HUaM";
+        private string _address = "";
+        private string _user = "";
+        private string _password = "";
 
         public string Address { get { return _address; } set { _address = value; } }
         public string User { get { return _user; } set { _user = value; } }

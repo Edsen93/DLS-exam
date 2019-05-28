@@ -39,7 +39,7 @@ namespace MovieRecommendationService.Controllers
                 Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
                 result = handler.GetMovie(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 

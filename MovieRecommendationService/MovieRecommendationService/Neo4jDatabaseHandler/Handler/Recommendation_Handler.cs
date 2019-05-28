@@ -128,7 +128,7 @@ namespace MovieRecommendationLibrary.Neo4jDatabaseHandler
                                 } as movie")
                         .Return<MovieRecommendation>(movie => movie.As<MovieRecommendation>())
                         .OrderByDescending("movie.jaccard")
-                        .Limit(3)
+                        .Limit(10)
                         .Results.ToList();
 
 

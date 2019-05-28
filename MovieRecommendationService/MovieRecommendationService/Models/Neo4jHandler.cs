@@ -16,11 +16,10 @@ namespace RecommendationRESTService.Models
             //string password = ConfigurationManager.AppSettings["Neo4jPassword"];
 
 
-            string address = "http://localhost:7474/db/data";
-            string user = "neo4j";
-            string password = "password";
+            string address = "https://cyan-icie-centers-kirstin.graphstory.services/db/data/";
+            string user = "cyan_icie_centers_kirstin";
+            string password = "pyXye9rgiTmBeuQ8HUaM";
 
-            address = "http://localhost:11011/db/data";
 
             return new Neo4jDatabaseHandler(address, user, password);
         }
