@@ -22,8 +22,9 @@ namespace si.ms.movieinfo
             string user = "admin";
             string password = "admin";
 
-            myConnectionString = String.Format("Server=movieinfo.postgres.database.azure.com;Database=movies;Port=5432;User Id=dlsgroup2019@movieinfo;Password=Recomender2019;Ssl Mode=Require;");
+            //myConnectionString = String.Format("Server=movieinfo.postgres.database.azure.com;Database=mo;Port=5432;User Id=dlsgroup2019@movieinfo;Password=Recomender2019;Ssl Mode=Require;");
 
+            myConnectionString = String.Format("Server=dlsmovieinfodb.postgres.database.azure.com;Database=MovieInfo;Port=5432;User Id=dls@dlsmovieinfodb;Password=Recommender2019;Ssl Mode=Require;");
 
 
             try

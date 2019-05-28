@@ -8,7 +8,8 @@ CREATE TABLE movies
 );
 SET CLIENT_ENCODING TO 'UTF8';
 COPY movies (title, releaseYear) 
-FROM 'C:\Users\edsen\Documents\db scripts\moviesPostgres.csv' DELIMITER ',' CSV HEADER;
+FROM 'C:\Users\edsen\source\repos\DLS-exam\Databasesetup\moviesPostgres.csv' DELIMITER ',' CSV HEADER;
+
 
 
 DELETE FROM movies
