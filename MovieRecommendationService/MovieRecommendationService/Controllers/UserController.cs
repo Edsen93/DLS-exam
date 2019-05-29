@@ -48,8 +48,16 @@ namespace MovieRecommendationService.Controllers
 
         // POST: api/User
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] User value)
         {
+            try
+            {
+                Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
+                handler.CreateUser(value);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         // PUT: api/User/5
