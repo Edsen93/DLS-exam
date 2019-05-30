@@ -80,7 +80,7 @@ namespace si.ms.movieinfo
 
         {
             List<Movie> movies = new List<Movie>();
-            string sqlString = "Select * From movies LIMIT 20";
+            string sqlString = "Select * From movies";
 
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
             NpgsqlDataReader dataReader = cmd.ExecuteReader();

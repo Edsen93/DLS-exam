@@ -12898,23 +12898,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\edsen\\.nuget\\packages\\": {},
+    "C:\\Users\\Emil\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\si.ms.movieinfo\\si.ms.movieinfo.csproj",
+      "projectUniqueName": "C:\\Users\\Emil\\Downloads\\Codeproj\\si.ms.movieinfo\\si.ms.movieinfo.csproj",
       "projectName": "si.ms.movieinfo",
-      "projectPath": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\si.ms.movieinfo\\si.ms.movieinfo.csproj",
-      "packagesPath": "C:\\Users\\edsen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\si.ms.movieinfo\\obj\\",
+      "projectPath": "C:\\Users\\Emil\\Downloads\\Codeproj\\si.ms.movieinfo\\si.ms.movieinfo.csproj",
+      "packagesPath": "C:\\Users\\Emil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Emil\\Downloads\\Codeproj\\si.ms.movieinfo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\edsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Emil\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

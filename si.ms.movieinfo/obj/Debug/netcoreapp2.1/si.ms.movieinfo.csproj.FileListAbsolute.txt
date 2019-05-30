@@ -26,3 +26,17 @@ C:\Users\edsen\source\repos\DLS-exam\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.
 C:\Users\edsen\source\repos\DLS-exam\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.RazorTargetAssemblyInfo.cache
 C:\Users\edsen\source\repos\DLS-exam\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.dll
 C:\Users\edsen\source\repos\DLS-exam\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.pdb
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\bin\Debug\netcoreapp2.1\si.ms.movieinfo.deps.json
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\bin\Debug\netcoreapp2.1\si.ms.movieinfo.runtimeconfig.json
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\bin\Debug\netcoreapp2.1\si.ms.movieinfo.runtimeconfig.dev.json
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\bin\Debug\netcoreapp2.1\si.ms.movieinfo.dll
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\bin\Debug\netcoreapp2.1\si.ms.movieinfo.pdb
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.csprojAssemblyReference.cache
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.csproj.CoreCompileInputs.cache
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.RazorAssemblyInfo.cache
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.RazorAssemblyInfo.cs
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.AssemblyInfoInputs.cache
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.AssemblyInfo.cs
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.RazorTargetAssemblyInfo.cache
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.dll
+C:\Users\Emil\Downloads\Codeproj\si.ms.movieinfo\obj\Debug\netcoreapp2.1\si.ms.movieinfo.pdb
