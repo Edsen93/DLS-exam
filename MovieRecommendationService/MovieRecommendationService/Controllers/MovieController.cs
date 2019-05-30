@@ -37,7 +37,7 @@ namespace MovieRecommendationService.Controllers
             try
             {
                 Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
-                result = handler.GetMovie(id);
+                result = handler.GetMovieWithGenres(id);
             }
             catch (Exception ex)
             {
@@ -46,21 +46,21 @@ namespace MovieRecommendationService.Controllers
             return result;
         }
 
-        [HttpGet("full/{id}")]
-        public ActionResult<Movie> GetFull(long id)
-        {
-            Movie result = null;
-            try
-            {
-                Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
-                result = handler.GetMovieWithGenres(id);
-            }
-            catch (Exception)
-            {
-            }
+        //[HttpGet("full/{id}")]
+        //public ActionResult<Movie> GetFull(long id)
+        //{
+        //    Movie result = null;
+        //    try
+        //    {
+        //        Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
+        //        result = handler.GetMovieWithGenres(id);
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
         // POST: api/Movie
         [HttpPost]
