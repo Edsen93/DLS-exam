@@ -77,7 +77,7 @@ namespace AdminAPI.Controllers
             var content = await client.PutAsJsonAsync<ExpandoObject>(url, movie);
         }
 
-        [HttpGet("{title}")]
+        [HttpGet("search/{title}")]
         public async Task<List<ExpandoObject>> FindMovie(string title)
         {
             var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/title/{0}", title);
