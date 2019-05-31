@@ -76,10 +76,18 @@ namespace AdminAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task UpdateUser(int id, [FromBody]ExpandoObject user)
+        public async Task UpdateUser(int id, [FromBody]ExpandoObject user)  
         {
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id.ToString());
             var content = await client.PutAsJsonAsync<ExpandoObject>(url, user);
+        }
+
+        [HttpGet("{uId}/{mId}/{rating}")]
+        public async Task PostUserRating(long uId, long mId, int rating)
+        {
+            var url = string.Format("https://localhost:44319/api/User/ratemovie/{0}/{1}/{2}", uId, mId, rating);
+            //var url = string.Format("https://dlsrecommendmicroservice.azurewebsites.net/api/User/ratemovie/{0}/{1}/{2}", uId, mId, rating);
+            var content = await client.GetStringAsync(url);
         }
 
         //[HttpDelete("{id}")]

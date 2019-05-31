@@ -1,0 +1,14 @@
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\bin\Debug\netcoreapp2.1\UserAPI.deps.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\bin\Debug\netcoreapp2.1\UserAPI.runtimeconfig.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\bin\Debug\netcoreapp2.1\UserAPI.runtimeconfig.dev.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\bin\Debug\netcoreapp2.1\UserAPI.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\bin\Debug\netcoreapp2.1\UserAPI.pdb
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.csprojAssemblyReference.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.csproj.CoreCompileInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.RazorAssemblyInfo.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.RazorAssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.AssemblyInfoInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.AssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.RazorTargetAssemblyInfo.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\UserAPI\obj\Debug\netcoreapp2.1\UserAPI.pdb
