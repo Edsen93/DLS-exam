@@ -106,11 +106,11 @@ namespace AdminToolWPF.Helper_Classes
         public async static Task<bool> UpdateUser(User user)
         {
             string CurrentSentQuerry = string.Format("http://dlsadminapi.azurewebsites.net/api/users/{0}", user.UserId);
-
+            //string CurrentSentQuerry = string.Format("https://localhost:44374/api/users/{0}", user.UserId);
             var client = new HttpClient();
             var content = await client.PutAsJsonAsync<User>(CurrentSentQuerry, user);
             
-            return true;
+            return content.IsSuccessStatusCode;
         }
 
 
