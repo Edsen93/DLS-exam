@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\AdminAPI\\AdminAPI\\AdminAPI.csproj": {}
+    "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\AdminAPI\\AdminAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\AdminAPI\\AdminAPI\\AdminAPI.csproj": {
+    "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\AdminAPI\\AdminAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\AdminAPI\\AdminAPI\\AdminAPI.csproj",
+        "projectUniqueName": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\AdminAPI\\AdminAPI.csproj",
         "projectName": "AdminAPI",
-        "projectPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\AdminAPI\\AdminAPI\\AdminAPI.csproj",
+        "projectPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\AdminAPI\\AdminAPI.csproj",
         "packagesPath": "C:\\Users\\SebastianDamgaard\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\AdminAPI\\AdminAPI\\obj\\",
+        "outputPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\AdminAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -60,6 +60,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[2.1.9, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
             }
           },
           "imports": [

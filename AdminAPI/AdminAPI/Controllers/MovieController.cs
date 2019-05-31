@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace AdminAPI.Controllers
 {
@@ -11,36 +14,74 @@ namespace AdminAPI.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        // GET: api/Movie
+        HttpClient client;
+
+        public MovieController()
+        {
+            client = new HttpClient();
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<List<ExpandoObject>>> GetAllMovies()
         {
-            return new string[] { "value1", "value2" };
+            var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo";
+            string content = await client.GetStringAsync(url);
+            List<ExpandoObject> movies;
+            if (!string.IsNullOrEmpty(content))
+                movies = JsonConvert.DeserializeObject<List<ExpandoObject>>(content);
+            else
+                movies = null;
+
+            return movies;
         }
 
-        // GET: api/Movie/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ExpandoObject>> GetMovie(int id)
         {
-            return "value";
+            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id.ToString());
+            string content = await client.GetStringAsync(url);
+
+            ExpandoObject movie;
+            if (!string.IsNullOrEmpty(content))
+                movie = JsonConvert.DeserializeObject<ExpandoObject>(content);
+            else
+                movie = null;
+
+            return movie;
         }
 
-        // POST: api/Movie
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task CreateMovie([FromBody]ExpandoObject movie)
         {
+            var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/";
+            var content = await client.PostAsJsonAsync<ExpandoObject>(url, movie);
+            if (content.IsSuccessStatusCode)
+            {
+                var msg = await content.Content.ReadAsAsync<ExpandoObject>();
+                var list = msg.ToList();
+                var id = new ExpandoObject();
+                var result = id.TryAdd(list[2].Key, list[2].Value);
+                if (result)
+                {
+                    //url = "https://localhost:44319/api/Movie";
+                    url = "https://dlsrecommendmicroservice.azurewebsites.net/api/Movie";
+                    content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
+                }
+            }
         }
 
-        // PUT: api/Movie/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task UpdateMovie(int id, [FromBody]ExpandoObject movie)
         {
+            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id.ToString());
+            var content = await client.PutAsJsonAsync<ExpandoObject>(url, movie);
         }
 
-        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task DeleteUser(int id)
         {
+            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id.ToString());
+            var content = await client.DeleteAsync(url);
         }
     }
 }

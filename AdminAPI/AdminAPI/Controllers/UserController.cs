@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace AdminAPI.Controllers
 {
@@ -22,41 +25,76 @@ namespace AdminAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<string>> GetAllUsers()
+        public async Task<ActionResult<List<ExpandoObject>>> GetAllUsers()
         {
             var url = "https://dlsusermicroservice.azurewebsites.net/api/users";
             string content = await client.GetStringAsync(url);
-            return content;
+
+            List<ExpandoObject> users;
+            if (!string.IsNullOrEmpty(content))
+                users = JsonConvert.DeserializeObject<List<ExpandoObject>>(content);
+            else
+                users = null;
+
+            return users;
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<string>> GetUser(int id)
+        public async Task<ActionResult<ExpandoObject>> GetUser(int id)
         {
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id.ToString());
             string content = await client.GetStringAsync(url);
-            return content;
+
+            ExpandoObject user;
+            if (!string.IsNullOrEmpty(content))
+                user = JsonConvert.DeserializeObject<ExpandoObject>(content);
+            else
+                user = null;
+
+            return user;
         }
 
         [HttpGet("{username}/{password}")]
-        public async Task<ActionResult<string>> Login(string username, string password)
+        public async Task<ActionResult<ExpandoObject>> Login(string username, string password)
         {
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}/{1}", username, password);
             string content = await client.GetStringAsync(url);
-            return content;
+
+            ExpandoObject user;
+            if (!string.IsNullOrEmpty(content))
+                user = JsonConvert.DeserializeObject<ExpandoObject>(content);
+            else
+                user = null;
+
+            return user;
         }
 
         [HttpPost]
-        public async Task CreateUser([FromBody]string user)
-        {
+        public async Task CreateUser([FromBody]ExpandoObject user)
+        {          
+            //var url = "https://localhost:44320/api/users/";
             var url = "https://dlsusermicroservice.azurewebsites.net/api/users/";
-            var content = await client.PostAsJsonAsync<string>(url, user);
+            var content = await client.PostAsJsonAsync<ExpandoObject>(url, user);
+            if(content.IsSuccessStatusCode)
+            {
+                var msg = await content.Content.ReadAsAsync<ExpandoObject>();
+                var list = msg.ToList();
+                var id = new ExpandoObject();
+                var result = id.TryAdd(list[2].Key, list[2].Value);
+                if(result)
+                {
+                    //url = "https://localhost:44319/api/User";
+                    url = "https://dlsrecommendmicroservice.azurewebsites.net/api/User";
+                    content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
+                }             
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task UpdateUser(int id, [FromBody]string user)
+        public async Task UpdateUser(int id, [FromBody]ExpandoObject user)
         {
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id.ToString());
-            var content = await client.PutAsJsonAsync<string>(url, user);
+            var content = await client.PutAsJsonAsync<ExpandoObject>(url, user);
         }
 
         [HttpDelete("{id}")]
