@@ -60,6 +60,20 @@ namespace MovieRecommendationService.Controllers
             }
         }
 
+        [HttpGet("ratemovie/{uId}/{mId}/{rating}")]
+        public void PostUserRating(long uId, long mId, int rating)
+        {
+            try
+            {
+                Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
+                handler.SetUserMovieRating(uId,mId,rating);
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+
         // PUT: api/User/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
