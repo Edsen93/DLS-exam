@@ -32,8 +32,8 @@
 
             <TextBlock Text="UserId" FontWeight="Bold" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
             <TextBlock Text="UserName" FontWeight="Bold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
-            <TextBlock Text="UserName" FontWeight="Bold" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
-            <TextBlock Text="UserName" FontWeight="Bold" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
+            <TextBlock Text="Password" FontWeight="Bold" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
+            <TextBlock Text="Email" FontWeight="Bold" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
             <TextBlock Text="IsAdmin" FontWeight="Bold" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
 
             <TextBox Grid.Row="0" Grid.Column="1" Margin="0,2,0,2" Height="18" IsReadOnly="True" Text="{Binding UserId}"/>

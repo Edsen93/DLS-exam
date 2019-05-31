@@ -25,28 +25,28 @@ namespace AdminToolWPF.ViewModel
             }
         }
 
-        //private string _userName = "";
-        //public string UserName
-        //{
-        //    get { return _userName; }
-        //    set
-        //    {
-        //        _userName = value;
-        //        RaisePropertyChanged("UserName");
-        //    }
-        //}
+        private string _password = "";
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                RaisePropertyChanged("Password");
+            }
+        }
 
 
-        //private string _userName = "";
-        //public string UserName
-        //{
-        //    get { return _userName; }
-        //    set
-        //    {
-        //        _userName = value;
-        //        RaisePropertyChanged("UserName");
-        //    }
-        //}
+        private string _email = "";
+        public string Email
+        {
+            get { return _email; }
+            set
+            {
+                _email = value;
+                RaisePropertyChanged("Email");
+            }
+        }
 
 
         private int? _userId;
@@ -88,6 +88,8 @@ namespace AdminToolWPF.ViewModel
         {
             _user.UserName = this.UserName;
             _user.IsAdmin = this.IsAdmin;
+            _user.Email = this.Email;
+            _user.Password = this.Password;
 
             if (IsNewUser)
                 QuerryHandler.CreateUser(_user);
@@ -112,6 +114,8 @@ namespace AdminToolWPF.ViewModel
                 UserId = _user.UserId;
                 UserName = _user.UserName;
                 IsAdmin = _user.IsAdmin;
+                Password = _user.Password;
+                Email = _user.Email;
             }
 
 
