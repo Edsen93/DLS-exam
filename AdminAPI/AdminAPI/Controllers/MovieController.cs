@@ -77,6 +77,21 @@ namespace AdminAPI.Controllers
             var content = await client.PutAsJsonAsync<ExpandoObject>(url, movie);
         }
 
+        [HttpGet("{title}")]
+        public async Task<List<ExpandoObject>> FindMovie(string title)
+        {
+            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/title/{0}", title);
+            var content = await client.GetStringAsync(url);
+
+            List<ExpandoObject> movies;
+            if (!string.IsNullOrEmpty(content))
+                movies = JsonConvert.DeserializeObject<List<ExpandoObject>>(content);
+            else
+                movies = null;
+
+            return movies;
+        }
+
         [HttpDelete("{id}")]
         public async Task DeleteUser(int id)
         {
