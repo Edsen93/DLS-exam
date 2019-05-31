@@ -9,10 +9,14 @@ namespace AdminToolWPF
     public class ConnetionSettings
     {
 
-        public static string AdminServiceAddress { get; set; } = "https://localhost:44319";
+        public static string AdminServiceAddress { get; set; } = "http://dlsadminapi.azurewebsites.net";
         public static string AdminServiceUserName { get; set; } = "AdminServiceUserName";
         public static string AdminServiceUserPassword { get; set; } = "AdminServiceUserPassword";
 
+
+        public static string UserService { get { return $"{AdminServiceAddress}/api/users"; } }
+        public static string MoviesService { get { return $"{AdminServiceAddress}/api/movies"; } }
+        public static string RecommendationService { get { return $"{AdminServiceAddress}/api/recommendation"; } }
 
         //public static string Neo4jAddress { get; set; } = "bolt://mint-green-block-flat-heloise.graphstory.me:7687";
         //public static string Neo4jUserName { get; set; } = "mint_green_block_flat_heloise";

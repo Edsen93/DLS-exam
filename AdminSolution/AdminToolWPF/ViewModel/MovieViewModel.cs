@@ -67,8 +67,16 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand UpdateMovieCommand => new RelayCommand(() =>
         {
+            _movie.ReleaseYear = this.ReleaseYear;
+            _movie.Title = this.Title;
+            _movie.GenreList = this.GenreViewModelList.Where(x=>x.IsSelected).ToList().Select(y=>y.Genre).ToList();
+            
 
-            QuerryHandler.UpdateMovie(_movie);
+
+            if (IsNewMovie)
+                QuerryHandler.CreateMovie(_movie);
+            else
+                QuerryHandler.UpdateMovie(_movie);
             
         });
 
@@ -87,7 +95,7 @@ namespace AdminToolWPF.ViewModel
                 {
                     Title = "Test Movie",
                     ReleaseYear = 1999,
-                    MovieId = 9000,
+                    id = 9000,
                     GenreList = new List<Genre>() {
                         new Genre(){ GenreName = "Action" }
                     }
@@ -100,7 +108,7 @@ namespace AdminToolWPF.ViewModel
             GenreViewModelList.Clear();
 
             if(model != null)
-                model = QuerryHandler.GetMovie(model.MovieId);
+                model = QuerryHandler.GetMovie(model.id);
 
 
 
@@ -130,7 +138,7 @@ namespace AdminToolWPF.ViewModel
                 GenreViewModelList.Add(new GenreViewModel(gen));
 
 
-            if (model == null || model.MovieId < 1)
+            if (model == null || model.id < 1)
             {
                 IsNewMovie = true;
                 _movie = new Movie();

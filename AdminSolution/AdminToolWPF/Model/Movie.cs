@@ -8,7 +8,7 @@ namespace AdminToolWPF.Model
 {
     public class Movie
     {
-        public int MovieId { get; set; }
+        public int id { get; set; }
         public string Title { get; set; }
         public int ReleaseYear { get; set; }
         public List<Genre> GenreList { get; set; } = new List<Genre>() {  };

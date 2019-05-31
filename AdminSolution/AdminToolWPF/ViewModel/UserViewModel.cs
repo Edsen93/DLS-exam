@@ -1,4 +1,5 @@
-﻿using AdminToolWPF.Model;
+﻿using AdminToolWPF.Helper_Classes;
+using AdminToolWPF.Model;
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,29 @@ namespace AdminToolWPF.ViewModel
                 RaisePropertyChanged("UserName");
             }
         }
+
+        //private string _userName = "";
+        //public string UserName
+        //{
+        //    get { return _userName; }
+        //    set
+        //    {
+        //        _userName = value;
+        //        RaisePropertyChanged("UserName");
+        //    }
+        //}
+
+
+        //private string _userName = "";
+        //public string UserName
+        //{
+        //    get { return _userName; }
+        //    set
+        //    {
+        //        _userName = value;
+        //        RaisePropertyChanged("UserName");
+        //    }
+        //}
 
 
         private int? _userId;
@@ -59,6 +83,21 @@ namespace AdminToolWPF.ViewModel
             }
         }
 
+
+        public IRelayCommand SaveUserCommand => new RelayCommand(() =>
+        {
+            _user.UserName = this.UserName;
+            _user.IsAdmin = this.IsAdmin;
+
+            if (IsNewUser)
+                QuerryHandler.CreateUser(_user);
+            else
+            {
+                var test =  QuerryHandler.UpdateUser(_user).Result;
+
+            }
+
+        });
 
         public UserViewModel(User user = null)
         {

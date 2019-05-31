@@ -18,7 +18,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <TextBlock>No items to display</TextBlock>
+                                <TextBlock>Movies are being loaded</TextBlock>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -30,7 +30,7 @@
 
 
 
-    <Grid Background="White">
+    <Grid Background="White" >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -80,9 +80,9 @@
 
         <Button Grid.Row="4"  Content="Edit selected Movie" Height="25" FontWeight="SemiBold" Command="{Binding EditMovieCommand}"   Margin="5,5,5,0"></Button>
 
-        <Button Grid.Row="5"  Content="Delete selected Movie" Height="25" FontWeight="SemiBold"  Command="{Binding DeleteMovieCommand}"  Margin="5,5,5,0"></Button>
+        <Button Grid.Row="5"  Content="Delete selected Movie" Height="25" FontWeight="SemiBold"  Command="{Binding DeleteMovieCommand}"  Margin="5,5,5,5"></Button>
 
-        <Button Grid.Row="6"  Command="{Binding LoadCommand}"   Content="Reaload Movies" Height="25" FontWeight="SemiBold"  Margin="5,5,5,5"></Button>
+        <Button Grid.Row="6"  Command="{Binding LoadCommand}"   Content="Reaload Movies" Height="25" FontWeight="SemiBold" Visibility="Collapsed"  Margin="5,0,5,5"></Button>
 
 
 

@@ -24,57 +24,8 @@ namespace AdminToolWPF.ViewModel
                 return "Movies";
             }
         }
+        
 
-
-        //public RelayCommand<object> NewMovieCommand
-        //{
-        //    get
-        //    {
-        //        if (_newMovieCommand == null)
-        //            _newMovieCommand = new RelayCommand<object>(NewMovieCommand_Execute);
-        //        return _newMovieCommand;
-        //    }
-        //}
-        //private RelayCommand<object> _newMovieCommand = null;
-
-        //private void NewMovieCommand_Execute(object obj)
-        //{
-        //    Window window = new Window
-        //    {
-        //        Title = "New Movie",
-        //        Content = new MovieView(this, null)
-                
-        //    };
-        //    window.Height = 300;
-        //    window.Width = 500;
-        //    window.ShowDialog();
-        //}
-
-
-
-        //public RelayCommand<object> EditMovieCommand
-        //{
-        //    get
-        //    {
-        //        if (_editMovieCommand == null && SelectedMovie != null)
-        //            _editMovieCommand = new RelayCommand<object>(EditMovieCommand_Execute);
-        //        return _editMovieCommand;
-        //    }
-        //}
-        //private RelayCommand<object> _editMovieCommand = null;
-
-        //private void EditMovieCommand_Execute(object obj)
-        //{
-        //    Window window = new Window
-        //    {
-        //        Title = "New Movie",
-        //        Content = new MovieView(this, SelectedMovie)
-
-        //    };
-        //    window.Height = 300;
-        //    window.Width = 500;
-        //    window.ShowDialog();
-        //}
 
 
 
@@ -176,7 +127,7 @@ namespace AdminToolWPF.ViewModel
                 {
                     Title = "Test Movie",
                     ReleaseYear = 1999,
-                    MovieId = 9000,
+                    id = 9000,
                     GenreList = new List<Genre>() {
                         new Genre(){ GenreName = "Action" }
                     }

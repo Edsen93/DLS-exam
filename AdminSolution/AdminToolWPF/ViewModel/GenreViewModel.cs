@@ -13,6 +13,7 @@ namespace AdminToolWPF.ViewModel
         private Genre _genre;
 
         public string GenreText { get { return _genre.GenreName; } }
+        public Genre Genre { get { return _genre; } }
 
         private bool _isSelected;
         public bool IsSelected

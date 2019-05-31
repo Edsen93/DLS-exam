@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AdminToolWPF.ViewModel
 {
@@ -19,6 +20,17 @@ namespace AdminToolWPF.ViewModel
         }
 
 
+        public IRelayCommand TestAdminConnection => new RelayCommand(() =>
+        {
+            bool result = RequestHandler.IsAddressAvailable(AdminServiceAddress + "/api/movies");
+
+            
+            if (result)
+                MessageBox.Show("Connection was found", "Connection result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Connection was NOT found", "Connection result", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        });
+
 
         // Recommendation
         public string AdminServiceAddress
@@ -31,25 +43,27 @@ namespace AdminToolWPF.ViewModel
             }
         }
 
-        public string AdminServiceUserName
-        {
-            get { return ConnetionSettings.AdminServiceUserName; }
-            set
-            {
-                ConnetionSettings.AdminServiceUserName = value;
-                RaisePropertyChanged("AdminServiceUserName");
-            }
-        }
+        //public string AdminServiceUserName
+        //{
+        //    get { return ConnetionSettings.AdminServiceUserName; }
+        //    set
+        //    {
+        //        ConnetionSettings.AdminServiceUserName = value;
+        //        RaisePropertyChanged("AdminServiceUserName");
+        //    }
+        //}
 
-        public string AdminServiceUserPassword
-        {
-            get { return ConnetionSettings.AdminServiceUserPassword; }
-            set
-            {
-                ConnetionSettings.AdminServiceUserPassword = value;
-                RaisePropertyChanged("AdminServiceUserPassword");
-            }
-        }
+        //public string AdminServiceUserPassword
+        //{
+        //    get { return ConnetionSettings.AdminServiceUserPassword; }
+        //    set
+        //    {
+        //        ConnetionSettings.AdminServiceUserPassword = value;
+        //        RaisePropertyChanged("AdminServiceUserPassword");
+        //    }
+        //}
+
+
 
         //// Recommendation
         //public string Neo4jAddress
@@ -61,7 +75,7 @@ namespace AdminToolWPF.ViewModel
         //        RaisePropertyChanged("Neo4jAddress");
         //    }
         //}
-        
+
         //public string Neo4jUserName
         //{
         //    get { return ConnetionSettings.Neo4jUserName; }
@@ -93,7 +107,7 @@ namespace AdminToolWPF.ViewModel
         //        RaisePropertyChanged("PostgresMoviesAddress");
         //    }
         //}
-        
+
         //public string PostgresMoviesUserName
         //{
         //    get { return ConnetionSettings.PostgresMoviesUserName; }
@@ -125,7 +139,7 @@ namespace AdminToolWPF.ViewModel
         //        RaisePropertyChanged("PostgresUserAddress");
         //    }
         //}
-        
+
         //public string PostgresUserUserName
         //{
         //    get { return ConnetionSettings.PostgresUserUserName; }

@@ -25,16 +25,22 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="UserId" FontWeight="Bold" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
             <TextBlock Text="UserName" FontWeight="Bold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
-            <TextBlock Text="IsAdmin" FontWeight="Bold" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
+            <TextBlock Text="UserName" FontWeight="Bold" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
+            <TextBlock Text="UserName" FontWeight="Bold" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
+            <TextBlock Text="IsAdmin" FontWeight="Bold" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,2,15,2"/>
 
             <TextBox Grid.Row="0" Grid.Column="1" Margin="0,2,0,2" Height="18" IsReadOnly="True" Text="{Binding UserId}"/>
             <TextBox Grid.Row="1" Grid.Column="1" Margin="0,2,0,2" Height="18" Text="{Binding UserName}"/>
-            <CheckBox  Grid.Row="2" Grid.Column="1" Margin="0,2,0,2" IsChecked="{Binding IsAdmin}"></CheckBox>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="0,2,0,2" Height="18" Text="{Binding Password}"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="0,2,0,2" Height="18" Text="{Binding Email}"/>
+            <CheckBox  Grid.Row="4" Grid.Column="1" Margin="0,2,0,2" IsChecked="{Binding IsAdmin}"></CheckBox>
 
 
 
@@ -48,7 +54,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button  Grid.Column="0" Content="Save changes" Margin="0,0,2,0"/>
+            <Button  Grid.Column="0" Content="Save changes" Command="{Binding SaveUserCommand}" Margin="0,0,2,0"/>
             <Button Grid.Column="1"  Content="Cancel" Margin="2,0,0,0"/>
         </Grid>
 

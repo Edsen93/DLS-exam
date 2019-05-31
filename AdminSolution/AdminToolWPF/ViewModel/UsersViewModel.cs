@@ -37,7 +37,7 @@ namespace AdminToolWPF.ViewModel
                 Content = new UserView(SelectedUser)
 
             };
-            window.Height = 150;
+            window.Height = 190;
             window.Width = 250;
             window.ShowDialog();
         });
@@ -51,7 +51,7 @@ namespace AdminToolWPF.ViewModel
                 Content = new UserView(SelectedUser)
 
             };
-            window.Height = 150;
+            window.Height = 190;
             window.Width = 250;
             window.ShowDialog();
         }, () => SelectedUser != null);
@@ -89,7 +89,7 @@ namespace AdminToolWPF.ViewModel
         }
 
 
-        private CollectionViewSource usersCollection;
+        private CollectionViewSource usersCollection = new CollectionViewSource();
 
         public ICollectionView SourceCollection
         {
@@ -119,37 +119,33 @@ namespace AdminToolWPF.ViewModel
         public UsersViewModel(User model = null)
         {
 
-            GetUsers();
+            DoWork();
 
         }
 
 
-
-        private void GetUsers(bool loadUsers = false)
+        private Task<List<User>> DoWorkAsync()
         {
-
-            ObservableCollection<User> users = new ObservableCollection<User>();
-
-            if (loadUsers)
+            TaskCompletionSource<List<User>> tcs = new TaskCompletionSource<List<User>>();
+            Task.Run(() =>
             {
-                //Connect and load users
-            }
-            else
-            {
-                for (int i = 1; i < 1000; i++)
-                {
-                    users.Add(new User()
-                    {
-                        UserId = i,
-                        UserName = "Name" + i,
-                        IsAdmin =  i % 2 == 0,
-                    });
-                }
-            }
+                var test = QuerryHandler.GetUsers();
+                tcs.SetResult(test);
+            });
+            //return the Task
+            return tcs.Task;
+        }
+
+        private async void DoWork()
+        {
+            //ApplicationViewModel.WorkInProgress = true;
+
+            List<User> uList = await DoWorkAsync();
+            ObservableCollection<User> movies = new ObservableCollection<User>(uList);
 
             usersCollection = new CollectionViewSource
             {
-                Source = users
+                Source = movies
             };
             usersCollection.Filter += (o, e) =>
             {
@@ -169,7 +165,58 @@ namespace AdminToolWPF.ViewModel
                     e.Accepted = false;
                 }
             };
+
+            RaisePropertyChanged("SourceCollection");
+            //ApplicationViewModel.GetInstance().WorkInProgress = false;
         }
+
+
+
+        //private void GetUsers(bool loadUsers = false)
+        //{
+
+        //    ObservableCollection<User> users = new ObservableCollection<User>();
+
+        //    if (loadUsers)
+        //    {
+        //        //Connect and load users
+        //    }
+        //    else
+        //    {
+        //        for (int i = 1; i < 1000; i++)
+        //        {
+        //            users.Add(new User()
+        //            {
+        //                UserId = i,
+        //                UserName = "Name" + i,
+        //                IsAdmin =  i % 2 == 0,
+        //            });
+        //        }
+        //    }
+
+        //    usersCollection = new CollectionViewSource
+        //    {
+        //        Source = users
+        //    };
+        //    usersCollection.Filter += (o, e) =>
+        //    {
+        //        if (string.IsNullOrEmpty(FilterText))
+        //        {
+        //            e.Accepted = true;
+        //            return;
+        //        }
+
+        //        User usr = e.Item as User;
+        //        if (usr.UserName.ToUpper().Contains(FilterText.ToUpper()))
+        //        {
+        //            e.Accepted = true;
+        //        }
+        //        else
+        //        {
+        //            e.Accepted = false;
+        //        }
+        //    };
+        //}
 
     }
 }

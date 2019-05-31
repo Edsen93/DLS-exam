@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using AdminToolWPF.Model;
@@ -10,9 +11,15 @@ namespace AdminToolWPF.Helper_Classes
 {
     public class QuerryHandler
     {
+
+        /// <summary>
+        /// 
+        /// Movie
+        /// 
+        /// </summary>
         public static List<Movie> GetMovies()
         {
-            string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie";
+            string CurrentSentQuerry = $"{ConnetionSettings.MoviesService}";
             
             string json = RequestHandler.Get(CurrentSentQuerry);
             
@@ -24,7 +31,7 @@ namespace AdminToolWPF.Helper_Classes
 
         public static Movie GetMovie(int id)
         {
-            string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/full/{id}";
+            string CurrentSentQuerry = $"{ConnetionSettings.MoviesService}/{id}";
 
             string json = RequestHandler.Get(CurrentSentQuerry);
 
@@ -35,27 +42,92 @@ namespace AdminToolWPF.Helper_Classes
 
 
 
+        public static bool CreateMovie(Movie movie)
+        {
+
+            string CurrentSentQuerry = $"https://localhost:44319/api/movies";
+            
+            string serialized = JsonConvert.SerializeObject(movie);
+            
+
+            var result = RequestHandler.Post(CurrentSentQuerry, serialized, "Movie", "POST");
+
+
+            return true;
+        }
+
+
+
         public static bool UpdateMovie(Movie movie)
         {
 
-            string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/{movie.MovieId}";
-
-            // public string Post(string uri, string data, string contentType, string method = "POST")
-
-
+            string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/{movie.id}";
+            
 
             string serialized = JsonConvert.SerializeObject(movie);
+            
 
-            //using (var client = new System.Net.WebClient())
-            //{
-            //    client.UploadData(CurrentSentQuerry, "PUT", serialized);
-            //}
-
-
-            var sdf = RequestHandler.Post(CurrentSentQuerry, serialized,"Movie","PUT");
+            var result = RequestHandler.Post(CurrentSentQuerry, serialized,"Movie","PUT");
             
 
             return true;
         }
+
+
+        /// <summary>
+        /// 
+        /// Users
+        /// 
+        /// </summary>
+        public static List<User> GetUsers()
+        {
+            string CurrentSentQuerry = $"{ConnetionSettings.UserService}";
+
+            string json = RequestHandler.Get(CurrentSentQuerry);
+
+            List<User> result = JsonConvert.DeserializeObject<List<User>>(json);
+
+            return result;
+        }
+
+
+        public static bool CreateUser(User user)
+        {
+            string CurrentSentQuerry = $"{"http://dlsadminapi.azurewebsites.net"}/api/users/{user.UserId}";
+
+            string serialized = JsonConvert.SerializeObject(user);
+
+            var result = RequestHandler.Post(CurrentSentQuerry, serialized, "User", "POST");
+
+            return true;
+        }
+
+
+        public async static Task<bool> UpdateUser(User user)
+        {
+            string CurrentSentQuerry = string.Format("http://dlsadminapi.azurewebsites.net/api/users/{0}", user.UserId);
+
+            var client = new HttpClient();
+            var content = await client.PutAsJsonAsync<User>(CurrentSentQuerry, user);
+            
+            return true;
+        }
+
+
+        //public async static Task<bool> UpdateUser(User user)
+        //{
+        //    //string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/users/{user.UserId}";
+        //    // string CurrentSentQuerry = $"{"http://dlsadminapi.azurewebsites.net"}/api/users/{user.UserId}";
+        //    string CurrentSentQuerry = string.Format("http://dlsadminapi.azurewebsites.net/api/users/{0}", user.UserId);
+
+        //    var client = new HttpClient();
+        //    var content = await client.PutAsJsonAsync<User>(CurrentSentQuerry, user);
+        //    string serialized = JsonConvert.SerializeObject(user);
+
+        //    var result = RequestHandler.Post(CurrentSentQuerry, serialized, "User", "PUT");
+
+        //    return true;
+        //}
+
     }
 }

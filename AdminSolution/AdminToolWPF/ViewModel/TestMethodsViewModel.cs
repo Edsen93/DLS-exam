@@ -97,7 +97,7 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand GetAllMoviesCommand => new RelayCommand(() =>
         {
-            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movies";
+            CurrentSentQuerry = $"{ConnetionSettings.MoviesService}";
 
             DoWork();
 
@@ -105,12 +105,11 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand GetMovieByIDCommand => new RelayCommand(() =>
         {
-            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/full/{MovieID}";
+            CurrentSentQuerry = $"{ConnetionSettings.MoviesService}/{MovieID}";
 
             DoWork();
 
         }, () => !String.IsNullOrWhiteSpace(MovieID));
-
 
    
         public IRelayCommand GetMovieByTitleCommand => new RelayCommand(() =>

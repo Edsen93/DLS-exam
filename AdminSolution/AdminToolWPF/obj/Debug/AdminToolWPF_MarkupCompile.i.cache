@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\SharkForceOne\source\repos\DLS-exam\AdminSolution\AdminToolWPF\obj\Debug\
+C:\Users\SharkForceOne\Source\Repos\DLS-exam\AdminSolution\AdminToolWPF\obj\Debug\
 AdminToolWPF
 none
 false
 DEBUG;TRACE
-C:\Users\SharkForceOne\source\repos\DLS-exam\AdminSolution\AdminToolWPF\App.xaml
+C:\Users\SharkForceOne\Source\Repos\DLS-exam\AdminSolution\AdminToolWPF\App.xaml
 7-1686021800
 
 351963727924
-78-1504292697
+84-729107432
 MainWindow.xaml;View\ConnectionSettingsView.xaml;View\MoviesView.xaml;View\MovieView.xaml;View\TestMethodsView.xaml;View\UsersView.xaml;View\UserView.xaml;
 
-False
+True
 

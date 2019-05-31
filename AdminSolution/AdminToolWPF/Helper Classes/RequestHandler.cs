@@ -11,6 +11,23 @@ namespace AdminToolWPF.Helper_Classes
     public class RequestHandler
     {
 
+        public static bool IsAddressAvailable(string address)
+        {
+            try
+            {
+                System.Net.WebClient client = new WebClient();
+                client.DownloadData(address);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+
         /// 
         /// User Methods
         /// 
@@ -28,25 +45,25 @@ namespace AdminToolWPF.Helper_Classes
 
 
 
-        public static string GetAdmin(string uri, string user = "", string password = "")
-        {
-            try
-            {
-                var request = WebRequest.Create("http://myserver.com/service");
-                string authInfo = user + ":" + password;
-                authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
+        //public static string GetAdmin(string uri, string user = "", string password = "")
+        //{
+        //    try
+        //    {
+        //        var request = WebRequest.Create("http://myserver.com/service");
+        //        string authInfo = user + ":" + password;
+        //        authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
 
-                //like this:
-                request.Headers["Authorization"] = "Basic " + authInfo;
+        //        //like this:
+        //        request.Headers["Authorization"] = "Basic " + authInfo;
 
-                var response = request.GetResponse();
-            }
-            catch (Exception ex)
-            {
-                return ex.ToString();
-            }
-            return null;
-        }
+        //        var response = request.GetResponse();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return ex.ToString();
+        //    }
+        //    return null;
+        //}
 
 
 
