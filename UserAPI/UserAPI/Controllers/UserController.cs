@@ -85,8 +85,8 @@ namespace AdminAPI.Controllers
         [HttpGet("{uId}/{mId}/{rating}")]
         public async Task PostUserRating(long uId, long mId, int rating)
         {
-            var url = string.Format("https://localhost:44319/api/User/ratemovie/{0}/{1}/{2}", uId, mId, rating);
-            //var url = string.Format("https://dlsrecommendmicroservice.azurewebsites.net/api/User/ratemovie/{0}/{1}/{2}", uId, mId, rating);
+            //var url = string.Format("https://localhost:44319/api/User/ratemovie/{0}/{1}/{2}", uId, mId, rating);
+            var url = string.Format("https://dlsrecommendmicroservice.azurewebsites.net/api/User/ratemovie/{0}/{1}/{2}", uId, mId, rating);
             var content = await client.GetStringAsync(url);
         }
 
