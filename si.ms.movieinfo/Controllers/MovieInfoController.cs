@@ -16,7 +16,15 @@ namespace si.ms.movieinfo.Controllers
         public List<Movie> Get()
         {
             MoviePersistence mp = new MoviePersistence();
-            return mp.SearchForMovie();
+            return mp.ReturnAllMovies();
+        }
+
+
+        [HttpGet("title/{title}")]
+        public List<Movie> Get(String title)
+        {
+            MoviePersistence mp = new MoviePersistence();
+            return mp.SearchForMovie(title);
         }
 
         // GET: api/Default/5

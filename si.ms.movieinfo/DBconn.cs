@@ -76,11 +76,11 @@ namespace si.ms.movieinfo
 
         }
         // Search on title, handle input error, will always return a list.
-        public List<Movie> SearchForMovie()
+        public List<Movie> SearchForMovie(String text)
 
         {
             List<Movie> movies = new List<Movie>();
-            string sqlString = "Select * From movies";
+            string sqlString = String.Format("Select * From search_movie('{0}') LIMIT 10", text);
 
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
             NpgsqlDataReader dataReader = cmd.ExecuteReader();
@@ -101,7 +101,32 @@ namespace si.ms.movieinfo
 
 
         }
-        //
+
+        public List<Movie> ReturnAllMovies()
+
+        {
+            List<Movie> movies = new List<Movie>();
+            string sqlString = String.Format("Select * From movies");
+
+            NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
+            NpgsqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+
+                Movie m = new Movie();
+                m.ID = dataReader.GetInt32(0);
+                m.title = dataReader.GetString(1);
+                m.releaseYear = dataReader.GetInt32(2);
+
+
+                movies.Add(m);
+            }
+            conn.Close();
+            return movies;
+
+
+        }
         public Movie findOneMovie(int id)
         {
 
