@@ -229,7 +229,7 @@ namespace TestAdminApi
             var content = client.PostAsync(url, stringcontent).Result;
 
             // Read
-            var userjson = client.GetStringAsync(url + "/helloworld/1234567890").Result;
+            var userjson = client.GetStringAsync(url + "/helloworld2/1234567890").Result;
             var newObject = JsonConvert.DeserializeObject<ExpandoObject>(userjson);
 
             // Same username insert
