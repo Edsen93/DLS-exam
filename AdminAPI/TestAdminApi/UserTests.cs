@@ -253,6 +253,18 @@ namespace TestAdminApi
             Assert.False(contentPostSame.IsSuccessStatusCode, "Fail: Post existing user succeded");
             Assert.True(contentdel.IsSuccessStatusCode, "Deleted new user failed");
         }
+
+        [Fact]
+        public void TestDeleteNotUserNotExist()
+        {
+            client = new HttpClient();
+            var url = "http://dlsadminapi.azurewebsites.net/api/users/-9999";
+
+            // Delete
+            var contentdel = client.DeleteAsync(url).Result;
+
+            Assert.False(contentdel.IsSuccessStatusCode, "Deleted a value it was not supposed to");
+        }
     }
 }
    

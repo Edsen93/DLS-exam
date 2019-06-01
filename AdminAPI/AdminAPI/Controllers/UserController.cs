@@ -25,48 +25,28 @@ namespace AdminAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ExpandoObject>>> GetAllUsers()
+        public async Task<ActionResult<HttpResponseMessage>> GetAllUsers()
         {
             var url = "https://dlsusermicroservice.azurewebsites.net/api/users";
-            string content = await client.GetStringAsync(url);
-
-            List<ExpandoObject> users;
-            if (!string.IsNullOrEmpty(content))
-                users = JsonConvert.DeserializeObject<List<ExpandoObject>>(content);
-            else
-                users = null;
-
-            return users;
+            var content = await client.GetAsync(url);
+            return content;
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ExpandoObject>> GetUser(int id)
+        public async Task<ActionResult<HttpResponseMessage>> GetUser(int id)
         {
+            //var url = string.Format("https://localhost:44320/api/users/{0}", id.ToString());
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id.ToString());
-            string content = await client.GetStringAsync(url);
-
-            ExpandoObject user;
-            if (!string.IsNullOrEmpty(content))
-                user = JsonConvert.DeserializeObject<ExpandoObject>(content);
-            else
-                user = null;
-
-            return user;
+            var content = await client.GetAsync(url);
+            return content;
         }
 
         [HttpGet("{username}/{password}")]
-        public async Task<ActionResult<ExpandoObject>> Login(string username, string password)
+        public async Task<ActionResult<HttpResponseMessage>>Login(string username, string password)
         {
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}/{1}", username, password);
-            string content = await client.GetStringAsync(url);
-
-            ExpandoObject user;
-            if (!string.IsNullOrEmpty(content))
-                user = JsonConvert.DeserializeObject<ExpandoObject>(content);
-            else
-                user = null;
-
-            return user;
+            var content = await client.GetAsync(url);
+            return content;
         }
 
         [HttpPost]
@@ -95,17 +75,19 @@ namespace AdminAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task UpdateUser(int id, [FromBody]ExpandoObject user)
+        public async Task<ActionResult<HttpResponseMessage>> UpdateUser(int id, [FromBody]ExpandoObject user)
         {
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id.ToString());
             var content = await client.PutAsJsonAsync<ExpandoObject>(url, user);
+            return content;
         }
 
         [HttpDelete("{id}")]
-        public async Task DeleteUser(int id)
+        public async Task<ActionResult<HttpResponseMessage>> DeleteUser(int id)
         {
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id.ToString());
             var content = await client.DeleteAsync(url);
+            return content;
         }
     }
 }

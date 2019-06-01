@@ -30,7 +30,6 @@ C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\b
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\bin\Debug\netcoreapp2.1\AdminAPI.runtimeconfig.dev.json
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\bin\Debug\netcoreapp2.1\AdminAPI.dll
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\bin\Debug\netcoreapp2.1\AdminAPI.pdb
-C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.csprojAssemblyReference.cache
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.csproj.CoreCompileInputs.cache
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.RazorAssemblyInfo.cache
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.RazorAssemblyInfo.cs
