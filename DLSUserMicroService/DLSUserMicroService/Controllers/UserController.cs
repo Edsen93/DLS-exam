@@ -15,27 +15,36 @@ namespace DLSUserMicroService.Controllers
     public class ValuesController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<IEnumerable<User>> GetAllUsers()
+        public ActionResult<HttpResponseMessage> GetAllUsers()
         {
             var conn = new DBConn();
             var users = conn.GetUsers();
-            return users;
+            if (users.Count <= 0)
+                return Conflict("There are no users in the database");
+            else
+                return Ok(users)
         }
 
         [HttpGet("{id}")]
-        public ActionResult<User> GetUser(int id)
+        public ActionResult<HttpResponseMessage> GetUser(int id)
         {
             var conn = new DBConn();
             var user = conn.GetUser(id);
-            return user;
+            if (user.UserId <= 0 || string.IsNullOrWhiteSpace(user.Username))
+                return Conflict("User with id " + id + " does not exist");
+            else
+                return Ok(user)
         }
 
         [HttpGet("{username}/{password}")]
-        public ActionResult<User> Login(string username, string password)
+        public ActionResult<HttpResponseMessage> Login(string username, string password)
         {
             var conn = new DBConn();
             var user = conn.Login(username, password);
-            return user;
+            if (user.UserId <= 0 || string.IsNullOrWhiteSpace(user.Username))
+                return Conflict("Wrong username or password");
+            else
+                return Ok(user);
         }
 
         [HttpPost]
@@ -50,17 +59,25 @@ namespace DLSUserMicroService.Controllers
         }
 
         [HttpPut("{id}")]
-        public void UpdateUser(int id, [FromBody]User value)
+        public ActionResult<HttpRequestMessage> UpdateUser(int id, [FromBody]User value)
         {
             var conn = new DBConn();
-            conn.UpdateUser(id, value);
+            var affectedrows = conn.UpdateUser(id, value);
+            if (affectedrows > 0)
+                return Ok("Row(s) updated");
+            else
+                return Conflict("Id does not exist");
         }
 
         [HttpDelete("{id}")]
-        public void DeleteUser(int id)
+        public ActionResult<HttpRequestMessage> DeleteUser(int id)
         {
             var conn = new DBConn();
-            conn.DeleteUser(id);
+            var affectedrows = conn.DeleteUser(id);
+            if (affectedrows > 0)
+                return Ok("Row(s) deleted");
+            else
+                return Conflict("Id does not exist");
         }
     }
 }

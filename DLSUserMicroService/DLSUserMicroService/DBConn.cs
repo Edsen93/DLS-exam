@@ -46,21 +46,30 @@ namespace UserMicroServiceASP
             }
         }
 
-        public void DeleteUser(int userId)
+        public int DeleteUser(int userId)
         {
-            using (var conn = new NpgsqlConnection(connection))
+            int affectedrows = -1;
+            try
             {
-                conn.Open();
-
-                // Insert some data
-                using (var cmd = new NpgsqlCommand())
+                using (var conn = new NpgsqlConnection(connection))
                 {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "DELETE FROM users WHERE users.user_id = @u";
-                    cmd.Parameters.AddWithValue("u", userId);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+
+                    // Insert some data
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "DELETE FROM users WHERE users.user_id = @u";
+                        cmd.Parameters.AddWithValue("u", userId);
+                        affectedrows = cmd.ExecuteNonQuery();
+                    }
+                    conn.Close();
                 }
-                conn.Close();
+                return affectedrows;
+            }
+            catch
+            {
+                return -1;
             }
         }
 
@@ -138,24 +147,33 @@ namespace UserMicroServiceASP
             return users;
         }
 
-        public void UpdateUser(int userId, User user)
+        public int UpdateUser(int userId, User user)
         {
-            using (var conn = new NpgsqlConnection(connection))
+            int affectedrows = -1;
+            try
             {
-                conn.Open();
-
-                // Insert some data
-                using (var cmd = new NpgsqlCommand())
+                using (var conn = new NpgsqlConnection(connection))
                 {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "UPDATE users SET username = @u, password = @p, email = @e, is_admin = @i WHERE user_id = " + userId;
-                    cmd.Parameters.AddWithValue("u", user.Username);
-                    cmd.Parameters.AddWithValue("p", user.Password);
-                    cmd.Parameters.AddWithValue("e", user.Email);
-                    cmd.Parameters.AddWithValue("i", user.IsAdmin);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+
+                    // Insert some data
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "UPDATE users SET username = @u, password = @p, email = @e, is_admin = @i WHERE user_id = " + userId;
+                        cmd.Parameters.AddWithValue("u", user.Username);
+                        cmd.Parameters.AddWithValue("p", user.Password);
+                        cmd.Parameters.AddWithValue("e", user.Email);
+                        cmd.Parameters.AddWithValue("i", user.IsAdmin);
+                        affectedrows = cmd.ExecuteNonQuery();
+                    }
+                    conn.Close();
                 }
-                conn.Close();
+                return affectedrows;
+            }
+            catch
+            {
+                return -1;
             }
         }
     }
