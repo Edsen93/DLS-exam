@@ -40,20 +40,34 @@ namespace AdminAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<HttpResponseMessage>> GetUser(int id)
+        public async Task<ActionResult<ExpandoObject>> GetUser(int id)
         {
             //var url = string.Format("https://localhost:44320/api/users/{0}", id.ToString());
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id.ToString());
             var content = await client.GetAsync(url);
-            return content;
+
+            if (content.IsSuccessStatusCode)
+            {
+                var obj = await content.Content.ReadAsAsync<ExpandoObject>();
+                return obj;
+            }
+            else
+                return Conflict("No entry with id " + id);
         }
 
         [HttpGet("{username}/{password}")]
-        public async Task<ActionResult<HttpResponseMessage>>Login(string username, string password)
+        public async Task<ActionResult<ExpandoObject>>Login(string username, string password)
         {
             var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}/{1}", username, password);
             var content = await client.GetAsync(url);
-            return content;
+
+            if (content.IsSuccessStatusCode)
+            {
+                var obj = await content.Content.ReadAsAsync<ExpandoObject>();
+                return obj;
+            }
+            else
+                return Conflict("Username or password is wrong");
         }
 
         [HttpPost]
