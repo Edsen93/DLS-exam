@@ -57,10 +57,11 @@ namespace si.ms.movieinfo.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public String Delete(int id)
         {
             MoviePersistence mp = new MoviePersistence();
             mp.deleteMovie(id);
+            return String.Format("Movie with id{0} is delete", id);
         }
     }
 }

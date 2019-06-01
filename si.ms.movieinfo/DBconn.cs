@@ -156,10 +156,11 @@ namespace si.ms.movieinfo
         public Movie updateMovie(int id, Movie movieToDelete)
 
         {
-            string sqlString = String.Format("UPDATE movies SET (title = '{0}', releaseYear = {1} WHERE id = {2}) RETURNING id, title,releaseYear", movieToDelete.title, movieToDelete.releaseYear, id);
+            string sqlString = String.Format("UPDATE movies SET title = '{0}', releaseYear = {1} WHERE id = {2} RETURNING id, title,releaseYear", movieToDelete.title, movieToDelete.releaseYear, id);
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
-            NpgsqlDataReader dataReader = cmd.ExecuteReader();
             cmd.ExecuteNonQuery();
+            NpgsqlDataReader dataReader = cmd.ExecuteReader();
+            
             Movie m = new Movie();
 
             while (dataReader.Read())
