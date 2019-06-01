@@ -22,7 +22,7 @@ namespace DLSUserMicroService.Controllers
             if (users.Count <= 0)
                 return Conflict("There are no users in the database");
             else
-                return Ok(users)
+                return Ok(users);
         }
 
         [HttpGet("{id}")]
@@ -33,7 +33,7 @@ namespace DLSUserMicroService.Controllers
             if (user.UserId <= 0 || string.IsNullOrWhiteSpace(user.Username))
                 return Conflict("User with id " + id + " does not exist");
             else
-                return Ok(user)
+                return Ok(user);
         }
 
         [HttpGet("{username}/{password}")]
