@@ -25,11 +25,18 @@ namespace AdminAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<HttpResponseMessage>> GetAllUsers()
+        public async Task<ActionResult<List<ExpandoObject>>> GetAllUsers()
         {
             var url = "https://dlsusermicroservice.azurewebsites.net/api/users";
             var content = await client.GetAsync(url);
-            return content;
+
+            if (content.IsSuccessStatusCode)
+            {
+                var obj = await content.Content.ReadAsAsync<List<ExpandoObject>>();
+                return obj;
+            }
+            else
+                return Conflict("No entries in database");
         }
 
         [HttpGet("{id}")]
