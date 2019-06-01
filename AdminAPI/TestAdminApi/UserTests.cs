@@ -212,7 +212,7 @@ namespace TestAdminApi
         public void TestCantCreateUserExist()
         {
             client = new HttpClient(); 
-            //var url = "http://dlsadminapi.azurewebsites.net/api/users";
+            var url = "http://dlsadminapi.azurewebsites.net/api/users";
             //var url = "https://localhost:44374/api/users";
 
 
