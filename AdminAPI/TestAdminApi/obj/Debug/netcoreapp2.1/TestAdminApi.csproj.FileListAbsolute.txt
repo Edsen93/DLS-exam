@@ -12,3 +12,17 @@ C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminA
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.pdb
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.dll
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.pdb
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.deps.json
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.runtimeconfig.json
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.runtimeconfig.dev.json
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.dll
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.pdb
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.csprojAssemblyReference.cache
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.csproj.CoreCompileInputs.cache
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.AssemblyInfoInputs.cache
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.AssemblyInfo.cs
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.dll
+C:\Users\edsen\source\repos\DLS-exam\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.pdb

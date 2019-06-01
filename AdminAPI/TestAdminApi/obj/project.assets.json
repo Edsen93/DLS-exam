@@ -1059,19 +1059,6 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Net.Http.Formatting.Extension/5.2.3": {
-        "type": "package",
-        "compile": {
-          "lib/System.Net.Http.Extensions.dll": {},
-          "lib/System.Net.Http.Formatting.dll": {},
-          "lib/System.Net.Http.Primitives.dll": {}
-        },
-        "runtime": {
-          "lib/System.Net.Http.Extensions.dll": {},
-          "lib/System.Net.Http.Formatting.dll": {},
-          "lib/System.Net.Http.Primitives.dll": {}
-        }
-      },
       "System.ObjectModel/4.0.12": {
         "type": "package",
         "dependencies": {
@@ -3957,20 +3944,6 @@
         "runtimes/aot/lib/netcore50/System.Linq.Expressions.dll"
       ]
     },
-    "System.Net.Http.Formatting.Extension/5.2.3": {
-      "sha512": "BlYwj3Mbgc2i+NqtBZ+bea3LiN9WuGpE8PCylBvhxV0wBs0XTkXJmDuzkNnUyPhDBqKMBwDK0ZCnwJ8LpQ0aEg==",
-      "type": "package",
-      "path": "system.net.http.formatting.extension/5.2.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/System.Net.Http.Extensions.dll",
-        "lib/System.Net.Http.Formatting.dll",
-        "lib/System.Net.Http.Primitives.dll",
-        "system.net.http.formatting.extension.5.2.3.nupkg.sha512",
-        "system.net.http.formatting.extension.nuspec"
-      ]
-    },
     "System.ObjectModel/4.0.12": {
       "sha512": "tAgJM1xt3ytyMoW4qn4wIqgJYm7L7TShRZG4+Q4Qsi2PCcj96pXN7nRywS9KkB3p/xDUjc2HSwP9SROyPYDYKQ==",
       "type": "package",
@@ -5865,29 +5838,28 @@
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.NET.Test.Sdk >= 15.9.0",
       "Microsoft.NETCore.App >= 2.1.0",
-      "System.Net.Http.Formatting.Extension >= 5.2.3",
       "xunit >= 2.4.0",
       "xunit.runner.visualstudio >= 2.4.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SebastianDamgaard\\.nuget\\packages\\": {},
+    "C:\\Users\\edsen\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\TestAdminApi\\TestAdminApi.csproj",
+      "projectUniqueName": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\TestAdminApi\\TestAdminApi.csproj",
       "projectName": "TestAdminApi",
-      "projectPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\TestAdminApi\\TestAdminApi.csproj",
-      "packagesPath": "C:\\Users\\SebastianDamgaard\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\TestAdminApi\\obj\\",
+      "projectPath": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\TestAdminApi\\TestAdminApi.csproj",
+      "packagesPath": "C:\\Users\\edsen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\TestAdminApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\SebastianDamgaard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\edsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5920,10 +5892,6 @@
             "version": "[2.1.0, )",
             "autoReferenced": true
           },
-          "System.Net.Http.Formatting.Extension": {
-            "target": "Package",
-            "version": "[5.2.3, )"
-          },
           "xunit": {
             "target": "Package",
             "version": "[2.4.0, )"
@@ -5940,17 +5908,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Net.Http.Formatting.Extension 5.2.3' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "System.Net.Http.Formatting.Extension",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    }
-  ]
+  }
 }

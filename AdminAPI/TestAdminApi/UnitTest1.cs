@@ -2,7 +2,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using Xunit;
 
 namespace TestAdminApi
@@ -21,43 +23,45 @@ namespace TestAdminApi
         }
 
         [Fact]
-        public async void Can_Create_one_User()
+        public async void TestCreateUser()
         {
             client = new HttpClient();
             // count
             var url = "http://dlsadminapi.azurewebsites.net/api/users/";
             var jsonObject = await client.GetStringAsync(url);
-            var preCount = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonObject);
+            var preCount = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonObject).Count;
 
-            // isAdmin, username, userId, password, email
             var obj = new ExpandoObject();
-            obj.TryAdd("isadmin", true);
+            obj.TryAdd("isAdmin", true);
             obj.TryAdd("username", "basdamgaard");
             obj.TryAdd("password", "1234567890");
             obj.TryAdd("email", "seb@dam.com");
 
             // Create
-            var content = await client.PostAsJsonAsync<ExpandoObject>(url, obj);
+            var jsonstring = JsonConvert.SerializeObject(obj);
+            var stringcontent = new StringContent(jsonstring);
+            stringcontent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+            var content = await client.PostAsync(url, stringcontent);
 
             // Read
             jsonObject = await client.GetStringAsync(url);
-            var list = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonObject);
+            var newcount = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonObject).Count;
+            var userjson = await client.GetStringAsync(url + "/basdamgaard/1234567890");
+            var newObject = JsonConvert.DeserializeObject<ExpandoObject>(userjson);
 
             // Delete
-            //handler.DeleteUser(userId);
+            var listprop = newObject.ToList();
+            var contentdel = await client.DeleteAsync(url + '/' + listprop[2].Value);
 
             //// count
-            //int postCount = handler.GetAllUsers().Count;
+            jsonObject = await client.GetStringAsync(url);
+            var postCount = JsonConvert.DeserializeObject<List<ExpandoObject>>(jsonObject).Count;
 
 
-
-            //Assert.AreEqual(0, preCount, "Database contains some data");
-
-            //Assert.AreEqual(1, resultCount, "the correct ammount of users was not found");
-            //Assert.AreNotSame(user, foundUser, "the found user was the same object");
-            //Assert.AreEqual(user.UserId, foundUser.UserId);
-
-            //Assert.AreEqual(0, postCount, "User was not deleted");
+            Assert.NotEqual(preCount, newcount);
+            Assert.True(content.IsSuccessStatusCode);
+            Assert.Equal(newObject.ElementAt(1), obj.ElementAt(1));
+            Assert.Equal(preCount, postCount);
         }
     }
 }

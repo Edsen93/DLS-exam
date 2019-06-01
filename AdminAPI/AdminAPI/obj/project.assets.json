@@ -12529,23 +12529,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SebastianDamgaard\\.nuget\\packages\\": {},
+    "C:\\Users\\edsen\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\AdminAPI\\AdminAPI.csproj",
+      "projectUniqueName": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\AdminAPI\\AdminAPI.csproj",
       "projectName": "AdminAPI",
-      "projectPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\AdminAPI\\AdminAPI.csproj",
-      "packagesPath": "C:\\Users\\SebastianDamgaard\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\AdminAPI\\obj\\",
+      "projectPath": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\AdminAPI\\AdminAPI.csproj",
+      "packagesPath": "C:\\Users\\edsen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\AdminAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\SebastianDamgaard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\edsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
