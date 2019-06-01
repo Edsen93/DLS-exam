@@ -1,0 +1,14 @@
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.deps.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.runtimeconfig.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.runtimeconfig.dev.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.csprojAssemblyReference.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.csproj.CoreCompileInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.AssemblyInfoInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.AssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\bin\Debug\netcoreapp2.1\TestAdminApi.pdb
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\TestAdminApi\obj\Debug\netcoreapp2.1\TestAdminApi.pdb

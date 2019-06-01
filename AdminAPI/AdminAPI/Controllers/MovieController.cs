@@ -57,16 +57,9 @@ namespace AdminAPI.Controllers
             var content = await client.PostAsJsonAsync<ExpandoObject>(url, movie);
             if (content.IsSuccessStatusCode)
             {
-                var msg = await content.Content.ReadAsAsync<ExpandoObject>();
-                var list = msg.ToList();
-                var id = new ExpandoObject();
-                var result = id.TryAdd(list[2].Key, list[2].Value);
-                if (result)
-                {
                     //url = "https://localhost:44319/api/Movie";
                     url = "https://dlsrecommendmicroservice.azurewebsites.net/api/Movie";
-                    content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
-                }
+                    content = await client.PostAsJsonAsync<ExpandoObject>(url, movie);
             }
         }
 

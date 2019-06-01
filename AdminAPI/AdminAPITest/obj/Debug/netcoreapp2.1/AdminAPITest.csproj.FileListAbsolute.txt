@@ -1,0 +1,11 @@
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\bin\Debug\netcoreapp2.1\AdminAPITest.deps.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\bin\Debug\netcoreapp2.1\AdminAPITest.runtimeconfig.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\bin\Debug\netcoreapp2.1\AdminAPITest.runtimeconfig.dev.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\bin\Debug\netcoreapp2.1\AdminAPITest.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\obj\Debug\netcoreapp2.1\AdminAPITest.csprojAssemblyReference.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\obj\Debug\netcoreapp2.1\AdminAPITest.csproj.CoreCompileInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\obj\Debug\netcoreapp2.1\AdminAPITest.AssemblyInfoInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPITest\obj\Debug\netcoreapp2.1\AdminAPITest.AssemblyInfo.cs

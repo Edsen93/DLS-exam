@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAPI", "AdminAPI\AdminAPI.csproj", "{274235EA-92EB-4508-8B39-9C16B240F2D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAPI", "AdminAPI\AdminAPI.csproj", "{274235EA-92EB-4508-8B39-9C16B240F2D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAdminApi", "TestAdminApi\TestAdminApi.csproj", "{D0C8E69A-2996-4EF7-B7FB-E1C1BAB0DA40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{274235EA-92EB-4508-8B39-9C16B240F2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{274235EA-92EB-4508-8B39-9C16B240F2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{274235EA-92EB-4508-8B39-9C16B240F2D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C8E69A-2996-4EF7-B7FB-E1C1BAB0DA40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C8E69A-2996-4EF7-B7FB-E1C1BAB0DA40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C8E69A-2996-4EF7-B7FB-E1C1BAB0DA40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C8E69A-2996-4EF7-B7FB-E1C1BAB0DA40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
