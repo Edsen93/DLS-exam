@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using UserMicroServiceASP;
 using UserMicroServiceASP.Models;
+using System.Net.Http;
 
 namespace DLSUserMicroService.Controllers
 {
@@ -38,12 +39,14 @@ namespace DLSUserMicroService.Controllers
         }
 
         [HttpPost]
-        public ActionResult<int> CreateUser([FromBody]User value)
+        public ActionResult<HttpResponseMessage> CreateUser([FromBody]User value)
         {
             var conn = new DBConn();
-            var id = conn.CreateUser(value);
+            var user = conn.CreateUser(value);
+            if (user != null)
+                return Ok(user);
 
-            return id;
+            return Conflict("Username exist");
         }
 
         [HttpPut("{id}")]

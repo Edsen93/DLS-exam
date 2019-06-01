@@ -15,29 +15,35 @@ namespace UserMicroServiceASP
         // Localhost
         string localConn = "Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users";
 
-        public int CreateUser(User user)
+        public User CreateUser(User user)
         {
-            int id = -1;
-            using (var conn = new NpgsqlConnection(connection))
+            try
             {
-                conn.Open();
-
-                // Insert some data
-                using (var cmd = new NpgsqlCommand())
+                using (var conn = new NpgsqlConnection(connection))
                 {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO users (username, password, email, is_admin) VALUES (@u, @p, @e, @i) RETURNING user_id;";
-                    cmd.Parameters.AddWithValue("u", user.Username);
-                    cmd.Parameters.AddWithValue("p", user.Password);
-                    cmd.Parameters.AddWithValue("e", user.Email);
-                    cmd.Parameters.AddWithValue("i", user.IsAdmin);
-                    var objid = cmd.ExecuteScalar();
-                    id = (int)objid;
-                }
-                conn.Close();
-            }
+                    conn.Open();
 
-            return id;
+                    // Insert some data
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "INSERT INTO users (username, password, email, is_admin) VALUES (@u, @p, @e, @i) RETURNING user_id;";
+                        cmd.Parameters.AddWithValue("u", user.Username);
+                        cmd.Parameters.AddWithValue("p", user.Password);
+                        cmd.Parameters.AddWithValue("e", user.Email);
+                        cmd.Parameters.AddWithValue("i", user.IsAdmin);
+                        var objid = cmd.ExecuteScalar();
+                        var id = Convert.ToInt32(objid);
+                        user.UserId = id;
+                    }
+                    conn.Close();
+                }
+                return user;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void DeleteUser(int userId)
