@@ -70,7 +70,7 @@ namespace AdminAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<HttpStatusCode> CreateUser([FromBody]ExpandoObject user)
+        public async Task<ActionResult<HttpResponseMessage>> CreateUser([FromBody]ExpandoObject user)
         {          
             //var url = "https://localhost:44320/api/users/";
             var url = "https://dlsusermicroservice.azurewebsites.net/api/users/";
@@ -85,13 +85,13 @@ namespace AdminAPI.Controllers
                     //url = "https://localhost:44319/api/User";
                     url = "https://dlsrecommendmicroservice.azurewebsites.net/api/User";
                     content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
-                    return content.StatusCode;
+                    return content;
                 }
                 else
-                    return HttpStatusCode.Conflict;
+                    return BadRequest();
             }
             else
-                return content.StatusCode;
+                return Conflict("User exist");
         }
 
         [HttpPut("{id}")]

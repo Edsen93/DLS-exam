@@ -211,12 +211,14 @@ namespace TestAdminApi
         [Fact]
         public void TestCantCreateUserExist()
         {
-            client = new HttpClient();
-            var url = "http://dlsadminapi.azurewebsites.net/api/users";
+            client = new HttpClient(); 
+            //var url = "http://dlsadminapi.azurewebsites.net/api/users";
+            //var url = "https://localhost:44374/api/users";
+
 
             var obj = new ExpandoObject();
             obj.TryAdd("isAdmin", true);
-            obj.TryAdd("username", "basdamgaard");
+            obj.TryAdd("username", "helloworld2");
             obj.TryAdd("password", "1234567890");
             obj.TryAdd("email", "seb@dam.com");
 
@@ -227,13 +229,13 @@ namespace TestAdminApi
             var content = client.PostAsync(url, stringcontent).Result;
 
             // Read
-            var userjson = client.GetStringAsync(url + "/basdamgaard/1234567890").Result;
+            var userjson = client.GetStringAsync(url + "/helloworld/1234567890").Result;
             var newObject = JsonConvert.DeserializeObject<ExpandoObject>(userjson);
 
             // Same username insert
             var obj2 = new ExpandoObject();
             obj2.TryAdd("isAdmin", true);
-            obj2.TryAdd("username", "basdamgaard");
+            obj2.TryAdd("username", "helloworld2");
             obj2.TryAdd("password", "987654321");
             obj2.TryAdd("email", "dam@seb.com");
 
