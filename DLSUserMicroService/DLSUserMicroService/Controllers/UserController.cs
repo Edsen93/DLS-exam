@@ -15,45 +15,45 @@ namespace DLSUserMicroService.Controllers
     public class ValuesController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<HttpResponseMessage> GetAllUsers()
+        public ActionResult<List<User>> GetAllUsers()
         {
             var conn = new DBConn();
             var users = conn.GetUsers();
             if (users.Count <= 0)
                 return Conflict("There are no users in the database");
             else
-                return Ok(users);
+                return users;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<HttpResponseMessage> GetUser(int id)
+        public ActionResult<User> GetUser(int id)
         {
             var conn = new DBConn();
             var user = conn.GetUser(id);
             if (user.UserId <= 0 || string.IsNullOrWhiteSpace(user.Username))
                 return Conflict("User with id " + id + " does not exist");
             else
-                return Ok(user);
+                return user;
         }
 
         [HttpGet("{username}/{password}")]
-        public ActionResult<HttpResponseMessage> Login(string username, string password)
+        public ActionResult<User> Login(string username, string password)
         {
             var conn = new DBConn();
             var user = conn.Login(username, password);
             if (user.UserId <= 0 || string.IsNullOrWhiteSpace(user.Username))
                 return Conflict("Wrong username or password");
             else
-                return Ok(user);
+                return user;
         }
 
         [HttpPost]
-        public ActionResult<HttpResponseMessage> CreateUser([FromBody]User value)
+        public ActionResult<User> CreateUser([FromBody]User value)
         {
             var conn = new DBConn();
             var user = conn.CreateUser(value);
             if (user != null)
-                return Ok(user);
+                return user;
 
             return Conflict("Username exist");
         }
