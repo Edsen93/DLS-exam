@@ -19,13 +19,13 @@ namespace si.ms.movieinfo.Controllers
             {
                 MoviePersistence mp = new MoviePersistence();
                 var movieList = mp.ReturnAllMovies();
-                if (movieList.Count == 0)
+                if (movieList.Count != 0)
                 {
-                    return Conflict("There is no movies in the database");
+                    return movieList;
                 }
                 else
                 {
-                    return mp.ReturnAllMovies();
+                    return Conflict("There is no movies in the database");
                 }
 
             }
