@@ -96,7 +96,7 @@ namespace AdminAPI.Controllers
                     var msg = await content.Content.ReadAsAsync<ExpandoObject>();
                     if (msg.Any(x => x.Key.ToLower() == "id"))
                     {
-                        neo4jmovie.TryAdd("id", msg.FirstOrDefault(x => x.Key.ToLower() == "id").Value);
+                        neo4jmovie.TryAdd(msg.FirstOrDefault(x => x.Key.ToLower() == "id").Key, msg.FirstOrDefault(x => x.Key.ToLower() == "id").Value);
                         //url = "https://localhost:44319/api/User";
                         url = "https://dlsrecommendmicroservice.azurewebsites.net/api/movie";
                         content = await client.PostAsJsonAsync<ExpandoObject>(url, neo4jmovie);

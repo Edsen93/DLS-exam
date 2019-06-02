@@ -111,9 +111,11 @@ namespace AdminAPI.Controllers
                     var msg = await content.Content.ReadAsAsync<ExpandoObject>();
                     if (msg.Any(x => x.Key.ToLower() == "userid"))
                     {
+                        var id = new ExpandoObject();
+                        id.TryAdd(msg.FirstOrDefault(x => x.Key.ToLower() == "userid").Key, msg.FirstOrDefault(x => x.Key.ToLower() == "userid").Value);
                         //url = "https://localhost:44319/api/User";
                         url = "https://dlsrecommendmicroservice.azurewebsites.net/api/User";
-                        content = await client.PostAsJsonAsync<ExpandoObject>(url, msg);
+                        content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
                         if (content.IsSuccessStatusCode)
                             return content;
                         else
