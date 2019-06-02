@@ -38,3 +38,4 @@ C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\o
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.RazorTargetAssemblyInfo.cache
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.dll
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.pdb
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSAdminAPI\AdminAPI\AdminAPI\obj\Debug\netcoreapp2.1\AdminAPI.csprojAssemblyReference.cache

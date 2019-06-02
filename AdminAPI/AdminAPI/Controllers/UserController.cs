@@ -96,30 +96,24 @@ namespace AdminAPI.Controllers
         {
             try
             {
-                var realUser = new ExpandoObject();
-                if (string.Equals(user.ElementAt(0).Key.ToLower(), "userid"))
+                if (user.Any(x => x.Key == "userid"))
                 {
-                    realUser.TryAdd(user.ElementAt(0).Key, user.ElementAt(0).Value);
-                    realUser.TryAdd(user.ElementAt(1).Key, user.ElementAt(1).Value);
-                    realUser.TryAdd(user.ElementAt(3).Key, user.ElementAt(3).Value);
-                    realUser.TryAdd(user.ElementAt(4).Key, user.ElementAt(4).Value);
+                    object id;
+                    var delted = user.Remove("userid", out id);
+                    if (!delted)
+                        return Conflict("Some went wrong");
                 }
-                else
-                    realUser = user;
-
                 //var url = "https://localhost:44320/api/users/";
                 var url = "https://dlsusermicroservice.azurewebsites.net/api/users/";
                 var content = await client.PostAsJsonAsync<ExpandoObject>(url, user);
                 if (content.IsSuccessStatusCode)
                 {
                     var msg = await content.Content.ReadAsAsync<ExpandoObject>();
-                    var id = new ExpandoObject();
-                    var result = id.TryAdd(msg.ElementAt(2).Key, msg.ElementAt(2).Value);
-                    if (result)
+                    if (msg.Any(x => x.Key == "userid"))
                     {
                         //url = "https://localhost:44319/api/User";
                         url = "https://dlsrecommendmicroservice.azurewebsites.net/api/User";
-                        content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
+                        content = await client.PostAsJsonAsync<ExpandoObject>(url, msg);
                         if (content.IsSuccessStatusCode)
                             return content;
                         else

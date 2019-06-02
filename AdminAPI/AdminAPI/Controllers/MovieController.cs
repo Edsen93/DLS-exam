@@ -72,33 +72,33 @@ namespace AdminAPI.Controllers
         {
             try
             {
-                var realMovie = new ExpandoObject();
-                if (string.Equals(movie.ElementAt(0).Key.ToLower(), "id"))
-                {
-                    realMovie.TryAdd(movie.ElementAt(1).Key, movie.ElementAt(1).Value);
-                    realMovie.TryAdd(movie.ElementAt(2).Key, movie.ElementAt(2).Value);
+                object id;
+                bool delted;
 
+                if (movie.Any(x => x.Key == "id"))
+                {
+                    delted = movie.Remove("id", out id);
+                    if (!delted)
+                        return Conflict("Some went wrong");
                 }
-                else
-                    realMovie = movie;
+                var neo4jmovie = movie;
+
+                delted = movie.Remove("genre", out id);
+                if (!delted)
+                    return Conflict("Some went wrong");
 
                 //var url = "https://localhost:44320/api/movieinfo/";
                 var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/";
-                var content = await client.PostAsJsonAsync<ExpandoObject>(url, realMovie);
+                var content = await client.PostAsJsonAsync<ExpandoObject>(url, movie);
                 if (content.IsSuccessStatusCode)
                 {
                     var msg = await content.Content.ReadAsAsync<ExpandoObject>();
-                    var id = new ExpandoObject();
-                    var result = id.TryAdd(msg.ElementAt(0).Key, msg.ElementAt(0).Value);
-                    if (result)
+                    if (msg.Any(x => x.Key == "id"))
                     {
-                        id.TryAdd(msg.ElementAt(1).Key, msg.ElementAt(1).Value);
-                        id.TryAdd(msg.ElementAt(2).Key, msg.ElementAt(2).Value);
-                        id.TryAdd(movie.ElementAt(3).Key, movie.ElementAt(3).Value);
-                       
+                        neo4jmovie.TryAdd("id", msg.FirstOrDefault(x => x.Key == "id").Value);
                         //url = "https://localhost:44319/api/User";
                         url = "https://dlsrecommendmicroservice.azurewebsites.net/api/movie";
-                        content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
+                        content = await client.PostAsJsonAsync<ExpandoObject>(url, neo4jmovie);
                         if (content.IsSuccessStatusCode)
                             return content;
                         else
@@ -121,38 +121,33 @@ namespace AdminAPI.Controllers
         {
             try
             {
-                var realMovie = new ExpandoObject();
-                if (string.Equals(movie.ElementAt(0).Key.ToLower(), "id"))
+                object movieid;
+                bool delted;
+
+                if (movie.Any(x => x.Key == "id"))
                 {
-                    realMovie.TryAdd(movie.ElementAt(1).Key, movie.ElementAt(1).Value);
-                    realMovie.TryAdd(movie.ElementAt(2).Key, movie.ElementAt(2).Value);
-
+                    delted = movie.Remove("id", out movieid);
+                    if (!delted)
+                        return Conflict("Some went wrong");
                 }
-                else
-                    realMovie = movie;
+                var neo4jmovie = movie;
 
-                var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/users/{0}", id);
-                var content = await client.PutAsJsonAsync<ExpandoObject>(url, realMovie);
+                delted = movie.Remove("genrelist", out movieid);
+                if (!delted)
+                    return Conflict("Some went wrong");
+
+                var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id);
+                var content = await client.PutAsJsonAsync<ExpandoObject>(url, movie);
                 if (content.IsSuccessStatusCode)
                 {
-                    var msg = await content.Content.ReadAsAsync<ExpandoObject>();
-                    var obj = new ExpandoObject();
-                    var result = obj.TryAdd(msg.ElementAt(1).Key, msg.ElementAt(1).Value);
-                    if (result)
-                    {
-                        obj.TryAdd(msg.ElementAt(2).Key, msg.ElementAt(2).Value);
-                        obj.TryAdd(movie.ElementAt(3).Key, movie.ElementAt(3).Value);
-
-                        //url = "https://localhost:44319/api/User";
-                        url = "https://dlsrecommendmicroservice.azurewebsites.net/api/movie";
-                        content = await client.PutAsJsonAsync<ExpandoObject>(url, obj);
-                        if (content.IsSuccessStatusCode)
-                            return content;
-                        else
-                            return Conflict("Something went wrong adding id to Neo4J");
-                    }
+                    neo4jmovie.TryAdd("id", id);
+                    //url = "https://localhost:44319/api/User";
+                    url = "https://dlsrecommendmicroservice.azurewebsites.net/api/movie/" + id;
+                    content = await client.PutAsJsonAsync<ExpandoObject>(url, neo4jmovie);
+                    if (content.IsSuccessStatusCode)
+                        return content;
                     else
-                        return Conflict("Could not find user id");
+                        return Conflict("Something went wrong updating to Neo4J");
                 }
                 else
                     return BadRequest("Id does not exist or is not an integer");
