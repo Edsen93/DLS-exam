@@ -53,6 +53,7 @@
 
 
             <ListBox 
+                    IsEnabled="False"
                     Grid.Row="2" 
                     Grid.Column="1" 
                     Margin="0,2,0,2" 

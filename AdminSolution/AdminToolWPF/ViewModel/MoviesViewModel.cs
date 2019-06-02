@@ -140,7 +140,7 @@ namespace AdminToolWPF.ViewModel
                 try
                 {
                     var test = QuerryHandler.GetMovies();
-                    tcs.SetResult(test);
+                    tcs.SetResult(test.OrderBy(x=>x.Title).ToList());
                 }
                 catch (Exception)
                 {
