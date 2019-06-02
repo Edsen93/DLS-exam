@@ -20,6 +20,7 @@ namespace si.ms.movieinfo
         }
         public Movie SaveMovie(Movie movieToSave)
         {
+            openConn();
             string sqlString = String.Format("INSERT INTO movies(title, releaseYear) VALUES ('{0}',{1}) RETURNING id, title,releaseYear ", movieToSave.title.ToString(), movieToSave.releaseYear);
 
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
@@ -40,9 +41,8 @@ namespace si.ms.movieinfo
         }
 
         public void deleteMovie(int id)
-        //DELETE FROM movies WHERE id = {0};
-
         {
+            openConn();
             string sqlString = String.Format("DELETE FROM movies WHERE id = {0}", id);
 
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
@@ -53,8 +53,8 @@ namespace si.ms.movieinfo
         }
         // Search on title, handle input error, will always return a list.
         public List<Movie> SearchForMovie(String text)
-
         {
+            openConn();
             List<Movie> movies = new List<Movie>();
             string sqlString = String.Format("Select * From search_movie('{0}') LIMIT 10", text);
 
@@ -79,7 +79,6 @@ namespace si.ms.movieinfo
         }
 
         public List<Movie> ReturnAllMovies()
-
         {
             openConn();
             List<Movie> movies = new List<Movie>();
@@ -137,8 +136,7 @@ namespace si.ms.movieinfo
         public Movie findOneMovie(int id)
         {
 
-
-
+            openConn();
             string sqlString = String.Format("Select * From movies WHERE id ={0}", id);
             Movie m = new Movie();
 
@@ -161,8 +159,8 @@ namespace si.ms.movieinfo
 
         // Update movie bases on ID.
         public Movie updateMovie(int id, Movie movieToDelete)
-
         {
+            openConn();
             string sqlString = String.Format("UPDATE movies SET title = '{0}', releaseYear = {1} WHERE id = {2} RETURNING id, title,releaseYear", movieToDelete.title, movieToDelete.releaseYear, id);
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
             cmd.ExecuteNonQuery();
