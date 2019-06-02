@@ -38,7 +38,7 @@ namespace si.ms.movieinfo
             }
             catch (NpgsqlException ex)
             {
-
+                throw ex;
             }
 
         }
