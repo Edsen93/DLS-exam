@@ -24,15 +24,26 @@ namespace AdminAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<List<ExpandoObject>>> GetRecommendation(int id)
         {
-            var url = string.Format("https://dlsrecommendmicroservice.azurewebsites.net/api/Recommendation/{0}", id);
-            string content = await client.GetStringAsync(url);
-            List<ExpandoObject> recommends;
-            if (!string.IsNullOrEmpty(content))
-                recommends = JsonConvert.DeserializeObject<List<ExpandoObject>>(content);
-            else
-                recommends = null;
+            try
+            {
+                if (id < 0)
+                    return Conflict("Id can't below 0");
 
-            return recommends;
+                var url = string.Format("https://dlsrecommendmicroservice.azurewebsites.net/api/Recommendation/{0}", id);
+                var content = await client.GetAsync(url);
+
+                if (content.IsSuccessStatusCode)
+                {
+                    var obj = await content.Content.ReadAsAsync<List<ExpandoObject>>();
+                    return obj;
+                }
+                else
+                    return Conflict("No recommendations were found");
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
         }
     }
 }

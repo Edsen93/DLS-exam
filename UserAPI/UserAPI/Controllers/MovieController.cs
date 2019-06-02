@@ -24,30 +24,68 @@ namespace AdminAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ExpandoObject>>> GetAllMovies()
         {
-            var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo";
-            string content = await client.GetStringAsync(url);
-            List<ExpandoObject> movies;
-            if (!string.IsNullOrEmpty(content))
-                movies = JsonConvert.DeserializeObject<List<ExpandoObject>>(content);
-            else
-                movies = null;
+            try
+            {
+                var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo";
+                var content = await client.GetAsync(url);
 
-            return movies;
+                if (content.IsSuccessStatusCode)
+                {
+                    var obj = await content.Content.ReadAsAsync<List<ExpandoObject>>();
+                    return obj;
+                }
+                else
+                    return Conflict("No entries in database");
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ExpandoObject>> GetMovie(int id)
         {
-            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id.ToString());
-            string content = await client.GetStringAsync(url);
+            try
+            {
+                //var url = string.Format("https://localhost:44320/api/movieinfo/{0}", id.ToString());
+                var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id);
+                var content = await client.GetAsync(url);
 
-            ExpandoObject movie;
-            if (!string.IsNullOrEmpty(content))
-                movie = JsonConvert.DeserializeObject<ExpandoObject>(content);
-            else
-                movie = null;
+                if (content.IsSuccessStatusCode)
+                {
+                    var obj = await content.Content.ReadAsAsync<ExpandoObject>();
+                    return obj;
+                }
+                else
+                    return Conflict("No entry with id " + id);
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
+        }
 
-            return movie;
+        [HttpGet("search/{title}")]
+        public async Task<ActionResult<List<ExpandoObject>>> FindMovie(string title)
+        {
+            try
+            {
+                var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/title/{0}", title);
+                var content = await client.GetAsync(url);
+
+                if (content.IsSuccessStatusCode)
+                {
+                    var obj = await content.Content.ReadAsAsync<List<ExpandoObject>>();
+                    return obj;
+                }
+                else
+                    return NotFound("No movie with " + title + " was found");
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
         }
     }
 }

@@ -1,0 +1,14 @@
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\bin\Debug\netcoreapp2.1\TestUserApi.deps.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\bin\Debug\netcoreapp2.1\TestUserApi.runtimeconfig.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\bin\Debug\netcoreapp2.1\TestUserApi.runtimeconfig.dev.json
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\bin\Debug\netcoreapp2.1\TestUserApi.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\bin\Debug\netcoreapp2.1\TestUserApi.pdb
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\obj\Debug\netcoreapp2.1\TestUserApi.csprojAssemblyReference.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\obj\Debug\netcoreapp2.1\TestUserApi.csproj.CoreCompileInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\obj\Debug\netcoreapp2.1\TestUserApi.AssemblyInfoInputs.cache
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\obj\Debug\netcoreapp2.1\TestUserApi.AssemblyInfo.cs
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\obj\Debug\netcoreapp2.1\TestUserApi.dll
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserAPI\UserAPI\TestUserApi\obj\Debug\netcoreapp2.1\TestUserApi.pdb
