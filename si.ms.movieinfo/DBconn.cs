@@ -15,31 +15,7 @@ namespace si.ms.movieinfo
 
         public MoviePersistence()
         {
-            String myConnectionString;
 
-            string server = "127.0.0.1";
-            string database = "MovieInfo";
-            string user = "admin";
-            string password = "admin";
-
-            //myConnectionString = String.Format("Server=movieinfo.postgres.database.azure.com;Database=mo;Port=5432;User Id=dlsgroup2019@movieinfo;Password=Recomender2019;Ssl Mode=Require;");
-
-            myConnectionString = String.Format("Server=dlsmovieinfodb.postgres.database.azure.com;Database=MovieInfo;Port=5432;User Id=dls@dlsmovieinfodb;Password=Recommender2019;Ssl Mode=Require;");
-
-
-            try
-            {
-
-
-                conn = new NpgsqlConnection(myConnectionString);
-                conn.Open();
-
-
-            }
-            catch (NpgsqlException ex)
-            {
-                throw ex;
-            }
 
         }
         public Movie SaveMovie(Movie movieToSave)
@@ -105,6 +81,7 @@ namespace si.ms.movieinfo
         public List<Movie> ReturnAllMovies()
 
         {
+            openConn();
             List<Movie> movies = new List<Movie>();
             string sqlString = String.Format("Select * From movies");
 
@@ -127,6 +104,36 @@ namespace si.ms.movieinfo
 
 
         }
+
+        private void openConn()
+        {
+            String myConnectionString;
+
+            string server = "127.0.0.1";
+            string database = "MovieInfo";
+            string user = "admin";
+            string password = "admin";
+
+            //myConnectionString = String.Format("Server=movieinfo.postgres.database.azure.com;Database=mo;Port=5432;User Id=dlsgroup2019@movieinfo;Password=Recomender2019;Ssl Mode=Require;");
+
+            myConnectionString = String.Format("Server=dlsmovieinfodb.postgres.database.azure.com;Database=MovieInfo;Port=5432;User Id=dls@dlsmovieinfodb;Password=Recommender2019;Ssl Mode=Require;");
+
+
+            try
+            {
+
+
+                conn = new NpgsqlConnection(myConnectionString);
+                conn.Open();
+
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+        }
+
         public Movie findOneMovie(int id)
         {
 
