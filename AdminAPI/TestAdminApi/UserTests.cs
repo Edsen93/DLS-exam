@@ -19,7 +19,7 @@ namespace TestAdminApi
             client = new HttpClient();
             var check = client.GetAsync(string.Format("http://dlsadminapi.azurewebsites.net/api/users/{0}", 4)).Result;
 
-            Assert.True(check.IsSuccessStatusCode);
+            Assert.True(check.IsSuccessStatusCode, "Service is not running");
         }
 
         [Fact]

@@ -26,6 +26,9 @@ namespace AdminAPI.Controllers
         {
             try
             {
+                if(id < 0)
+                    return Conflict("Id can't below 0");
+
                 var url = string.Format("https://dlsrecommendmicroservice.azurewebsites.net/api/Recommendation/{0}", id);
                 var content = await client.GetAsync(url);
 
