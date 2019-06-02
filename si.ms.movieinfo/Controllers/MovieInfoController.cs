@@ -18,9 +18,15 @@ namespace si.ms.movieinfo.Controllers
             try
             {
                 MoviePersistence mp = new MoviePersistence();
-                var movielist = mp.GetAllMovies();
-
-                return movielist;
+                var movieList = mp.ReturnAllMovies();
+                if (movieList.Count != 0)
+                {
+                    return movieList;
+                }
+                else
+                {
+                    return Conflict("There is no movies in the database");
+                }
 
             }
             catch (Exception ex)
@@ -53,7 +59,7 @@ namespace si.ms.movieinfo.Controllers
 
         // GET: api/Default/5
         [HttpGet("{id}", Name = "Get")]
-        public ActionResult<String>  Get(int id)
+        public ActionResult<Movie>  Get(int id)
         {
             try
             {
@@ -67,8 +73,7 @@ namespace si.ms.movieinfo.Controllers
                 }
                 else
                 {
-                    //return foundMovie;
-                    return "online";
+                    return foundMovie;
 
 
                 }
