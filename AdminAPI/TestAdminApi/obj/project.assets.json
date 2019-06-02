@@ -5843,23 +5843,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SebastianDamgaard\\.nuget\\packages\\": {},
+    "C:\\Users\\edsen\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\TestAdminApi\\TestAdminApi.csproj",
+      "projectUniqueName": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\TestAdminApi\\TestAdminApi.csproj",
       "projectName": "TestAdminApi",
-      "projectPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\TestAdminApi\\TestAdminApi.csproj",
-      "packagesPath": "C:\\Users\\SebastianDamgaard\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SebastianDamgaard\\Source\\repos\\DLS-exam\\DLSAdminAPI\\AdminAPI\\TestAdminApi\\obj\\",
+      "projectPath": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\TestAdminApi\\TestAdminApi.csproj",
+      "packagesPath": "C:\\Users\\edsen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\edsen\\source\\repos\\DLS-exam\\AdminAPI\\TestAdminApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\SebastianDamgaard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\edsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
