@@ -44,7 +44,7 @@ namespace si.ms.movieinfo
         {
             openConn();
             List<Movie> movies = new List<Movie>();
-            string sqlString = String.Format("Select * From search_movie('{0}') LIMIT 10", text);
+            string sqlString = String.Format("Select * From search_movie('{0}') LIMIT 10", "toy");
 
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
             NpgsqlDataReader dataReader = cmd.ExecuteReader();
