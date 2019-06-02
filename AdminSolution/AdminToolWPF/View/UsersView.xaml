@@ -77,9 +77,9 @@
 
         <Button Grid.Row="4"  Content="Edit selected User" Height="25" FontWeight="SemiBold" Command="{Binding EditUserCommand}"   Margin="5,5,5,0"></Button>
 
-        <Button Grid.Row="5"  Content="Delete selected User" Height="25" FontWeight="SemiBold"  Command="{Binding DeleteUserCommand}"  Margin="5,5,5,0"></Button>
+        <Button Grid.Row="5"  Content="Delete selected User" Height="25" FontWeight="SemiBold"  Command="{Binding DeleteUserCommand}"  Margin="5,5,5,5"></Button>
 
-        <Button Grid.Row="6"  Command="{Binding LoadCommand}"   Content="Reaload Users" Height="25" FontWeight="SemiBold"  Margin="5,5,5,5"></Button>
+        <Button Grid.Row="6" Visibility="Visible" Command="{Binding LoadCommand}"   Content="Reaload Users" Height="25" FontWeight="SemiBold"  Margin="5,5,5,5"></Button>
 
 
 

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AdminToolWPF.ViewModel
 {
@@ -83,26 +84,22 @@ namespace AdminToolWPF.ViewModel
             }
         }
 
+        private System.Windows.Window parentwin = null;
 
         public IRelayCommand SaveUserCommand => new RelayCommand(() =>
         {
-            _user.UserName = this.UserName;
-            _user.IsAdmin = this.IsAdmin;
-            _user.Email = this.Email;
-            _user.Password = this.Password;
-
-            if (IsNewUser)
-                QuerryHandler.CreateUser(_user);
-            else
-            {
-                var test =  QuerryHandler.UpdateUser(_user).Result;
-
-            }
-
+            DoWork();
         });
 
-        public UserViewModel(User user = null)
+        public IRelayCommand CloseCommand => new RelayCommand(() =>
         {
+            parentwin?.Close();
+        });
+
+        public UserViewModel(User user = null, System.Windows.Window parentwin = null)
+        {
+            this.parentwin = parentwin;
+
             if (user == null || user.UserId < 1)
             {
                 IsNewUser = true;
@@ -122,5 +119,30 @@ namespace AdminToolWPF.ViewModel
             RaisePropertyChanged();
         }
 
+
+        
+        private async void DoWork()
+        {
+            if (IsNewUser)
+                _user = new User();
+
+            _user.UserName = this.UserName;
+            _user.IsAdmin = this.IsAdmin;
+            _user.Email = this.Email;
+            _user.Password = this.Password;
+
+            bool result = false;
+            if (IsNewUser)
+                result = await QuerryHandler.CreateUser(_user);
+            else
+                result = await QuerryHandler.UpdateUser(_user);
+
+            String message = result ? "User was saved" : "User was NOT saved";
+            MessageBoxIcon icon = result ? MessageBoxIcon.Information : MessageBoxIcon.Error;
+            MessageBox.Show( message, "Save result", MessageBoxButtons.OK);
+
+
+            parentwin?.Close();
+        }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AdminToolWPF.View"
              mc:Ignorable="d" 
-             d:DesignHeight="250" d:DesignWidth="800">
+             d:DesignHeight="250" d:DesignWidth="400">
 
     <Grid Background="white" Margin="5">
 
@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -55,7 +55,7 @@
             </Grid.ColumnDefinitions>
 
             <Button  Grid.Column="0" Content="Save changes" Command="{Binding SaveUserCommand}" Margin="0,0,2,0"/>
-            <Button Grid.Column="1"  Content="Cancel" Margin="2,0,0,0"/>
+            <Button Grid.Column="1"  Content="Cancel"  Command="{Binding CloseCommand}"  Margin="2,0,0,0"/>
         </Grid>
 
     </Grid>

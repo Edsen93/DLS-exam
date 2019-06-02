@@ -31,28 +31,21 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand NewUserCommand => new RelayCommand(() =>
         {
-            Window window = new Window
-            {
-                Title = "New User",
-                Content = new UserView(SelectedUser)
+            Window window = new Window { Title = "New User" };
 
-            };
-            window.Height = 190;
-            window.Width = 250;
+            window.Content = new UserView(null, window);
+            window.Height = 220;
+            window.Width = 260;
             window.ShowDialog();
         });
 
 
         public IRelayCommand EditUserCommand => new RelayCommand(() =>
         {
-            Window window = new Window
-            {
-                Title = "New User",
-                Content = new UserView(SelectedUser)
-
-            };
-            window.Height = 190;
-            window.Width = 250;
+            Window window = new Window {Title = "New User" };
+            window.Content = new UserView(SelectedUser, window);
+            window.Height = 220;
+            window.Width = 260;
             window.ShowDialog();
         }, () => SelectedUser != null);
 
@@ -68,13 +61,26 @@ namespace AdminToolWPF.ViewModel
 
             if (rsltMessageBox == MessageBoxResult.Yes)
             {
-                // run code
+                DoWorkDelete();
             }
 
         }, () => SelectedUser != null);
 
 
 
+        private async void DoWorkDelete()
+        {
+            bool result = await QuerryHandler.DeleteUser(_selectedUser.UserId);
+            
+            string sMessageBoxText = result ? "User is deleted": "User is NOT deleted";
+            string sCaption = "Delete User";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.OK;
+            MessageBoxImage icnMessageBox = result ? MessageBoxImage.None : MessageBoxImage.Error;
+            MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+            DoWork();
+        }
 
 
         public User _selectedUser;
@@ -129,23 +135,36 @@ namespace AdminToolWPF.ViewModel
             TaskCompletionSource<List<User>> tcs = new TaskCompletionSource<List<User>>();
             Task.Run(() =>
             {
-                var test = QuerryHandler.GetUsers();
-                tcs.SetResult(test);
+                try
+                {
+                    var test = QuerryHandler.GetUsers();
+                    tcs.SetResult(test.OrderBy(x => x.UserName).ToList());
+                }
+                catch (Exception)
+                {
+                    tcs.SetResult(null);
+                }
             });
             //return the Task
             return tcs.Task;
         }
 
-        private async void DoWork()
+        public async void DoWork()
         {
             //ApplicationViewModel.WorkInProgress = true;
 
             List<User> uList = await DoWorkAsync();
-            ObservableCollection<User> movies = new ObservableCollection<User>(uList);
+            ObservableCollection<User> users = new ObservableCollection<User>(uList);
+
+            if (users is null || users.Count is 0)
+            {
+                MessageBoxResult rsltMessageBox = MessageBox.Show("There was no registered users, please check the connection", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             usersCollection = new CollectionViewSource
             {
-                Source = movies
+                Source = users
             };
             usersCollection.Filter += (o, e) =>
             {
@@ -169,54 +188,7 @@ namespace AdminToolWPF.ViewModel
             RaisePropertyChanged("SourceCollection");
             //ApplicationViewModel.GetInstance().WorkInProgress = false;
         }
-
-
-
-        //private void GetUsers(bool loadUsers = false)
-        //{
-
-        //    ObservableCollection<User> users = new ObservableCollection<User>();
-
-        //    if (loadUsers)
-        //    {
-        //        //Connect and load users
-        //    }
-        //    else
-        //    {
-        //        for (int i = 1; i < 1000; i++)
-        //        {
-        //            users.Add(new User()
-        //            {
-        //                UserId = i,
-        //                UserName = "Name" + i,
-        //                IsAdmin =  i % 2 == 0,
-        //            });
-        //        }
-        //    }
-
-        //    usersCollection = new CollectionViewSource
-        //    {
-        //        Source = users
-        //    };
-        //    usersCollection.Filter += (o, e) =>
-        //    {
-        //        if (string.IsNullOrEmpty(FilterText))
-        //        {
-        //            e.Accepted = true;
-        //            return;
-        //        }
-
-        //        User usr = e.Item as User;
-        //        if (usr.UserName.ToUpper().Contains(FilterText.ToUpper()))
-        //        {
-        //            e.Accepted = true;
-        //        }
-        //        else
-        //        {
-        //            e.Accepted = false;
-        //        }
-        //    };
-        //}
+        
 
     }
 }

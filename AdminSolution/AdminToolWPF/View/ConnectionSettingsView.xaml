@@ -53,7 +53,7 @@
         <StackPanel Grid.Column="0" Orientation="Vertical">
 
 
-            <TextBlock Text="Connection Settings" FontSize="30"></TextBlock>
+            <TextBlock Text="Connection Settings" Padding="5,0,0,0"  FontSize="30"></TextBlock>
 
 
             <GroupBox Grid.Row="0" Header="Admin Service" Padding="5"  Margin="0,15,0,0">
@@ -71,15 +71,15 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Address" Grid.Row="0" Grid.Column="0" />
-                    <TextBlock Text="UserName" Grid.Row="1" Grid.Column="0" />
-                    <TextBlock Text="UserPassword" Grid.Row="2" Grid.Column="0" Margin="0,0,15,0" />
+                    <TextBlock Text="User Name" Grid.Row="1" Grid.Column="0" />
+                    <TextBlock Text="User Password" Grid.Row="2" Grid.Column="0" Margin="0,0,15,0" />
 
                     <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=AdminServiceAddress}" />
                     <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=AdminServiceUserName}" />
                     <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=AdminServiceUserPassword}"/>
 
 
-                    <Button  Grid.Row="4" Grid.ColumnSpan="3"  Content="Test Recommendation Neo4j Connection" Command="{Binding TestAdminConnection}" Margin="0,5,0,0"/>
+                    <Button  Grid.Row="4" Grid.ColumnSpan="3"  Content="Test Connection to Admin Service" Command="{Binding TestAdminConnection}" Margin="0,5,0,0"/>
                 </Grid>
 
             </GroupBox>

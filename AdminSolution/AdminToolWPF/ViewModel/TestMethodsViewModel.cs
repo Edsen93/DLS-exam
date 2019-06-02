@@ -92,6 +92,16 @@ namespace AdminToolWPF.ViewModel
 
 
 
+        private string _movieSearchTest;
+        public string MovieSearchText
+        {
+            get { return _movieTitle; }
+            set
+            {
+                _movieSearchTest = value;
+                RaisePropertyChanged("MovieSearchText");
+            }
+        }
 
 
 
@@ -114,14 +124,8 @@ namespace AdminToolWPF.ViewModel
    
         public IRelayCommand GetMovieByTitleCommand => new RelayCommand(() =>
         {
-            //CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/{MovieTitle.Replace(" ", "%20")}";
-            //ConsoleText = RequestHandler.Get(CurrentSentQuerry);
-
-            //JToken parsedJson = JToken.Parse(ConsoleText);
-            //ConsoleText = parsedJson.ToString(Formatting.Indented);
-            ConsoleText = "Not implemented";
-
-            //TO DO
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movies/search/{MovieSearchText}";
+            DoWork();
 
         }, () => !String.IsNullOrWhiteSpace(MovieTitle));
 
@@ -130,7 +134,7 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand GetAllUsersCommand => new RelayCommand(() =>
         {
-            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/user";
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/users";
 
             DoWork();
 
@@ -139,7 +143,7 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand GetUserByIDCommand => new RelayCommand(() =>
         {
-            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/user/{UserID}";
+            CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/users/{UserID}";
 
             DoWork();
 
@@ -190,9 +194,15 @@ namespace AdminToolWPF.ViewModel
 
             string result = await DoWorkAsync();
 
-
-            JToken parsedJson = JToken.Parse(result);
-            ConsoleText = parsedJson.ToString(Formatting.Indented);
+            try
+            {
+                JToken parsedJson = JToken.Parse(result);
+                ConsoleText = parsedJson.ToString(Formatting.Indented);
+            }
+            catch (Exception)
+            {
+                ConsoleText = result;
+            }
         }
 
 

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace AdminToolWPF.ViewModel
@@ -80,15 +81,17 @@ namespace AdminToolWPF.ViewModel
             
         });
 
-        //public IRelayCommand CancelCommand => new RelayCommand((UserControl uc) =>
-        //{
-
-        //    //uc.Close();
-
-        //});
-
-        public MovieViewModel(MoviesViewModel parrent = null, Movie model = null)
+        public IRelayCommand CancelCommand => new RelayCommand(() =>
         {
+            _parrentWindow.Close();
+        });
+
+        private Window _parrentWindow = null;
+
+        public MovieViewModel(MoviesViewModel parrent = null, Movie model = null, Window parrentWindow = null)
+        {
+            _parrentWindow = parrentWindow;
+            
             if (IsInDesignMode || ViewModelBase.IsInDesignModeStatic)
             {
                 model = new Movie()

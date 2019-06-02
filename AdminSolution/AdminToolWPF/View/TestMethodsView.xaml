@@ -8,7 +8,7 @@
              DataContext="{Binding TestMethodsViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Background="White">
+    <Grid Background="White" Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -59,9 +59,9 @@
                     <Button Grid.Row="3" Grid.Column="1"  Content="Get Movie by ID" Command="{Binding GetMovieByIDCommand}" />
 
 
-                    <TextBlock Text="Get Movie by Title" FontSize="14" FontWeight="Medium" Grid.Row="4" Grid.Column="0" />
+                    <TextBlock Text="Find Movie by search Title" FontSize="14" FontWeight="Medium" Grid.Row="4" Grid.Column="0" />
                     <TextBox Grid.Row="5" Grid.Column="0" Text="{Binding Path=MovieTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <Button Grid.Row="5" Grid.Column="1" Content="Get Movie by Title" Command="{Binding GetMovieByTitleCommand}"  />
+                    <Button Grid.Row="5" Grid.Column="1" Content="Find Movie search by Title" Command="{Binding GetMovieByTitleCommand}"  />
 
                 </Grid>
             </GroupBox>
@@ -112,7 +112,7 @@
 
 
 
-                    <TextBlock Text="Get Recommendations for User ID" FontSize="14" FontWeight="Medium" Grid.Row="2" Grid.Column="0" />
+                    <TextBlock Text="Get Recommendations for User ID" FontSize="14" FontWeight="Medium" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" />
                     <TextBox Grid.Row="3" Grid.Column="0"  Text="{Binding Path=UserIDRecommendation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PreviewTextInput="NumberValidationTextBox" />
                     <Button Grid.Row="3" Grid.Column="1"  Content="Get User by ID"  Command="{Binding GetMovieRecommendationCommand}" />
 
@@ -143,18 +143,20 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Querry" FontSize="12" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="0,0,10,0"></TextBlock>
+            <TextBlock Text="Querry" FontSize="12" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="10,0,10,0"></TextBlock>
             <TextBox 
                 Text="{Binding CurrentSentQuerry}"
                 Grid.Row="0"
                 Grid.Column="1"
                 VerticalAlignment="Center"
-                Grid.ColumnSpan="2">
+                Grid.ColumnSpan="1">
             </TextBox>
 
             <Button 
                 Grid.Row="0"
                 Grid.Column="2"
+                Margin="5,0,0,0"
+                Width="90"
                 VerticalAlignment="Center"
                 Command="{Binding SendQuerry}" 
                 Content="Send Request">
@@ -163,6 +165,7 @@
             
 
             <TextBox 
+                Margin="5,0,5,5"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"

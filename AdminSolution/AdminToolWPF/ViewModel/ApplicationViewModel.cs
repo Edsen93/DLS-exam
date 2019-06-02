@@ -49,11 +49,11 @@ namespace AdminToolWPF
             // Add available pages
             PageViewModels.Add(new MoviesViewModel());
             PageViewModels.Add(new UsersViewModel());
-            PageViewModels.Add(new SettingsViewModel());
             PageViewModels.Add(new TestMethodsViewModel());
+            PageViewModels.Add(new SettingsViewModel());
 
             // Set starting page
-            CurrentPageViewModel = PageViewModels[0];
+            CurrentPageViewModel = PageViewModels[3];
         }
 
         private static ApplicationViewModel singleton = new ApplicationViewModel();

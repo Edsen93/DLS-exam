@@ -79,7 +79,7 @@
             </Grid.ColumnDefinitions>
 
             <Button  Grid.Column="0" Command="{Binding UpdateMovieCommand}" Content="Save changes" Margin="0,0,2,0"/>
-            <Button Grid.Column="1"   Content="Cancel" Margin="2,0,0,0"/>
+            <Button Grid.Column="1" Command="{Binding CancelCommand}"  Content="Cancel" Margin="2,0,0,0"/>
             <!--<Button Grid.Column="1"  Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=MovieWindowWindow}"  Content="Cancel" Margin="2,0,0,0"/>-->
         </Grid>
                 

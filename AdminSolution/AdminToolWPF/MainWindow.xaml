@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:AdminToolWPF.ViewModel"
         xmlns:view="clr-namespace:AdminToolWPF.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
+        Title="MainWindow" Height="550" Width="950">
     
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:MoviesViewModel}">
@@ -16,11 +16,11 @@
         <DataTemplate DataType="{x:Type viewModel:UsersViewModel}">
             <view:UsersView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
-            <view:ConnectionSettingsView />
-        </DataTemplate>
         <DataTemplate DataType="{x:Type viewModel:TestMethodsViewModel}">
             <view:TestMethodsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+            <view:ConnectionSettingsView />
         </DataTemplate>
 
         <BooleanToVisibilityConverter x:Key="BoolToVis" />

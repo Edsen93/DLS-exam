@@ -23,10 +23,10 @@ namespace AdminToolWPF.View
     public partial class MovieView : UserControl
     {
         MovieViewModel context;
-        public MovieView(MoviesViewModel parrent = null, Movie model = null)
+        public MovieView(MoviesViewModel parrent = null, Movie model = null, Window parrentWindow = null)
         {
             InitializeComponent();
-            context = new MovieViewModel(parrent, model);
+            context = new MovieViewModel(parrent, model, parrentWindow);
             DataContext = context;
         }
 

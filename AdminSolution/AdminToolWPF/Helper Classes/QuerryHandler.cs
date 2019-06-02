@@ -56,22 +56,18 @@ namespace AdminToolWPF.Helper_Classes
             return true;
         }
 
+        
 
-
-        public static bool UpdateMovie(Movie movie)
+        public async static Task<bool> UpdateMovie(Movie movie)
         {
+            string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movies/{movie.id}";
+            var client = new HttpClient();
+            var content = await client.PutAsJsonAsync<Movie>(CurrentSentQuerry, movie);
 
-            string CurrentSentQuerry = $"{ConnetionSettings.AdminServiceAddress}/api/movie/{movie.id}";
-            
-
-            string serialized = JsonConvert.SerializeObject(movie);
-            
-
-            var result = RequestHandler.Post(CurrentSentQuerry, serialized,"Movie","PUT");
-            
-
-            return true;
+            return content.IsSuccessStatusCode;
         }
+
+
 
 
         /// <summary>
@@ -90,16 +86,24 @@ namespace AdminToolWPF.Helper_Classes
             return result;
         }
 
-
-        public static bool CreateUser(User user)
+        public async static Task<bool> DeleteUser(int? userId)
         {
-            string CurrentSentQuerry = $"{"http://dlsadminapi.azurewebsites.net"}/api/users/{user.UserId}";
+            string CurrentSentQuerry = string.Format("http://dlsadminapi.azurewebsites.net/api/users/{0}", userId);
+            var client = new HttpClient();
+            var content = await client.DeleteAsync(CurrentSentQuerry);
 
-            string serialized = JsonConvert.SerializeObject(user);
+            return content.IsSuccessStatusCode;
+        }
 
-            var result = RequestHandler.Post(CurrentSentQuerry, serialized, "User", "POST");
+        
+        public async static Task<bool> CreateUser(User user)
+        {
+            string CurrentSentQuerry = "http://dlsadminapi.azurewebsites.net/api/users";
+            //string CurrentSentQuerry = string.Format("https://localhost:44374/api/users/{0}", user.UserId);
+            var client = new HttpClient();
+            var content = await client.PostAsJsonAsync<User>(CurrentSentQuerry, user);
 
-            return true;
+            return content.IsSuccessStatusCode;
         }
 
 
@@ -109,7 +113,7 @@ namespace AdminToolWPF.Helper_Classes
             //string CurrentSentQuerry = string.Format("https://localhost:44374/api/users/{0}", user.UserId);
             var client = new HttpClient();
             var content = await client.PutAsJsonAsync<User>(CurrentSentQuerry, user);
-            
+
             return content.IsSuccessStatusCode;
         }
 

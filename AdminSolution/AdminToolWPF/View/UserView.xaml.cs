@@ -22,10 +22,10 @@ namespace AdminToolWPF.View
     /// </summary>
     public partial class UserView : UserControl
     {
-        public UserView(User user= null)
+        public UserView(User user= null, Window parrent = null)
         {
             InitializeComponent();
-            DataContext = new UserViewModel(user);
+            DataContext = new UserViewModel(user, parrent);
         }
     }
 }

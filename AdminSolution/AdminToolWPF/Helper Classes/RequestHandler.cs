@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AdminToolWPF.Model;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -66,6 +69,27 @@ namespace AdminToolWPF.Helper_Classes
         //}
 
 
+
+        //public static string Get(string uri)
+        //{
+        //    try
+        //    {
+        //        HttpClient client = new HttpClient();
+        //        var content = client.GetAsync(uri).Result;
+        //        if (content.IsSuccessStatusCode)
+        //        {
+        //            var user = content.Content.ReadAsAsync<List<User>>().Result;
+        //            string retunval = JsonConvert.SerializeObject(user);
+        //            return retunval;
+        //        }
+        //        else
+        //            return null;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return ex.ToString();
+        //    }
+        //}
 
         public static string Get(string uri)
         {

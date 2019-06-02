@@ -31,12 +31,8 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand NewMovieCommand => new RelayCommand(() =>
         {
-            Window window = new Window
-            {
-                Title = "New Movie",
-                Content = new MovieView(this, null)
-
-            };
+            Window window = new Window { Title = "New Movie" };
+            window.Content = new MovieView(this, null, window);
             window.Height = 300;
             window.Width = 500;
             window.ShowDialog();
@@ -45,13 +41,8 @@ namespace AdminToolWPF.ViewModel
 
         public IRelayCommand EditMovieCommand => new RelayCommand(() =>
         {
-            MovieView current = new MovieView(this, SelectedMovie);
-
-            Window window = new Window
-            {
-                Title = "New Movie",
-                Content = current
-            };
+            Window window = new Window { Title = "New Movie" };
+            window.Content = new MovieView(this, SelectedMovie, window);
             window.Height = 300;
             window.Width = 500;
             window.ShowDialog();
@@ -146,8 +137,16 @@ namespace AdminToolWPF.ViewModel
             TaskCompletionSource<List<Movie>> tcs = new TaskCompletionSource<List<Movie>>();
             Task.Run(() =>
             {
-                var test = QuerryHandler.GetMovies();
-                tcs.SetResult(test);
+                try
+                {
+                    var test = QuerryHandler.GetMovies();
+                    tcs.SetResult(test);
+                }
+                catch (Exception)
+                {
+                    tcs.SetResult(null);
+                }
+                
             });
             //return the Task
             return tcs.Task;
@@ -158,6 +157,14 @@ namespace AdminToolWPF.ViewModel
             //ApplicationViewModel.WorkInProgress = true;
 
             List<Movie> mList = await DoWorkAsync();
+
+            if (mList is null || mList.Count is 0)
+            {
+                MessageBoxResult rsltMessageBox = MessageBox.Show("There was no registered movie, please check the connection", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
             ObservableCollection<Movie> movies = new ObservableCollection<Movie>(mList);
 
             moviesCollection = new CollectionViewSource
