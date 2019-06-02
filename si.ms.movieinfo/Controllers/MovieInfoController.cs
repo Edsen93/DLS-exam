@@ -31,7 +31,7 @@ namespace si.ms.movieinfo.Controllers
             }
             catch (Exception ex)
             {
-                return Conflict(ex.Message);
+                return Conflict("E1 "+ex.Message);
 
             }
         }
@@ -46,14 +46,14 @@ namespace si.ms.movieinfo.Controllers
                 var movielist = mp.SearchForMovie(title);
                 if (movielist.Count <= 0)
                 {
-                    return Conflict("No movie was found");
+                    return Conflict("E2 " + "No movie was found");
                 }
                 return movielist;
             }
             catch (Exception ex)
             {
 
-                return Conflict(ex.Message);
+                return Conflict("E3 " + ex.Message);
             }
         }
 
@@ -80,7 +80,7 @@ namespace si.ms.movieinfo.Controllers
             }
             catch (Exception ex)
             {
-                return Conflict(ex.Message);
+                return Conflict("E4 " + ex.Message);
                 
             }
         }
@@ -102,13 +102,13 @@ namespace si.ms.movieinfo.Controllers
                 else
                 {
                     var errorstr = String.Format("{0} Is not a valid year", m.releaseYear);
-                    return Conflict(errorstr);
+                    return Conflict("E5 " + errorstr);
                 }
 
             }
             catch (Exception ex)
             {
-                return Conflict(ex.Message);
+                return Conflict("E6 " + ex.Message);
                 
             }          
           
