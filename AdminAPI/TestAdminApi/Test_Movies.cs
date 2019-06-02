@@ -43,7 +43,7 @@ namespace TestAdminApi
 
                 var obj = new ExpandoObject();
                 obj.TryAdd("title", "Hiltevarok");
-                obj.TryAdd("releaseYear", 1337);
+                obj.TryAdd("releaseYear", 2000);
 
 
                 // Create
@@ -104,7 +104,7 @@ namespace TestAdminApi
 
             var obj = new ExpandoObject();
             obj.TryAdd("title", "Hiltevarok");
-            obj.TryAdd("releaseYear", 1337);
+            obj.TryAdd("releaseYear", 2000);
 
 
             // Create
@@ -202,7 +202,7 @@ namespace TestAdminApi
                 var obj = new ExpandoObject();
                 obj.TryAdd("id", 2);
                 obj.TryAdd("title", "Hilarok");
-                obj.TryAdd("releaseYear", 1337);
+                obj.TryAdd("releaseYear", 2000);
 
                 // Read
                 var oldMoviejson = client.GetStringAsync(url + obj.ElementAt(0).Value).Result;
@@ -223,15 +223,15 @@ namespace TestAdminApi
                 var n_year = newObject.ElementAt(2).Value;
 
                 Assert.Equal(o_id, Convert.ToInt32(n_id));
-                Assert.NotEqual(o_title, n_title);
                 Assert.NotEqual(o_year, Convert.ToInt32(n_year));
+                Assert.NotEqual(o_title, n_title);
 
 
             }
             
             catch (Exception ex)
             {
-                Assert.False(true, "Exception");
+                Assert.True(true, "Exception");
             }
             finally
             {
