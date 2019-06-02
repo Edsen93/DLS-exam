@@ -234,6 +234,9 @@ namespace MovieRecommendationLibrary.Neo4jDatabaseHandler
 
         public void SetMovieGenre(long movieId, List<Genre> genreList)
         {
+            if (genreList is null)
+                return;
+
             try
             {
                 DeleteMovieGenreRelation(movieId);
