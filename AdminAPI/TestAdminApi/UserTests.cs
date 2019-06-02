@@ -258,8 +258,8 @@ namespace TestAdminApi
         public void TestDeleteNotUserNotExist()
         {
             client = new HttpClient();
-            var url = "https://localhost:44374/api/users/-9999";
-            //var url = "http://dlsadminapi.azurewebsites.net/api/users/-9999";
+            //var url = "https://localhost:44374/api/users/-9999";
+            var url = "http://dlsadminapi.azurewebsites.net/api/users/-9999";
 
             // Delete
             var contentdel = client.DeleteAsync(url).Result;

@@ -35,8 +35,8 @@ namespace TestAdminApi
         public void TestRecommendationWithWrongId()
         {
             client = new HttpClient();
-            var url = string.Format("https://localhost:44374/api/recommendation/{0}", -9999);
-            //var url = string.Format("https://dlsadminapi.azurewebsites.net/api/recommendation/{0}", -9999)
+            //var url = string.Format("https://localhost:44374/api/recommendation/{0}", -9999);
+            var url = string.Format("https://dlsadminapi.azurewebsites.net/api/recommendation/{0}", -9999);
 
             var check = client.GetAsync(url).Result;
 
