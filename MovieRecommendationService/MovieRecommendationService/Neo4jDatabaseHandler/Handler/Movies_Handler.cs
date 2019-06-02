@@ -29,7 +29,7 @@ namespace MovieRecommendationLibrary.Neo4jDatabaseHandler
                         .WithParam("newMovie", newMovie)
                         .ExecuteWithoutResults();
 
-                    if (list?.Count > 0)
+                    if (list != null || list.Count > 0)
                         SetMovieGenre(newMovie.MovieId, list);
                 }
             }
