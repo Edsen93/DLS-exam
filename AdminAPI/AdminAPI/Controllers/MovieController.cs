@@ -19,6 +19,7 @@ namespace AdminAPI.Controllers
         public MovieController()
         {
             client = new HttpClient();
+
         }
 
         [HttpGet]
