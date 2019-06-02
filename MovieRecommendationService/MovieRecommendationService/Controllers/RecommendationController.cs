@@ -24,14 +24,15 @@ namespace MovieRecommendationService.Controllers
                 Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
                 result = handler.GetRecommendationOnUser(id);
 
-                if (result == null)
-                    return NotFound();
-
             }
             catch (Exception ex)
             {
                 return NotFound();
             }
+
+            if (result == null)
+                return NotFound();
+
             return result;
         }
 

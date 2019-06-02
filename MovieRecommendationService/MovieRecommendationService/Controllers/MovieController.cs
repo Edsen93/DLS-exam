@@ -25,8 +25,8 @@ namespace MovieRecommendationService.Controllers
             }
             catch (Exception)
             {
+                return StatusCode(500);
             }
-            return null;
         }
 
         // GET: api/Movie/5
@@ -41,7 +41,11 @@ namespace MovieRecommendationService.Controllers
             }
             catch (Exception ex)
             {
+                return StatusCode(500);
             }
+
+            if (result is null)
+                return NotFound();
 
             return result;
         }
@@ -64,7 +68,7 @@ namespace MovieRecommendationService.Controllers
 
         // POST: api/Movie
         [HttpPost]
-        public void Post([FromBody] Movie value)
+        public IActionResult Post([FromBody] Movie value)
         {
             try
             {
@@ -74,21 +78,31 @@ namespace MovieRecommendationService.Controllers
             }
             catch (Exception)
             {
+                return StatusCode(500);
             }
+            return Ok();
         }
 
         //// PUT: api/Movie/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Movie value)
+        public IActionResult Put(int id, [FromBody] Movie value)
         {
-            value.MovieId = id;
-            Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
-            handler.UpdateMovie(value);
+            try
+            {
+                value.MovieId = id;
+                Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
+                handler.UpdateMovie(value);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+            return Ok();
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public IActionResult Delete(long id)
         {
             try
             {
@@ -97,7 +111,9 @@ namespace MovieRecommendationService.Controllers
             }
             catch (Exception)
             {
+                return StatusCode(500);
             }
+            return Ok();
         }
     }
 }

@@ -34,21 +34,26 @@ namespace MovieRecommendationService.Controllers
         [HttpGet("{id}", Name = "Get")]
         public ActionResult<User> Get(long id)
         {
+            User result = null;
             try
             {
                 Neo4jDatabaseHandler handler = Neo4jHandler.GetHandler();
-                return handler.GetUser(id);
+                result = handler.GetUser(id);
             }
             catch (Exception)
             {
-
+                return StatusCode(500);
             }
-            return null;
+
+            if (result is null)
+                return NotFound();
+            else
+                return result;
         }
 
         // POST: api/User
         [HttpPost]
-        public void Post([FromBody] User value)
+        public ActionResult Post([FromBody] User value)
         {
             try
             {
@@ -57,11 +62,13 @@ namespace MovieRecommendationService.Controllers
             }
             catch (Exception)
             {
+                return StatusCode(500);
             }
+            return Ok();
         }
 
         [HttpGet("ratemovie/{uId}/{mId}/{rating}")]
-        public void PostUserRating(long uId, long mId, int rating)
+        public ActionResult PostUserRating(long uId, long mId, int rating)
         {
             try
             {
@@ -70,19 +77,21 @@ namespace MovieRecommendationService.Controllers
             }
             catch (Exception)
             {
+                return StatusCode(500);
             }
 
+            return Ok();
         }
 
-        // PUT: api/User/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// PUT: api/User/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public ActionResult Delete(long id)
         {
             try
             {
@@ -91,7 +100,10 @@ namespace MovieRecommendationService.Controllers
             }
             catch (Exception)
             {
+                return StatusCode(500);
             }
+
+            return Ok();
 
         }
     }
