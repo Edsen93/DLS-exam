@@ -251,9 +251,9 @@ namespace TestAdminApi
         public  void TestSearchForMovie()
         {
             var obj = new ExpandoObject();
-            obj.TryAdd("id", 2);
-            obj.TryAdd("title", "Jumanji");
-            obj.TryAdd("releaseYear", 1995);
+            obj.TryAdd("id", 15818);
+            obj.TryAdd("title", "Jumbo");
+            obj.TryAdd("releaseYear", 1962);
 
             client = new HttpClient();
             var url = "http://dlsadminapi.azurewebsites.net/api/movies/search/";
