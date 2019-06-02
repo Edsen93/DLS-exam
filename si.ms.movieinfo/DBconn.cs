@@ -146,7 +146,7 @@ namespace si.ms.movieinfo
                 m.releaseYear = dataReader.GetInt32(2);
             }
 
-
+            conn.Close();
             return m;
 
 
