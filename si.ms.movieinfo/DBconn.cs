@@ -82,7 +82,8 @@ namespace si.ms.movieinfo
         {
             openConn();
             List<Movie> movies = new List<Movie>();
-            string sqlString = String.Format("Select * From movies");
+            
+            string sqlString = String.Format("Select id, title, releaseYear  From movies");
 
             NpgsqlCommand cmd = new NpgsqlCommand(sqlString, conn);
             NpgsqlDataReader dataReader = cmd.ExecuteReader();
