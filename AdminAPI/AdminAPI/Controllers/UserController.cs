@@ -109,13 +109,16 @@ namespace AdminAPI.Controllers
                         //url = "https://localhost:44319/api/User";
                         url = "https://dlsrecommendmicroservice.azurewebsites.net/api/User";
                         content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
-                        return content;
+                        if (content.IsSuccessStatusCode)
+                            return content;
+                        else
+                            return Conflict("Something went wrong deleting from Neo4J");
                     }
                     else
-                        return BadRequest();
+                        return Conflict("Could not find user id");
                 }
                 else
-                    return Conflict("User exist");
+                    return Conflict("User exist or does not match the user object");
             }
             catch (Exception ex)
             {
@@ -130,7 +133,10 @@ namespace AdminAPI.Controllers
             {
                 var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id);
                 var content = await client.PutAsJsonAsync<ExpandoObject>(url, user);
-                return content;
+                if (content.IsSuccessStatusCode)
+                    return content;
+                else
+                    return BadRequest("Id does not exist or is not an integer");
             }
             catch (Exception ex)
             {
@@ -149,10 +155,13 @@ namespace AdminAPI.Controllers
                 {
                     url = string.Format("https://dlsrecommendmicroservice.azurewebsites.net/api/User/{0}", id);
                     content = await client.DeleteAsync(url);
-                    return content;
+                    if (content.IsSuccessStatusCode)
+                        return content;
+                    else
+                        return Conflict("Something went wrong deleting from Neo4J");
                 }
                 else
-                    return content;
+                    return BadRequest("Id does not exist or is not an integer");
             }
             catch (Exception ex)
             {

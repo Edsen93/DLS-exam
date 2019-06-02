@@ -258,12 +258,109 @@ namespace TestAdminApi
         public void TestDeleteNotUserNotExist()
         {
             client = new HttpClient();
-            var url = "http://dlsadminapi.azurewebsites.net/api/users/-9999";
+            var url = "https://localhost:44374/api/users/-9999";
+            //var url = "http://dlsadminapi.azurewebsites.net/api/users/-9999";
 
             // Delete
             var contentdel = client.DeleteAsync(url).Result;
 
-            Assert.False(contentdel.IsSuccessStatusCode, "Deleted a value it was not supposed to");
+            Assert.False(contentdel.IsSuccessStatusCode, "Deleted a user it was not supposed to");
+        }
+
+        [Fact]
+        public void TestDeleteIsInt()
+        {
+            client = new HttpClient();
+            var url = "http://dlsadminapi.azurewebsites.net/api/users/hello";
+
+            // Delete
+            var contentdel = client.DeleteAsync(url).Result;
+
+            Assert.False(contentdel.IsSuccessStatusCode, "Deleted a user it was not supposed to");
+        }
+
+        [Fact]
+        public void TestUpdateUserNotExist()
+        {
+            client = new HttpClient();
+            var url = "http://dlsadminapi.azurewebsites.net/api/users/-9999";
+
+            var obj = new ExpandoObject();
+            obj.TryAdd("isAdmin", true);
+            obj.TryAdd("username", "sebastian");
+            obj.TryAdd("password", "1234567890");
+            obj.TryAdd("email", "seb@dam.com");
+
+            // Update
+            var jsonObject = JsonConvert.SerializeObject(obj);
+            var stringcontent = new StringContent(jsonObject);
+            stringcontent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+            var content = client.PutAsync(url, stringcontent).Result;
+
+            Assert.False(content.IsSuccessStatusCode, "Updated a user it was not supposed to");
+        }
+
+        [Fact]
+        public void TestUpdateIsInt()
+        {
+            client = new HttpClient();
+            var url = "http://dlsadminapi.azurewebsites.net/api/users/hello";
+
+            var obj = new ExpandoObject();
+            obj.TryAdd("isAdmin", true);
+            obj.TryAdd("username", "sebastian");
+            obj.TryAdd("password", "1234567890");
+            obj.TryAdd("email", "seb@dam.com");
+
+            // Update
+            var jsonObject = JsonConvert.SerializeObject(obj);
+            var stringcontent = new StringContent(jsonObject);
+            stringcontent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+            var content = client.PutAsync(url, stringcontent).Result;
+
+            Assert.False(content.IsSuccessStatusCode, "Updated a user it was not supposed to");
+        }
+
+        [Fact]
+        public void TestUpdateNotExistingProperties()
+        {
+            client = new HttpClient();
+            var url = "http://dlsadminapi.azurewebsites.net/api/users/5";
+
+            var obj = new ExpandoObject();
+            obj.TryAdd("asdask", true);
+            obj.TryAdd("blabla", "sebastian");
+            obj.TryAdd("kasds", "1234567890");
+            obj.TryAdd("fskdm", "seb@dam.com");
+
+            // Update
+            var jsonObject = JsonConvert.SerializeObject(obj);
+            var stringcontent = new StringContent(jsonObject);
+            stringcontent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+            var content = client.PutAsync(url, stringcontent).Result;
+
+            Assert.False(content.IsSuccessStatusCode, "Updated a user it was not supposed to");
+        }
+
+        [Fact]
+        public void TestUpdateWithWrongDataType()
+        {
+            client = new HttpClient();
+            var url = "http://dlsadminapi.azurewebsites.net/api/users/hello";
+
+            var obj = new ExpandoObject();
+            obj.TryAdd("isAdmin", "adfojoaf");
+            obj.TryAdd("username", "sebastian");
+            obj.TryAdd("password", "1234567890");
+            obj.TryAdd("email", "seb@dam.com");
+
+            // Update
+            var jsonObject = JsonConvert.SerializeObject(obj);
+            var stringcontent = new StringContent(jsonObject);
+            stringcontent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+            var content = client.PutAsync(url, stringcontent).Result;
+
+            Assert.False(content.IsSuccessStatusCode, "Updated a user with a wrong data type");
         }
     }
 }
