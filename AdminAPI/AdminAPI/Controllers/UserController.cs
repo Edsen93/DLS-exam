@@ -96,6 +96,17 @@ namespace AdminAPI.Controllers
         {
             try
             {
+                var realUser = new ExpandoObject();
+                if (string.Equals(user.ElementAt(2).Key.ToLower(), "userid"))
+                {
+                    realUser.TryAdd(user.ElementAt(0).Key, user.ElementAt(0).Value);
+                    realUser.TryAdd(user.ElementAt(1).Key, user.ElementAt(1).Value);
+                    realUser.TryAdd(user.ElementAt(3).Key, user.ElementAt(3).Value);
+                    realUser.TryAdd(user.ElementAt(4).Key, user.ElementAt(4).Value);
+                }
+                else
+                    realUser = user;
+
                 //var url = "https://localhost:44320/api/users/";
                 var url = "https://dlsusermicroservice.azurewebsites.net/api/users/";
                 var content = await client.PostAsJsonAsync<ExpandoObject>(url, user);
@@ -112,7 +123,7 @@ namespace AdminAPI.Controllers
                         if (content.IsSuccessStatusCode)
                             return content;
                         else
-                            return Conflict("Something went wrong deleting from Neo4J");
+                            return Conflict("Something went wrong adding id to Neo4J");
                     }
                     else
                         return Conflict("Could not find user id");
