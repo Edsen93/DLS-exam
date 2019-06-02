@@ -53,7 +53,7 @@ namespace si.ms.movieinfo.Controllers
 
         // GET: api/Default/5
         [HttpGet("{id}", Name = "Get")]
-        public ActionResult<Movie>  Get(int id)
+        public ActionResult<String>  Get(int id)
         {
             try
             {
@@ -67,7 +67,8 @@ namespace si.ms.movieinfo.Controllers
                 }
                 else
                 {
-                    return foundMovie;
+                    //return foundMovie;
+                    return "online";
 
 
                 }
