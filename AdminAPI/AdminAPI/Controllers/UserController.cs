@@ -52,7 +52,7 @@ namespace AdminAPI.Controllers
             try
             {
                 //var url = string.Format("https://localhost:44320/api/users/{0}", id.ToString());
-                var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id.ToString());
+                var url = string.Format("https://dlsusermicroservice.azurewebsites.net/api/users/{0}", id);
                 var content = await client.GetAsync(url);
 
                 if (content.IsSuccessStatusCode)
@@ -97,7 +97,7 @@ namespace AdminAPI.Controllers
             try
             {
                 var realUser = new ExpandoObject();
-                if (string.Equals(user.ElementAt(2).Key.ToLower(), "userid"))
+                if (string.Equals(user.ElementAt(0).Key.ToLower(), "userid"))
                 {
                     realUser.TryAdd(user.ElementAt(0).Key, user.ElementAt(0).Value);
                     realUser.TryAdd(user.ElementAt(1).Key, user.ElementAt(1).Value);

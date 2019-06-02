@@ -24,72 +24,189 @@ namespace AdminAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ExpandoObject>>> GetAllMovies()
         {
-            var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo";
-            string content = await client.GetStringAsync(url);
-            List<ExpandoObject> movies;
-            if (!string.IsNullOrEmpty(content))
-                movies = JsonConvert.DeserializeObject<List<ExpandoObject>>(content);
-            else
-                movies = null;
+            try
+            {
+                var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo";
+                var content = await client.GetAsync(url);
 
-            return movies;
+                if (content.IsSuccessStatusCode)
+                {
+                    var obj = await content.Content.ReadAsAsync<List<ExpandoObject>>();
+                    return obj;
+                }
+                else
+                    return Conflict("No entries in database");
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ExpandoObject>> GetMovie(int id)
         {
-            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id.ToString());
-            string content = await client.GetStringAsync(url);
+            try
+            {
+                //var url = string.Format("https://localhost:44320/api/movieinfo/{0}", id.ToString());
+                var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id);
+                var content = await client.GetAsync(url);
 
-            ExpandoObject movie;
-            if (!string.IsNullOrEmpty(content))
-                movie = JsonConvert.DeserializeObject<ExpandoObject>(content);
-            else
-                movie = null;
-
-            return movie;
+                if (content.IsSuccessStatusCode)
+                {
+                    var obj = await content.Content.ReadAsAsync<ExpandoObject>();
+                    return obj;
+                }
+                else
+                    return Conflict("No entry with id " + id);
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
         }
 
         [HttpPost]
-        public async Task CreateMovie([FromBody]ExpandoObject movie)
+        public async Task<ActionResult<HttpResponseMessage>> CreateMovie([FromBody]ExpandoObject movie)
         {
-            var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/";
-            var content = await client.PostAsJsonAsync<ExpandoObject>(url, movie);
-            if (content.IsSuccessStatusCode)
+            try
             {
-                    //url = "https://localhost:44319/api/Movie";
-                    url = "https://dlsrecommendmicroservice.azurewebsites.net/api/Movie";
-                    content = await client.PostAsJsonAsync<ExpandoObject>(url, movie);
+                var realMovie = new ExpandoObject();
+                if (string.Equals(movie.ElementAt(0).Key.ToLower(), "id"))
+                {
+                    realMovie.TryAdd(movie.ElementAt(1).Key, movie.ElementAt(1).Value);
+                    realMovie.TryAdd(movie.ElementAt(2).Key, movie.ElementAt(2).Value);
+
+                }
+                else
+                    realMovie = movie;
+
+                //var url = "https://localhost:44320/api/movieinfo/";
+                var url = "https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/";
+                var content = await client.PostAsJsonAsync<ExpandoObject>(url, realMovie);
+                if (content.IsSuccessStatusCode)
+                {
+                    var msg = await content.Content.ReadAsAsync<ExpandoObject>();
+                    var id = new ExpandoObject();
+                    var result = id.TryAdd(msg.ElementAt(0).Key, msg.ElementAt(0).Value);
+                    if (result)
+                    {
+                        id.TryAdd(msg.ElementAt(1).Key, msg.ElementAt(1).Value);
+                        id.TryAdd(msg.ElementAt(2).Key, msg.ElementAt(2).Value);
+                        id.TryAdd(movie.ElementAt(3).Key, movie.ElementAt(3).Value);
+                       
+                        //url = "https://localhost:44319/api/User";
+                        url = "https://dlsrecommendmicroservice.azurewebsites.net/api/movie";
+                        content = await client.PostAsJsonAsync<ExpandoObject>(url, id);
+                        if (content.IsSuccessStatusCode)
+                            return content;
+                        else
+                            return Conflict("Something went wrong adding id to Neo4J");
+                    }
+                    else
+                        return Conflict("Could not find user id");
+                }
+                else
+                    return Conflict("User exist or does not match the user object");
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
             }
         }
 
         [HttpPut("{id}")]
-        public async Task UpdateMovie(int id, [FromBody]ExpandoObject movie)
+        public async Task<ActionResult<HttpResponseMessage>> UpdateMovie(int id, [FromBody]ExpandoObject movie)
         {
-            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id.ToString());
-            var content = await client.PutAsJsonAsync<ExpandoObject>(url, movie);
+            try
+            {
+                var realMovie = new ExpandoObject();
+                if (string.Equals(movie.ElementAt(0).Key.ToLower(), "id"))
+                {
+                    realMovie.TryAdd(movie.ElementAt(1).Key, movie.ElementAt(1).Value);
+                    realMovie.TryAdd(movie.ElementAt(2).Key, movie.ElementAt(2).Value);
+
+                }
+                else
+                    realMovie = movie;
+
+                var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/users/{0}", id);
+                var content = await client.PutAsJsonAsync<ExpandoObject>(url, realMovie);
+                if (content.IsSuccessStatusCode)
+                {
+                    var msg = await content.Content.ReadAsAsync<ExpandoObject>();
+                    var obj = new ExpandoObject();
+                    var result = obj.TryAdd(msg.ElementAt(1).Key, msg.ElementAt(1).Value);
+                    if (result)
+                    {
+                        obj.TryAdd(msg.ElementAt(2).Key, msg.ElementAt(2).Value);
+                        obj.TryAdd(movie.ElementAt(3).Key, movie.ElementAt(3).Value);
+
+                        //url = "https://localhost:44319/api/User";
+                        url = "https://dlsrecommendmicroservice.azurewebsites.net/api/movie";
+                        content = await client.PutAsJsonAsync<ExpandoObject>(url, obj);
+                        if (content.IsSuccessStatusCode)
+                            return content;
+                        else
+                            return Conflict("Something went wrong adding id to Neo4J");
+                    }
+                    else
+                        return Conflict("Could not find user id");
+                }
+                else
+                    return BadRequest("Id does not exist or is not an integer");
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
         }
 
         [HttpGet("search/{title}")]
-        public async Task<List<ExpandoObject>> FindMovie(string title)
+        public async Task<ActionResult<List<ExpandoObject>>> FindMovie(string title)
         {
-            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/title/{0}", title);
-            var content = await client.GetStringAsync(url);
+            try
+            {
+                var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/title/{0}", title);
+                var content = await client.GetAsync(url);
 
-            List<ExpandoObject> movies;
-            if (!string.IsNullOrEmpty(content))
-                movies = JsonConvert.DeserializeObject<List<ExpandoObject>>(content);
-            else
-                movies = null;
-
-            return movies;
+                if (content.IsSuccessStatusCode)
+                {
+                    var obj = await content.Content.ReadAsAsync<List<ExpandoObject>>();
+                    return obj;
+                }
+                else
+                    return NotFound("No movie with " + title + " was found");
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
-        public async Task DeleteUser(int id)
+        public async Task<ActionResult<HttpResponseMessage>> DeleteMovie(int id)
         {
-            var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/movieinfo/{0}", id.ToString());
-            var content = await client.DeleteAsync(url);
+            try
+            {
+                var url = string.Format("https://dlsmoviemicroservice.azurewebsites.net/api/users/{0}", id);
+                var content = await client.DeleteAsync(url);
+                if (content.IsSuccessStatusCode)
+                {
+                    url = string.Format("https://dlsrecommendmicroservice.azurewebsites.net/api/User/{0}", id);
+                    content = await client.DeleteAsync(url);
+                    if (content.IsSuccessStatusCode)
+                        return content;
+                    else
+                        return Conflict("Something went wrong deleting from Neo4J");
+                }
+                else
+                    return BadRequest("Id does not exist or is not an integer");
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
         }
     }
 }
