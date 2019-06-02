@@ -96,10 +96,10 @@ namespace AdminAPI.Controllers
         {
             try
             {
-                if (user.Any(x => x.Key == "userid"))
+                if (user.Any(x => x.Key.ToLower() == "userid"))
                 {
                     object id;
-                    var delted = user.Remove("userid", out id);
+                    var delted = user.Remove(user.FirstOrDefault(x => x.Key.ToLower() == "userid").Key, out id);
                     if (!delted)
                         return Conflict("Some went wrong");
                 }
@@ -109,7 +109,7 @@ namespace AdminAPI.Controllers
                 if (content.IsSuccessStatusCode)
                 {
                     var msg = await content.Content.ReadAsAsync<ExpandoObject>();
-                    if (msg.Any(x => x.Key == "userid"))
+                    if (msg.Any(x => x.Key.ToLower() == "userid"))
                     {
                         //url = "https://localhost:44319/api/User";
                         url = "https://dlsrecommendmicroservice.azurewebsites.net/api/User";

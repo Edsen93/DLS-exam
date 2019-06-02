@@ -72,18 +72,19 @@ namespace AdminAPI.Controllers
         {
             try
             {
-                object id;
+                object movieid;
                 bool delted;
 
-                if (movie.Any(x => x.Key == "id"))
+                if (movie.Any(x => x.Key.ToLower() == "id"))
                 {
-                    delted = movie.Remove("id", out id);
+                    delted = movie.Remove(movie.FirstOrDefault(x => x.Key.ToLower() == "id").Key, out movieid);
                     if (!delted)
                         return Conflict("Some went wrong");
                 }
+
                 var neo4jmovie = movie;
 
-                delted = movie.Remove("genre", out id);
+                delted = movie.Remove(movie.FirstOrDefault(x => x.Key.ToLower() == "genrelist").Key, out movieid);
                 if (!delted)
                     return Conflict("Some went wrong");
 
@@ -93,9 +94,9 @@ namespace AdminAPI.Controllers
                 if (content.IsSuccessStatusCode)
                 {
                     var msg = await content.Content.ReadAsAsync<ExpandoObject>();
-                    if (msg.Any(x => x.Key == "id"))
+                    if (msg.Any(x => x.Key.ToLower() == "id"))
                     {
-                        neo4jmovie.TryAdd("id", msg.FirstOrDefault(x => x.Key == "id").Value);
+                        neo4jmovie.TryAdd("id", msg.FirstOrDefault(x => x.Key.ToLower() == "id").Value);
                         //url = "https://localhost:44319/api/User";
                         url = "https://dlsrecommendmicroservice.azurewebsites.net/api/movie";
                         content = await client.PostAsJsonAsync<ExpandoObject>(url, neo4jmovie);
@@ -124,15 +125,16 @@ namespace AdminAPI.Controllers
                 object movieid;
                 bool delted;
 
-                if (movie.Any(x => x.Key == "id"))
-                {
-                    delted = movie.Remove("id", out movieid);
+                if (movie.Any(x => x.Key.ToLower() == "id"))
+                { 
+                    delted = movie.Remove(movie.FirstOrDefault(x => x.Key.ToLower() == "id").Key, out movieid);
                     if (!delted)
                         return Conflict("Some went wrong");
                 }
+                
                 var neo4jmovie = movie;
 
-                delted = movie.Remove("genrelist", out movieid);
+                delted = movie.Remove(movie.FirstOrDefault(x => x.Key.ToLower() == "genrelist").Key, out movieid);
                 if (!delted)
                     return Conflict("Some went wrong");
 
