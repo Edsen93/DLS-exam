@@ -50,7 +50,7 @@ namespace TestAdminApi
             var newObject = JsonConvert.DeserializeObject<ExpandoObject>(userjson);
 
             // Delete
-            var contentdel = client.DeleteAsync(url + '/' + newObject.ElementAt(2).Value).Result;
+            var contentdel = client.DeleteAsync(url + '/' + newObject.FirstOrDefault(x => x.Key.ToLower() == "userid").Value).Result;
 
             //// count
             jsonObject = client.GetStringAsync(url).Result;
@@ -59,7 +59,7 @@ namespace TestAdminApi
             Assert.False(preCount == newcount, "Object not added");
             Assert.True(content.IsSuccessStatusCode, "Something went wrong when posting");
             Assert.True(contentdel.IsSuccessStatusCode, "Something went wrong when deleting");
-            Assert.True(string.Equals(newObject.ElementAt(1).Value, obj.ElementAt(1).Value), "Object could not be found after being inserted");
+            Assert.True(string.Equals(obj.FirstOrDefault(x => x.Key.ToLower() == "username").Value, newObject.FirstOrDefault(x => x.Key.ToLower() == "username").Value), "Object could not be found after being inserted");
             Assert.True(preCount == postCount, "Object not deleted");
         }
 
@@ -117,7 +117,7 @@ namespace TestAdminApi
             // Delete first
             HttpResponseMessage contentdel;
             var deletedone = false;
-            var userone = allusers.FirstOrDefault(x => x.ElementAt(1).Value.ToString() == "basdamgaard");
+            var userone = allusers.FirstOrDefault(x => x.FirstOrDefault(a => a.Key.ToLower() == "username").Value == "basdamgaard");
             if (userone != null)
             {
                 contentdel = client.DeleteAsync(url + '/' + userone.ElementAt(2).Value).Result;
