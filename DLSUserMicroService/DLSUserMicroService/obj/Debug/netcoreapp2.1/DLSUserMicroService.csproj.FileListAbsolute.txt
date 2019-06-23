@@ -18,7 +18,6 @@ C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\bin\Debug\netcoreapp2.1\DLSUserMicroService.runtimeconfig.dev.json
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\bin\Debug\netcoreapp2.1\DLSUserMicroService.dll
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\bin\Debug\netcoreapp2.1\DLSUserMicroService.pdb
-C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\obj\Debug\netcoreapp2.1\DLSUserMicroService.csprojAssemblyReference.cache
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\obj\Debug\netcoreapp2.1\DLSUserMicroService.csproj.CoreCompileInputs.cache
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\obj\Debug\netcoreapp2.1\DLSUserMicroService.RazorAssemblyInfo.cache
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\obj\Debug\netcoreapp2.1\DLSUserMicroService.RazorAssemblyInfo.cs
@@ -28,3 +27,4 @@ C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\obj\Debug\netcoreapp2.1\DLSUserMicroService.RazorTargetAssemblyInfo.cache
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\obj\Debug\netcoreapp2.1\DLSUserMicroService.dll
 C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\obj\Debug\netcoreapp2.1\DLSUserMicroService.pdb
+C:\Users\SebastianDamgaard\Source\repos\DLS-exam\DLSUserMicroService\Edsen93\DLS-exam\DLSUserMicroService\DLSUserMicroService\obj\Debug\netcoreapp2.1\DLSUserMicroService.csprojAssemblyReference.cache

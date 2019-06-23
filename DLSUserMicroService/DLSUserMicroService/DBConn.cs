@@ -10,10 +10,10 @@ namespace UserMicroServiceASP
     public class DBConn
     {
         // Azure
-        string connection = "Server=userinfopostgresdb.postgres.database.azure.com;Database=users;Port=5432;User Id=dlsgroup2019@userinfopostgresdb;Password=Recommender2019;Ssl Mode=Require;";
+        //string connection = "Server=userinfopostgresdb.postgres.database.azure.com;Database=users;Port=5432;User Id=dlsgroup2019@userinfopostgresdb;Password=Recommender2019;Ssl Mode=Require;";
 
         // Localhost
-        //string connection = "Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=users";
+        string connection = "Host=localhost;Username=postgres;Password=9p8zhrtwk;Database=postgres";
 
         public User CreateUser(User user)
         {

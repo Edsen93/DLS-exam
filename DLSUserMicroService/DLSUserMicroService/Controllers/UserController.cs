@@ -13,14 +13,20 @@ namespace DLSUserMicroService.Controllers
 {
     [Route("api/users")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class UserController : ControllerBase
     {
+        DBConn conn;
+
+        public UserController()
+        {
+            conn = new DBConn();
+        }
+
         [HttpGet]
         public ActionResult<List<User>> GetAllUsers()
         {
             try
             {
-                var conn = new DBConn();
                 var users = conn.GetUsers();
                 if (users.Count <= 0)
                     return Conflict("There are no users in the database");
@@ -38,7 +44,6 @@ namespace DLSUserMicroService.Controllers
         {
             try
             {
-                var conn = new DBConn();
                 var user = conn.GetUser(id);
                 if (user.UserId <= 0 || string.IsNullOrWhiteSpace(user.Username))
                     return Conflict("User with id " + id + " does not exist");
@@ -56,7 +61,6 @@ namespace DLSUserMicroService.Controllers
         {
             try
             {
-                var conn = new DBConn();
                 var user = conn.Login(username, password);
                 if (user.UserId <= 0 || string.IsNullOrWhiteSpace(user.Username))
                     return Conflict("Wrong username or password");
@@ -74,7 +78,6 @@ namespace DLSUserMicroService.Controllers
         {
             try
             {
-                var conn = new DBConn();
                 var user = conn.CreateUser(value);
                 if (user != null)
                     return user;
@@ -92,7 +95,6 @@ namespace DLSUserMicroService.Controllers
         {
             try
             {
-                var conn = new DBConn();
                 var affectedrows = conn.UpdateUser(id, value);
                 if (affectedrows > 0)
                     return Ok("Row(s) updated");
@@ -110,7 +112,6 @@ namespace DLSUserMicroService.Controllers
         {
             try
             {
-                var conn = new DBConn();
                 var affectedrows = conn.DeleteUser(id);
                 if (affectedrows > 0)
                     return Ok("Row(s) deleted");
