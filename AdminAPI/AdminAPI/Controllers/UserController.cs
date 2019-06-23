@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Steeltoe.Common.Discovery;
 
 namespace AdminAPI.Controllers
 {
@@ -18,33 +19,36 @@ namespace AdminAPI.Controllers
     public class UserController : ControllerBase
     {
         HttpClient client;
+        HttpClient eurekaClient;
 
-        public UserController()
+        public UserController(IDiscoveryClient discclient)
         {
+            var _handler = new DiscoveryHttpClientHandler(discclient);
             client = new HttpClient();
+            eurekaClient = new HttpClient(_handler, false);
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<ExpandoObject>>> GetAllUsers()
-        {
-            try
-            {
-                var url = "https://dlsusermicroservice.azurewebsites.net/api/users";
-                var content = await client.GetAsync(url);
+        //[HttpGet]
+        //public async Task<ActionResult<List<ExpandoObject>>> GetAllUsers()
+        //{
+        //    try
+        //    {
+        //        var url = "https://dlsusermicroservice.azurewebsites.net/api/users";
+        //        var content = await client.GetAsync(url);
 
-                if (content.IsSuccessStatusCode)
-                {
-                    var obj = await content.Content.ReadAsAsync<List<ExpandoObject>>();
-                    return obj;
-                }
-                else
-                    return Conflict("No entries in database");
-            }
-            catch (Exception ex)
-            {
-                return Conflict(ex.Message);
-            }
-        }
+        //        if (content.IsSuccessStatusCode)
+        //        {
+        //            var obj = await content.Content.ReadAsAsync<List<ExpandoObject>>();
+        //            return obj;
+        //        }
+        //        else
+        //            return Conflict("No entries in database");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Conflict(ex.Message);
+        //    }
+        //}
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ExpandoObject>> GetUser(int id)
@@ -62,6 +66,28 @@ namespace AdminAPI.Controllers
                 }
                 else
                     return Conflict("No entry with id " + id);
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult<ExpandoObject> GetUserEureka()
+        {
+            try
+            {
+                string content = eurekaClient.GetStringAsync("http://usermicroservice/api/users").Result;
+
+                return null;
+                //if (content.IsSuccessStatusCode)
+                //{
+                //    var obj = await content.Content.ReadAsAsync<ExpandoObject>();
+                //    return obj;
+                //}
+                //else
+                //    return Conflict("No entry with id " + id);
             }
             catch (Exception ex)
             {

@@ -76,7 +76,7 @@ namespace TestAdminApi
             // Create first 
             var obj1 = new ExpandoObject();
             obj1.TryAdd("isAdmin", true);
-            obj1.TryAdd("username", "basdamgaard");
+            obj1.TryAdd("username", "dsjnsjn");
             obj1.TryAdd("password", "1234567890");
             obj1.TryAdd("email", "seb@dam.com");
             jsonObject = JsonConvert.SerializeObject(obj1);
@@ -88,7 +88,7 @@ namespace TestAdminApi
             // Create second
             var obj2 = new ExpandoObject();
             obj2.TryAdd("isAdmin", true);
-            obj2.TryAdd("username", "emilesp");
+            obj2.TryAdd("username", "fdskdfkm");
             obj2.TryAdd("password", "1234567890");
             obj2.TryAdd("email", "emil@esp.com");
 
@@ -100,7 +100,7 @@ namespace TestAdminApi
             // Create third
             var obj3 = new ExpandoObject();
             obj3.TryAdd("isAdmin", true);
-            obj3.TryAdd("username", "dánjalDJ");
+            obj3.TryAdd("username", "fkdasdas");
             obj3.TryAdd("password", "1234567890");
             obj3.TryAdd("email", "dánjal@DJ.com");
 
@@ -117,7 +117,7 @@ namespace TestAdminApi
             // Delete first
             HttpResponseMessage contentdel;
             var deletedone = false;
-            var userone = allusers.FirstOrDefault(x => x.FirstOrDefault(a => a.Key.ToLower() == "username").Value == "basdamgaard");
+            var userone = allusers.FirstOrDefault(x => string.Equals(x.FirstOrDefault(a => a.Key.ToLower() == "username").Value, "dsjnsjn"));
             if (userone != null)
             {
                 contentdel = client.DeleteAsync(url + '/' + userone.ElementAt(2).Value).Result;
@@ -126,7 +126,7 @@ namespace TestAdminApi
 
             // Delete second
             var deletedtwo = false;
-            var usertwo = allusers.FirstOrDefault(x => x.ElementAt(1).Value.ToString() == "emilesp");
+            var usertwo = allusers.FirstOrDefault(x => string.Equals(x.FirstOrDefault(a => a.Key.ToLower() == "username").Value, "fdskdfkm"));
             if (usertwo != null)
             {
                 contentdel = client.DeleteAsync(url + '/' + usertwo.ElementAt(2).Value).Result;
@@ -137,7 +137,7 @@ namespace TestAdminApi
 
             // Delete third
             var deletedthree = false;
-            var userthree = allusers.FirstOrDefault(x => x.ElementAt(1).Value.ToString() == "dánjalDJ");
+            var userthree = allusers.FirstOrDefault(x => string.Equals(x.FirstOrDefault(a => a.Key.ToLower() == "username").Value, "fkdasdas"));
             if (userthree != null)
             {
                 contentdel = client.DeleteAsync(url + '/' + userthree.ElementAt(2).Value).Result;
@@ -268,7 +268,7 @@ namespace TestAdminApi
         }
 
         [Fact]
-        public void TestDeleteIsInt()
+        public void TestDeleteIsNotInt()
         {
             client = new HttpClient();
             var url = "http://dlsadminapi.azurewebsites.net/api/users/hello";
